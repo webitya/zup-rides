@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation"; // import this for active link detection
+import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import DrawerEl from "../DrawerEl";
+
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname(); // detect current page
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Helper to add active class
   const getLinkClasses = (href) => {
     return `text-lg font-medium ${
       pathname === href ? "text-green-700" : "text-green-800"
@@ -24,20 +25,25 @@ export default function Header() {
     <header className="bg-green-200 shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-bold text-green-800">
-          RideRental
-        </div>
+        <div className="text-2xl font-bold text-green-800">Zup Rides</div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8 text-green-900 font-semibold">
+        <nav className="hidden md:flex items-center space-x-8 text-green-900 font-semibold">
           <Link href="/" className={getLinkClasses("/")}>Home</Link>
           <Link href="/about_us" className={getLinkClasses("/about_us")}>About us</Link>
           <Link href="/vehicles" className={getLinkClasses("/vehicles")}>Vehicles</Link>
-          <Link href="/about" className={getLinkClasses("/about")}>About</Link>
           <Link href="/contact" className={getLinkClasses("/contact")}>Contact</Link>
+
+          {/* Call Button */}
+          <a
+            href="tel:+918000000000"
+            className="ml-4 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition"
+          >
+            Call Now
+          </a>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Hamburger Menu for Small Screens */}
         <div className="md:hidden">
           <button onClick={toggleMenu}>
             <Menu size={32} className="text-green-800" />
@@ -45,34 +51,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Slide Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-green-100 z-50 transform ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out md:hidden`}
-      >
-        {/* Cross Icon */}
-        <div className="flex justify-end p-4">
-          <button onClick={toggleMenu}>
-            <X size={32} className="text-green-800" />
-          </button>
-        </div>
-
-        {/* Mobile Menu Links */}
-        <div className="flex flex-col items-start space-y-6 p-6">
-          <Link href="/" onClick={toggleMenu} className={getLinkClasses("/")}>Home</Link>
-          <Link href="/about_us" onClick={toggleMenu} className={getLinkClasses("/about_us")}>About_us</Link>
-
-        </div>
-      </div>
-
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-40 z-40 md:hidden"
-          onClick={toggleMenu}
-        ></div>
-      )}
+      {/* Drawer for Mobile Menu */}
+      <DrawerEl isOpen={isMenuOpen} onClose={toggleMenu} />
     </header>
   );
 }
