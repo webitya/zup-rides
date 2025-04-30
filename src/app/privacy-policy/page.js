@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
         </Typography>
 
         <Typography variant="h6" className="font-semibold text-green-700">
-          7. Children's Privacy
+          7. Children&apos;s Privacy
         </Typography>
         <Typography variant="body1" paragraph>
           Our services are not intended for children under 13. We do not knowingly collect data from children.
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
           8. Changes to This Privacy Policy
         </Typography>
         <Typography variant="body1" paragraph>
-          Any changes to this policy will be posted on this page with an updated "Last Updated" date.
+          Any changes to this policy will be posted on this page with an updated &quot;Last Updated&quot; date.
         </Typography>
 
         <Typography variant="h6" className="font-semibold text-green-700">
