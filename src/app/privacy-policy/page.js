@@ -6,13 +6,13 @@ export default function PrivacyPolicy() {
     <div className="container mx-auto py-8 px-4 max-w-4xl">
       <h1 className="text-3xl font-bold text-center mb-8">PRIVACY POLICY</h1>
 
-      <p className="mb-4">Your privacy matters to us at ZupRides ("the Company", "we", "ZupRides", "us" or "our").</p>
+      <p className="mb-4">Your privacy matters to us at ZupRides (the Company, we, ZupRides, us or our).</p>
 
       <p className="mb-6">
-        This Privacy Policy ("Policy") describes the policies and procedures on the collection, use, processing,
+        This Privacy Policy (Policy) describes the policies and procedures on the collection, use, processing,
         storage, retrieval, disclosure, transfer and protection of your information, including personal information and
-        sensitive personal data or information ("Information"), that ZupRides may receive through your online access,
-        interaction or use, of the ZupRides mobile applications ("ZupRides App") or our website located at
+        sensitive personal data or information (Information), that ZupRides may receive through your online access,
+        interaction or use, of the ZupRides mobile applications (ZupRides App) or our website located at
         <a href="https://zuprides.in/" className="text-blue-600 hover:underline">
           {" "}
           https://zuprides.in/
@@ -22,12 +22,12 @@ export default function PrivacyPolicy() {
       </p>
 
       <p className="mb-4">
-        The terms "you" and "your" refer to a Customer (defined below) or any other user of the ZupRides Platform and /
+        The terms you and your refer to a Customer (defined below) or any other user of the ZupRides Platform and /
         or availing the Services (defined below).
       </p>
 
       <p className="mb-4">
-        The term "Services" refers to any services offered by ZupRides, including but not limited to bike and scooter
+        The term Services refers to any services offered by ZupRides, including but not limited to bike and scooter
         rental services, in accordance with the terms and conditions applicable to you (and available on the ZupRides
         Platform) whether on the ZupRides Platform or otherwise.
       </p>
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
       <p className="mb-4">
         Any collection, processing, retrieval, transfer, use, storage, disclosure and protection of your Information
         will be in accordance with this Policy and applicable laws including but not limited to Information Technology
-        Act, 2000, and the rules framed thereunder ("Applicable Laws"). If you do not agree with the Policy, please do
+        Act, 2000, and the rules framed thereunder (Applicable Laws). If you do not agree with the Policy, please do
         not use or access the ZupRides Platform.
       </p>
 
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
           to ZupRides.
         </li>
         <li className="mb-2">
-          Your providing of the Information as well as ZupRides's consequent storage, collection, usage, transfer,
+          Your providing of the Information as well as ZupRides s consequent storage, collection, usage, transfer,
           access, or processing of such Information will not be in violation of any agreement, Applicable Laws, charter
           documents, judgments, orders and decrees.
         </li>
@@ -85,30 +85,30 @@ export default function PrivacyPolicy() {
 
       <ul className="list-disc pl-8 mb-6">
         <li className="mb-2">
-          <strong>"Customer"</strong> shall mean a person who wishes to rent bikes or scooters through the ZupRides
+          <strong>Customer</strong> shall mean a person who wishes to rent bikes or scooters through the ZupRides
           Platform.
         </li>
         <li className="mb-2">
-          <strong>"Co-branded Services"</strong> shall have the meaning assigned to the term in paragraph 5(c) hereto.
+          <strong>Co-branded Services</strong> shall have the meaning assigned to the term in paragraph 5(c) hereto.
         </li>
         <li className="mb-2">
-          <strong>"Device"</strong> shall mean computer, mobile or other device used to access the Services.
+          <strong>Device</strong> shall mean computer, mobile or other device used to access the Services.
         </li>
         <li className="mb-2">
-          <strong>"Device Identifier"</strong> shall mean IP address or other unique identifier of the Device.
+          <strong>Device Identifier</strong> shall mean IP address or other unique identifier of the Device.
         </li>
         <li className="mb-2">
-          <strong>"Promotion"</strong> shall mean any contest and other promotions offered by us.
+          <strong>Promotion</strong> shall mean any contest and other promotions offered by us.
         </li>
         <li className="mb-2">
-          <strong>"Personal Information"</strong> shall mean such categories of information that could reasonably be
+          <strong>Personal Information</strong> shall mean such categories of information that could reasonably be
           used to identify you personally, including your name, e-mail address, and mobile number.
         </li>
         <li className="mb-2">
-          <strong>"TPSP"</strong> shall mean a third-party service provider.
+          <strong>TPSP</strong> shall mean a third-party service provider.
         </li>
         <li className="mb-2">
-          <strong>"Usage Information"</strong> shall have the meaning assigned to the term in paragraph 3(II) hereto.
+          <strong>Usage Information</strong> shall have the meaning assigned to the term in paragraph 3(II) hereto.
         </li>
       </ul>
 
@@ -157,7 +157,7 @@ export default function PrivacyPolicy() {
 
       <ul className="list-disc pl-8 mb-6">
         <li className="mb-2">
-          Is harmful, offensive, harassing, obscene, pornographic, invasive of another's privacy, hateful, racially or
+          Is harmful, offensive, harassing, obscene, pornographic, invasive of another s privacy, hateful, racially or
           ethnically objectionable, disparaging, relating to or encouraging money laundering or gambling, or an online
           game that causes user harm, or otherwise unlawful in any manner whatsoever, or promoting enmity between
           different groups on the grounds of religion or caste with the intent to incite violence;
@@ -189,7 +189,7 @@ export default function PrivacyPolicy() {
         <li className="mb-2">
           <strong>Usage Information:</strong> We, our TPSP and the Vendor Partner may use a variety of technologies that
           automatically (or passively) collect certain Information whenever you visit or interact with the ZupRides
-          Platform for obtaining the Services ("Usage Information"). This Usage Information may include the browser that
+          Platform for obtaining the Services (Usage Information). This Usage Information may include the browser that
           you are using, the URL that referred you to our Services, all of the areas within our Services that you visit,
           and the time of day, searches and search results, or usage behavior on the ZupRides App, etc.
         </li>
@@ -281,9 +281,9 @@ export default function PrivacyPolicy() {
           We may use your Personal Information or Usage Information that we collect about you: (a) to provide you with
           information or services or process transactions that you have requested or agreed to receive including to send
           you electronic newsletters, or to provide you with special offers or promotional materials on behalf of us or
-          third parties; (b) to enable you to participate in a variety of the Services' features such as online or
+          third parties; (b) to enable you to participate in a variety of the Service s features such as online or
           mobile entry sweepstakes, contests or other promotions; (c) to contact you with regard to your use of the
-          Services and, in our discretion, changes to the Services and/or the Services' policies; (d) for internal
+          Services and, in our discretion, changes to the Services and/or the Service s policies; (d) for internal
           business purposes; (e) for inclusion in our data analytics; and (f) for purposes disclosed at the time you
           provide your Information or as otherwise set forth in this Policy;
         </li>
@@ -348,16 +348,16 @@ export default function PrivacyPolicy() {
 
       <p className="mb-4">
         We may share the Information you provide with our TPSPs, business partners, and agents. Please refer to such
-        third-party's privacy policy for more details before using their services on the ZupRides App.
+        third-party s privacy policy for more details before using their services on the ZupRides App.
       </p>
 
       <p className="mb-6">
         We use TPSPs to facilitate our Services, provide or perform certain aspects of the Services on our behalf – such
-        as host the Services, design and/or operate the Services' features, track the Services' analytics, process
+        as host the Services, design and/or operate the Services features, track the Services analytics, process
         payments, engage in anti-fraud and security measures, perform background and identity verification, run criminal
         record checks, provide customer support, enable us to send you special offers, host our job application form,
         perform technical services (e.g., without limitation, maintenance services, database management, web analytics
-        and improvement of the Services' features), or perform other administrative services. These third parties will
+        and improvement of the Services features), or perform other administrative services. These third parties will
         have access to Information, including Personal Information to only carry out the services they are performing
         for you or for us. We will require each of these TPSPs to ensure the same level of data protection as us and
         impose contractual obligations not to disclose or use Personal Information for any other purpose.
@@ -376,7 +376,7 @@ export default function PrivacyPolicy() {
       <h3 className="text-lg font-medium mt-6 mb-3">CO-BRANDED SERVICES</h3>
 
       <p className="mb-6">
-        Certain aspects of the Services may be provided to you in association with third parties ("Co-Branded Services")
+        Certain aspects of the Services may be provided to you in association with third parties (Co-Branded Services)
         such as credit houses, loan providers, sponsors and charities, and may require you to disclose Information
         including Personal Information to them. Such Co-Branded Services will identify the third party. If you elect to
         register for products and/or services through the Co-Branded Services, you shall have deemed to have consented
@@ -395,7 +395,7 @@ export default function PrivacyPolicy() {
         marketing associated with the Promotion. If you choose to enter a Promotion, you agree that your Personal
         Information may be disclosed to third parties or the public in connection with the administration of such
         Promotion, including, in connection with winner selection, prize fulfilment, and as required by law or permitted
-        by the Promotion's official rules, such as on a winners list.
+        by the Promotion s official rules, such as on a winners list.
       </p>
 
       <h3 className="text-lg font-medium mt-6 mb-3">ADMINISTRATIVE AND LEGAL REASONS</h3>
@@ -458,7 +458,7 @@ export default function PrivacyPolicy() {
 
       <p className="mb-6">
         Our online and mobile Services may include social media features, such as the Facebook Like button, and widgets
-        such as a "Share This" button, or interactive mini-programs that run on ZupRides App. These features may collect
+        such as a Share This button, or interactive mini-programs that run on ZupRides App. These features may collect
         Information including your IP address, photograph, which page you are visiting on our online or mobile Services,
         and may set a cookie to enable the feature to function properly. Social media features and widgets are either
         hosted by a third party or hosted directly on our online Services and/or ZupRides Platform. Your interactions
@@ -520,7 +520,7 @@ export default function PrivacyPolicy() {
         commercially reasonable security practices such as encryption, firewalls and SSL (Secure Socket Layers) for
         protecting your Information. However, as effective as encryption technology is, no security system is
         impenetrable. We cannot guarantee the security of our databases, nor can we guarantee that Information you
-        supply won't be intercepted while being transmitted to us over the Internet or wireless communication, and any
+        supply won t be intercepted while being transmitted to us over the Internet or wireless communication, and any
         Information you transmit to us, you do at your own risk. We recommend that you not disclose your password to
         anyone.
       </p>
