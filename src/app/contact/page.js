@@ -79,15 +79,15 @@ export default function ContactPage() {
           <h2 className="text-2xl font-semibold mb-4">Our Contact Info</h2>
           <div className="flex items-center gap-4">
             <LocationOn className="text-blue-600" />
-            <span>Ganga Nagar, Harmu Housing Colony, Ranchi, Jharkhand 834002</span>
+            <span>Amar chowk , harihar toli chutia ranchi , jharkhand</span>
           </div>
           <div className="flex items-center gap-4">
             <Phone className="text-green-600" />
-            <a href="tel:+919693245941" className="hover:underline">+91 96932 45941</a>
+            <a href="tel:+919693245941" className="hover:underline"> +91 97981 46740</a>
           </div>
           <div className="flex items-center gap-4">
             <EmailIcon className="text-red-600" />
-            <a href="mailto:aditya19bscit@gmail.com" className="hover:underline">aditya19bscit@gmail.com</a>
+            <a href="mailto:support@zuprides.in" className="hover:underline">support@zuprides.in</a>
           </div>
           <div className="flex items-center gap-4">
             <AccessTime className="text-yellow-600" />
