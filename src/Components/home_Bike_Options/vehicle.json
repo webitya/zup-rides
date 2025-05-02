@@ -4,83 +4,83 @@
     "daily": "399",
     "weekly": "2799",
     "monthly": "11999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "R15",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
-    "image": "/images/r15.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "Activa",
     "daily": "399",
     "weekly": "2799",
     "monthly": "11999",
-    "image": "/images/activa.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "MT-15",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
-    "image": "/images/mt15.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "APACHE 160",
     "daily": "599",
     "weekly": "4199",
     "monthly": "17999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "NS 200",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "KTM 200 Duke",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "Himalayan",
     "daily": "1199",
     "weekly": "8399",
     "monthly": "35999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "THUNDERBIRD 350X",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "KTM 250 DUKE",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "KTM 390 DUKE",
     "daily": "1199",
     "weekly": "8399",
     "monthly": "35999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   },
   {
     "name": "SP SHINE 125",
     "daily": "499",
     "weekly": "3499",
     "monthly": "14999",
-    "image": "/images/ntorq.png"
+    "image": "/r15.jpg"
   }
 ]
