@@ -48,10 +48,10 @@ export default function HeroCarousel() {
           index === current ? (
             <motion.div
               key={slide.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '-100%' }}
+              transition={{ duration: 1 }}
               className="absolute inset-0 w-full h-full z-0"
             >
               <Image
@@ -89,14 +89,14 @@ export default function HeroCarousel() {
       <div className="absolute inset-0 flex justify-between items-center px-4 sm:px-1 z-10">
         <IconButton
           onClick={prevSlide}
-          className="!bg-black/40 hover:!bg-black/60 text-white"
+          className="!bg-gradient-to-r !from-blue-500 !to-purple-500 text-white transition-all duration-300 hover:!bg-gradient-to-r hover:!from-blue-700 hover:!to-purple-700"
           aria-label="Previous"
         >
           <ChevronLeftIcon fontSize="large" />
         </IconButton>
         <IconButton
           onClick={nextSlide}
-          className="!bg-black/40 hover:!bg-black/60 text-white"
+          className="!bg-gradient-to-r !from-blue-500 !to-purple-500 text-white transition-all duration-300 hover:!bg-gradient-to-r hover:!from-blue-700 hover:!to-purple-700"
           aria-label="Next"
         >
           <ChevronRightIcon fontSize="large" />

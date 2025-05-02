@@ -1,6 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Button, IconButton, Typography, Grid } from '@mui/material';
+import BikeScooterIcon from '@mui/icons-material/BikeScooter';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import TimerIcon from '@mui/icons-material/Timer';
 
 export default function BenefitsSection() {
   useEffect(() => {
@@ -11,19 +16,19 @@ export default function BenefitsSection() {
 
   const benefits = [
     {
-      icon: '🛵',
+      icon: <BikeScooterIcon fontSize="large" />,
       text: 'Renting scooty or bike with us is more affordable than public transport or private drivers.',
     },
     {
-      icon: '📍',
+      icon: <LocationOnIcon fontSize="large" />,
       text: 'Explore Ranchi freely on your schedule with our bike and scooty rentals.',
     },
     {
-      icon: '📲',
+      icon: <PhoneInTalkIcon fontSize="large" />,
       text: 'Choose from our diverse fleet of bikes and scooties tailored to your needs.',
     },
     {
-      icon: '⏱️',
+      icon: <TimerIcon fontSize="large" />,
       text: 'Enjoy a quick and hassle-free bike and scooty rental process with us.',
     },
   ];
@@ -38,20 +43,27 @@ export default function BenefitsSection() {
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
-            <div className="text-5xl bg-emerald-100 dark:bg-emerald-800/20 text-emerald-600 dark:text-emerald-300 p-4 rounded-full shadow-sm">
+            <div className="text-5xl bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 text-white p-4 rounded-full shadow-md">
               {benefit.icon}
             </div>
-            <p className="text-sm md:text-base text-gray-800 dark:text-gray-300 font-medium leading-relaxed">
+            <Typography
+              variant="body1"
+              className="text-sm md:text-base text-gray-800 dark:text-gray-300 font-medium leading-relaxed"
+            >
               {benefit.text}
-            </p>
+            </Typography>
           </div>
         ))}
       </div>
 
       <div className="mt-12 text-center" data-aos="zoom-in">
-        <button className="bg-emerald-400 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all">
+        <Button
+          variant="contained"
+          color="primary"
+          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all"
+        >
           Learn More About Us
-        </button>
+        </Button>
       </div>
     </section>
   );

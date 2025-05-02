@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
+import TwoWheelerIcon from '@mui/icons-material/TwoWheeler'; // Scooty icon
+import SpeedIcon from '@mui/icons-material/Speed'; // Motorbike icon
 
 export default function RentalPlansSection() {
   useEffect(() => {
@@ -14,48 +16,53 @@ export default function RentalPlansSection() {
       title: 'Scooters',
       description:
         'Perfect for navigating the bustling streets of Ranchi. Easy to ride and fuel-efficient.',
+      icon: <TwoWheelerIcon className="text-4xl text-gradient" />,
     },
     {
       title: 'Motorbikes',
       description:
         'For longer rides and power-packed performance, our motorbikes combine speed with comfort.',
+      icon: <SpeedIcon className="text-4xl text-gradient" />,
     },
   ];
 
   return (
-    <section className="bg-emerald-100 dark:bg-emerald-900/10 py-24 px-6 pb-10 md:px-16">
-      <div className="text-center max-w-4xl mx-auto mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-white mb-4">
+    <section className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-700 py-16 px-6 md:px-12">
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Affordable Bike & Scooty Rentals
         </h2>
-        <p className="text-xl font-semibold text-emerald-700 dark:text-emerald-300 mb-4">
-          Flexible Rental Plans.<br />
-          <span className="text-black dark:text-white">Pick the option that fits your needs:</span>
+        <p className="text-lg font-semibold text-white mb-4">
+          Flexible Rental Plans. Pick the option that fits your needs:
         </p>
-        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
-          Enjoy the ease and freedom of Ranchi Rides Rental Service. Book your ride today and explore Ranchi with comfort and style!
+        <p className="text-base text-gray-200">
+          Explore Ranchi with comfort and style! Book your ride now.
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+      <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
         {plans.map((plan, index) => (
           <div
             key={plan.title}
             data-aos="fade-up"
             data-aos-delay={index * 150}
-            className="bg-white dark:bg-neutral-800 border border-emerald-300 dark:border-emerald-700 p-8 rounded-3xl shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+            className="bg-white dark:bg-neutral-800 border border-emerald-300 dark:border-emerald-700 p-6 rounded-2xl shadow-md hover:scale-[1.05] transition-all duration-300"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-4">
+            <div className="flex justify-center items-center mb-4">
+              <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white p-3 rounded-full shadow-md">
+                {plan.icon}
+              </div>
+            </div>
+            <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-3">
               {plan.title}
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-6">{plan.description}</p>
-            <button className="bg-emerald-400 hover:bg-emerald-500 text-white font-semibold px-6 py-2 rounded-full transition">
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">{plan.description}</p>
+            <button className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-semibold px-5 py-2 rounded-full hover:from-pink-600 hover:via-purple-700 hover:to-indigo-700 transition duration-300">
               Book Now
             </button>
           </div>
         ))}
       </div>
-      
     </section>
   );
 }
