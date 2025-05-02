@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckCircle } from '@mui/icons-material';
+import Link from 'next/link';
 
 export default function RideFreedomSection() {
   return (
@@ -45,9 +46,11 @@ export default function RideFreedomSection() {
 
           {/* CTA */}
           <div>
-            <button className="bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white font-semibold px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:from-purple-600 hover:via-pink-600 hover:to-yellow-600">
+           <Link href="/vehicles" target='_blank'>
+           <button className="bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white font-semibold px-8 py-4 rounded-full shadow-xl transition-all duration-300 hover:from-purple-600 hover:via-pink-600 hover:to-yellow-600">
               See All Vehicles
             </button>
+           </Link>
           </div>
         </div>
       </div>

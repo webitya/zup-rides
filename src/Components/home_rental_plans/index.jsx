@@ -50,7 +50,7 @@ export default function RentalPlansSection() {
               {plan.title}
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">{plan.description}</p>
-           <a to="+919798146740">
+           <a to="https://wa.me/919798146740">
            <button className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-semibold px-4 py-2 rounded-full">
               Book Now
             </button>
