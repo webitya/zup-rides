@@ -8,12 +8,6 @@ import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import TimerIcon from '@mui/icons-material/Timer';
 
 export default function BenefitsSection() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      import('aos').then((AOS) => AOS.init({ once: true, duration: 800 }));
-    }
-  }, []);
-
   const benefits = [
     {
       icon: <BikeScooterIcon fontSize="large" />,
@@ -39,9 +33,7 @@ export default function BenefitsSection() {
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="flex flex-col items-center space-y-3 hover:scale-105 transition-transform duration-300"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
+            className="flex flex-col items-center space-y-3"
           >
             <div className="text-4xl bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 text-white p-4 rounded-full shadow-md flex justify-center items-center">
               {benefit.icon}
@@ -56,11 +48,11 @@ export default function BenefitsSection() {
         ))}
       </div>
 
-      <div className="mt-8 text-center" data-aos="zoom-in">
+      <div className="mt-8 text-center">
         <Button
           variant="contained"
           color="primary"
-          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-4 py-2 rounded-full shadow-md transition-all"
+          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-4 py-2 rounded-full shadow-md"
         >
           Learn More About Us
         </Button>

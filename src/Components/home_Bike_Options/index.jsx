@@ -10,7 +10,6 @@ export default function RideOptionsSection() {
 
   useEffect(() => {
     setVehicles(vehicleData);
-    import('aos').then((AOS) => AOS.init({ once: true, duration: 800 }));
   }, []);
 
   return (
@@ -25,11 +24,9 @@ export default function RideOptionsSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {vehicles.map((ride, idx) => (
+        {vehicles.map((ride) => (
           <div
             key={ride.name}
-            data-aos="zoom-in-up"
-            data-aos-delay={idx * 100}
             className="bg-white/10 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center border border-white/30 shadow-lg hover:scale-[1.05] transition-all duration-300"
           >
             <img

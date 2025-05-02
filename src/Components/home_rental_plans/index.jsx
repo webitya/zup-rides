@@ -5,12 +5,6 @@ import TwoWheelerIcon from '@mui/icons-material/TwoWheeler'; // Scooty icon
 import SpeedIcon from '@mui/icons-material/Speed'; // Motorbike icon
 
 export default function RentalPlansSection() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      import('aos').then((AOS) => AOS.init({ once: true, duration: 800 }));
-    }
-  }, []);
-
   const plans = [
     {
       title: 'Scooters',
@@ -44,9 +38,7 @@ export default function RentalPlansSection() {
         {plans.map((plan, index) => (
           <div
             key={plan.title}
-            data-aos="fade-up"
-            data-aos-delay={index * 150}
-            className="bg-white dark:bg-neutral-800 border border-emerald-300 dark:border-emerald-700 p-4 rounded-2xl shadow-md hover:scale-[1.05] hover:shadow-xl transition-all duration-300 ease-in-out"
+            className="bg-white dark:bg-neutral-800 border border-emerald-300 dark:border-emerald-700 p-4 rounded-2xl shadow-md"
           >
             <div className="flex justify-center items-center mb-3">
               <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white p-2 rounded-full shadow-md">
@@ -57,7 +49,7 @@ export default function RentalPlansSection() {
               {plan.title}
             </h3>
             <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">{plan.description}</p>
-            <button className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-semibold px-4 py-2 rounded-full hover:from-pink-600 hover:via-purple-700 hover:to-indigo-700 transition duration-300">
+            <button className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-semibold px-4 py-2 rounded-full">
               Book Now
             </button>
           </div>
