@@ -29,7 +29,7 @@ export const metadata = {
     siteName: "Zuprides",
     images: [
       {
-        url: "https://zuprides.in/og-image.jpg", // 🔁 Replace with your actual image URL
+        url: "/r15.jpg", // 🔁 Replace with your actual image URL
         width: 1200,
         height: 630,
         alt: "Zuprides Car & Bike Rentals",
@@ -44,7 +44,7 @@ export const metadata = {
     title: "Zuprides – Rent Cars & Bikes Easily",
     description:
       "Book your ride with Zuprides for safe and affordable transportation across India. Instant booking and 24/7 support.",
-    images: ["https://zuprides.in/og-image.jpg"], // 🔁 Replace with your actual image URL
+    images: ["/r15.jpg"], // 🔁 Replace with your actual image URL
   },
 };
 
