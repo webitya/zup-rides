@@ -16,7 +16,7 @@ export default function Home() {
    <Rental_plans />
    <Bike_options />
    <Experince_freedom />
-   <Home_affordable />
+   {/* <Home_affordable /> */}
    <Contact_us />
    </>
   );

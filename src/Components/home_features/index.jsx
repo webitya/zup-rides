@@ -34,20 +34,20 @@ export default function BenefitsSection() {
   ];
 
   return (
-    <section className="bg-white dark:bg-neutral-900 py-0 px-6 pb-4 md:px-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+    <section className="bg-white dark:bg-neutral-900 py-12 px-6 md:px-16">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="flex flex-col items-center space-y-4 hover:scale-105 transition-transform duration-300"
+            className="flex flex-col items-center space-y-3 hover:scale-105 transition-transform duration-300"
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
-            <div className="text-5xl bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 text-white p-4 rounded-full shadow-md">
+            <div className="text-4xl bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 text-white p-4 rounded-full shadow-md flex justify-center items-center">
               {benefit.icon}
             </div>
             <Typography
-              variant="body1"
+              variant="body2"
               className="text-sm md:text-base text-gray-800 dark:text-gray-300 font-medium leading-relaxed"
             >
               {benefit.text}
@@ -56,11 +56,11 @@ export default function BenefitsSection() {
         ))}
       </div>
 
-      <div className="mt-12 text-center" data-aos="zoom-in">
+      <div className="mt-8 text-center" data-aos="zoom-in">
         <Button
           variant="contained"
           color="primary"
-          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all"
+          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-4 py-2 rounded-full shadow-md transition-all"
         >
           Learn More About Us
         </Button>

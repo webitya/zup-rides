@@ -15,20 +15,22 @@ export default function RideOptionsSection() {
 
   return (
     <section className="bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] py-20 px-4 md:px-16">
-      <div className="max-w-7xl mx-auto text-center mb-14">
-        <Typography
-          variant="h2"
-          className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
-        >
-          🚗 Explore Our Premium Ride Options
-        </Typography>
-        <Typography
-          variant="body1"
-          className="text-lg text-white/90 max-w-2xl mx-auto"
-        >
-          Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
-        </Typography>
-      </div>
+<div className="max-w-7xl mx-auto text-center mb-10 px-4">
+  <h2
+ 
+    className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3"
+  >
+    Explore Our Premium Ride Options
+  </h2>
+  <Typography
+    variant="body1"
+    className="text-base md:text-lg text-white/90 mx-auto"
+  >
+    Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
+  </Typography>
+</div>
+
+
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {vehicles.map((ride, idx) => (
