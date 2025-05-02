@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import vehicleData from '@/Components/home_Bike_Options/vehicle.json'; // Adjust path if you store in /public
-import { Button, Typography } from '@mui/material'; // Material UI components for modern styling
-import { MonetizationOn, Star } from '@mui/icons-material'; // Premium icons
+import vehicleData from '@/Components/home_Bike_Options/vehicle.json';
+import { Button, Typography } from '@mui/material';
+import { MonetizationOn, Star } from '@mui/icons-material';
 
 export default function RideOptionsSection() {
   const [vehicles, setVehicles] = useState([]);
@@ -14,13 +14,19 @@ export default function RideOptionsSection() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-r from-green-400 via-emerald-600 to-emerald-800 dark:bg-gradient-to-r dark:from-green-800 dark:via-emerald-900 dark:to-green-700 py-16 md:py-24 px-4 md:px-16">
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <Typography variant="h2" className="text-4xl font-extrabold text-white drop-shadow-lg">
-          Explore Our Premium Ride Options
+    <section className="bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] py-20 px-4 md:px-16">
+      <div className="max-w-7xl mx-auto text-center mb-14">
+        <Typography
+          variant="h2"
+          className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+        >
+          🚗 Explore Our Premium Ride Options
         </Typography>
-        <Typography variant="body1" className="text-lg text-gray-100 mt-4 leading-relaxed">
-          Discover the finest bikes, designed for style, comfort, and performance.
+        <Typography
+          variant="body1"
+          className="text-lg text-white/90 max-w-2xl mx-auto"
+        >
+          Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
         </Typography>
       </div>
 
@@ -30,38 +36,41 @@ export default function RideOptionsSection() {
             key={ride.name}
             data-aos="zoom-in-up"
             data-aos-delay={idx * 100}
-            className="bg-white dark:bg-neutral-800 border-2 border-emerald-500 dark:border-emerald-700 rounded-3xl p-6 flex flex-col items-center shadow-lg"
+            className="bg-white/10 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center border border-white/30 shadow-lg hover:scale-[1.02] transition-transform duration-300"
           >
             <img
               src={ride.image}
               alt={ride.name}
-              className="h-48 object-contain mb-6 rounded-lg shadow-xl transition-all duration-500"
+              className="h-48 object-contain mb-6 rounded-xl shadow-md bg-white/20 p-2"
             />
-            <Typography variant="h6" className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+            <Typography variant="h6" className="text-xl font-bold text-white mb-3">
               {ride.name}
             </Typography>
 
-            <div className="flex justify-center items-center gap-4 mb-6">
-              <div className="flex items-center gap-1 text-emerald-500 dark:text-emerald-300">
-                <MonetizationOn />
-                <Typography variant="body2" className="font-semibold text-gray-700 dark:text-gray-300">
-                  Daily: <span className="font-bold">₹{ride.daily}</span>
-                </Typography>
+            <div className="flex justify-center items-center gap-6 mb-6 text-white/80 text-sm">
+              <div className="flex items-center gap-1">
+                <MonetizationOn fontSize="small" />
+                Daily: <span className="font-semibold text-white">₹{ride.daily}</span>
               </div>
-
-              <div className="flex items-center gap-1 text-emerald-500 dark:text-emerald-300">
-                <Star />
-                <Typography variant="body2" className="font-semibold text-gray-700 dark:text-gray-300">
-                  Monthly: <span className="font-bold">₹{ride.monthly}</span>
-                </Typography>
+              <div className="flex items-center gap-1">
+                <Star fontSize="small" />
+                Monthly: <span className="font-semibold text-white">₹{ride.monthly}</span>
               </div>
             </div>
 
             <Button
               variant="contained"
-              color="success"
-              size="large"
-              className="w-full py-2 rounded-full transition duration-300"
+              sx={{
+                width: '100%',
+                py: 1.5,
+                fontWeight: 600,
+                borderRadius: 999,
+                background: 'linear-gradient(to right, #fd1d1d, #fcb045)',
+                color: '#fff',
+                '&:hover': {
+                  background: 'linear-gradient(to right, #fcb045, #fd1d1d)',
+                },
+              }}
             >
               Book Now
             </Button>
