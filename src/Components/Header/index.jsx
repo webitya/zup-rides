@@ -36,7 +36,7 @@ export default function Header() {
 
           {/* Call Button */}
           <a
-            href="tel:+918000000000"
+            href="tel:+919798146740"
             className="ml-4 px-4 py-2 rounded-full bg-white text-pink-600 font-bold shadow-lg hover:shadow-pink-400 transition duration-300 hover:scale-105 border-2 border-white"
           >
             📞 Call Now

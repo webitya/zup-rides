@@ -45,7 +45,7 @@ export default function DrawerEl({ isOpen, onClose }) {
 
             {/* Call Now Button */}
             <a
-              href="tel:+918000000000"
+              href="tel:+919798146740"
               className="w-full bg-white text-pink-600 font-bold py-2 rounded-full border border-pink-500 shadow hover:bg-pink-100 transition"
             >
               Call Now
@@ -53,7 +53,7 @@ export default function DrawerEl({ isOpen, onClose }) {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/918000000000"
+              href="https://wa.me/919798146740"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-white text-green-600 font-bold py-2 rounded-full border border-green-500 shadow hover:bg-green-100 transition"

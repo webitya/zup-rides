@@ -32,9 +32,9 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4 uppercase tracking-wide">Contact</h3>
           <ul className="space-y-2 text-sm text-white/90">
-            <li>📍 123 Street, Your City</li>
-            <li>📞 +91 9876543210</li>
-            <li>✉️ support@zuprides.com</li>
+            <li>📍 Amar chowk , harihar toli chutia ranchi , jharkhand</li>
+            <li>📞 +91 97981 46740</li>
+            <li>✉️ support@zuprides.in</li>
           </ul>
         </div>
 
