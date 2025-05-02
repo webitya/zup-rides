@@ -1,87 +1,86 @@
 [
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "R15",
-      "daily": "1199",
-      "weekly": "5999",
-      "monthly": "21999",
-      "image": "/images/r15.png"
-    },
-    {
-      "name": "Activa",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/activa.png"
-    },
-    {
-      "name": "MT-15",
-      "daily": "999",
-      "weekly": "4999",
-      "monthly": "19999",
-      "image": "/images/mt15.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    },
-    {
-      "name": "NTORQ 125",
-      "daily": "499",
-      "weekly": "2999",
-      "monthly": "8999",
-      "image": "/images/ntorq.png"
-    }
-  ]
-  
+  {
+    "name": "NTORQ 125",
+    "daily": "399",
+    "weekly": "2799",
+    "monthly": "11999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "R15",
+    "daily": "999",
+    "weekly": "6999",
+    "monthly": "29999",
+    "image": "/images/r15.png"
+  },
+  {
+    "name": "Activa",
+    "daily": "399",
+    "weekly": "2799",
+    "monthly": "11999",
+    "image": "/images/activa.png"
+  },
+  {
+    "name": "MT-15",
+    "daily": "799",
+    "weekly": "5599",
+    "monthly": "23999",
+    "image": "/images/mt15.png"
+  },
+  {
+    "name": "APACHE 160",
+    "daily": "599",
+    "weekly": "4199",
+    "monthly": "17999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "NS 200",
+    "daily": "799",
+    "weekly": "5599",
+    "monthly": "23999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "KTM 200 Duke",
+    "daily": "799",
+    "weekly": "5599",
+    "monthly": "23999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "Himalayan",
+    "daily": "1199",
+    "weekly": "8399",
+    "monthly": "35999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "THUNDERBIRD 350X",
+    "daily": "999",
+    "weekly": "6999",
+    "monthly": "29999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "KTM 250 DUKE",
+    "daily": "999",
+    "weekly": "6999",
+    "monthly": "29999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "KTM 390 DUKE",
+    "daily": "1199",
+    "weekly": "8399",
+    "monthly": "35999",
+    "image": "/images/ntorq.png"
+  },
+  {
+    "name": "SP SHINE 125",
+    "daily": "499",
+    "weekly": "3499",
+    "monthly": "14999",
+    "image": "/images/ntorq.png"
+  }
+]

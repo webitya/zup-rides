@@ -15,22 +15,14 @@ export default function RideOptionsSection() {
 
   return (
     <section className="bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] py-20 px-4 md:px-16">
-<div className="max-w-7xl mx-auto text-center mb-10 px-4">
-  <h2
- 
-    className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3"
-  >
-    Explore Our Premium Ride Options
-  </h2>
-  <Typography
-    variant="body1"
-    className="text-base md:text-lg text-white/90 mx-auto"
-  >
-    Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
-  </Typography>
-</div>
-
-
+      <div className="max-w-7xl mx-auto text-center mb-10 px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+          Explore Our Premium Ride Options
+        </h2>
+        <Typography variant="body1" className="text-base md:text-lg text-white/90 mx-auto">
+          Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
+        </Typography>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {vehicles.map((ride, idx) => (
@@ -38,7 +30,7 @@ export default function RideOptionsSection() {
             key={ride.name}
             data-aos="zoom-in-up"
             data-aos-delay={idx * 100}
-            className="bg-white/10 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center border border-white/30 shadow-lg hover:scale-[1.02] transition-transform duration-300"
+            className="bg-white/10 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center border border-white/30 shadow-lg hover:scale-[1.05] transition-all duration-300"
           >
             <img
               src={ride.image}
@@ -49,12 +41,16 @@ export default function RideOptionsSection() {
               {ride.name}
             </Typography>
 
-            <div className="flex justify-center items-center gap-6 mb-6 text-white/80 text-sm">
-              <div className="flex items-center gap-1">
+            <div className="flex flex-col items-center gap-4 mb-6 text-white/80 text-sm">
+              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
                 <MonetizationOn fontSize="small" />
                 Daily: <span className="font-semibold text-white">₹{ride.daily}</span>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
+                <MonetizationOn fontSize="small" />
+                Weekly: <span className="font-semibold text-white">₹{ride.weekly}</span>
+              </div>
+              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
                 <Star fontSize="small" />
                 Monthly: <span className="font-semibold text-white">₹{ride.monthly}</span>
               </div>
