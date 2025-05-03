@@ -10,12 +10,10 @@ export default function ContactSection() {
             Get In<br />Touch <span className="text-emerald-500">With Us!</span>
           </h2>
           <div className="space-y-2 text-neutral-700 dark:text-neutral-300">
-            <p><strong>Phone</strong><br />+91 8427534763<br />+91 8427534763</p>
-            <p><strong>Email</strong><br />contactus@ranchirides.in<br />ranchiridesrentalservice@gmail.com</p>
+            <p><strong>Phone</strong><br />+91 97981 46740<br /></p>
+            <p><strong>Email</strong><br />support@zuprides.in<br />zuprides.in@gmail.com</p>
             <p><strong>Address</strong><br />
-              Bahu Bazaar, Chhat Talab Dhumsa Toli,<br />
-              Near Apna Mart, Ranchi, Jharkhand<br />
-              834001
+            Amar chowk , harihar toli chutia ranchi , jharkhand
             </p>
           </div>
         </div>
