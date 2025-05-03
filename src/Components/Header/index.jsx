@@ -23,9 +23,12 @@ export default function Header() {
     <header className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 shadow-md sticky top-0 z-50 backdrop-blur-lg bg-opacity-90">
       <div className="flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-extrabold text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-red-500 to-pink-500 animate-gradient">
-          Zup Rides
-        </div>
+        <div className="flex items-center gap-2">
+  <img src="/logo.jpg" alt="Zup Rides Logo" className="h-8 w-8 rounded-full object-cover" />
+  <div className="text-2xl font-extrabold text-white bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-red-500 to-pink-500 animate-gradient">
+    Zup Rides
+  </div>
+</div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">

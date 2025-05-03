@@ -6,12 +6,11 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const metadata = {
-  title: "Zuprides – Affordable Car & Bike Rentals in India",
+  title: "Zuprides – Affordabl Bike Rentals in India",
   description:
-    "Zuprides offers reliable, budget-friendly car and bike rentals across India. Book online for hassle-free travel experiences with doorstep delivery, flexible pricing, and 24/7 support.",
+    "Zuprides offers reliable, budget-friendly  bike rentals across India. Book online for hassle-free travel experiences with doorstep delivery, flexible pricing, and 24/7 support.",
   keywords: [
     "Zuprides",
-    "car rental India",
     "bike rental",
     "self-drive car",
     "scooty rental",
@@ -22,14 +21,14 @@ export const metadata = {
   ],
   authors: [{ name: "Zuprides India", url: "https://zuprides.in" }],
   openGraph: {
-    title: "Zuprides – Affordable Car & Bike Rentals",
+    title: "Zuprides – Affordable  Bike Rentals",
     description:
-      "Rent cars and bikes at the best prices across India with Zuprides. Safe, reliable, and convenient options for local and outstation travel.",
+      "Rent bikes at the best prices across India with Zuprides. Safe, reliable, and convenient options for local and outstation travel.",
     url: "https://zuprides.in",
     siteName: "Zuprides",
     images: [
       {
-        url: "/r15.jpg", // 🔁 Replace with your actual image URL
+        url: "/logo.jpg", // 🔁 Replace with your actual image URL
         width: 1200,
         height: 630,
         alt: "Zuprides Car & Bike Rentals",
@@ -41,10 +40,10 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@zuprides", // 🔁 Replace if your brand has a Twitter/X handle
-    title: "Zuprides – Rent Cars & Bikes Easily",
+    title: "Zuprides – Rent Bikes Easily",
     description:
       "Book your ride with Zuprides for safe and affordable transportation across India. Instant booking and 24/7 support.",
-    images: ["/r15.jpg"], // 🔁 Replace with your actual image URL
+    images: ["/logo.jpg"], // 🔁 Replace with your actual image URL
   },
 };
 

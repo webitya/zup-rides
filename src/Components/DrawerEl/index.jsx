@@ -63,17 +63,18 @@ export default function DrawerEl({ isOpen, onClose }) {
 
             {/* Google Map */}
             <div className="mt-4 w-full h-40 overflow-hidden rounded-xl shadow border border-gray-200">
-              <iframe
-                title="Webitya Office"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114636.36410438773!2d85.22911838716932!3d23.344101648679697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e0fc95b73b91%3A0x8b3d5a0fcb0f9c9f!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1681727384602!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+  <iframe
+    title="Webitya Office"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.155125812829!2d85.3450449!3d23.3535444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDIxJzEyLjgiTiA4NcKwMjAnNTEuNCJF!5e0!3m2!1sen!2sin!4v1681727384602!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
           </div>
         </div>
 
