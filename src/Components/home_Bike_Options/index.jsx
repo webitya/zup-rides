@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import vehicleData from '@/Components/home_Bike_Options/vehicle.json';
 import { Button, Typography } from '@mui/material';
 import { MonetizationOn, Star } from '@mui/icons-material';
+import Link from 'next/link';
 
 export default function RideOptionsSection() {
   const [vehicles, setVehicles] = useState([]);
@@ -53,7 +54,8 @@ export default function RideOptionsSection() {
               </div>
             </div>
 
-            <Button
+           <Link href="https://wa.me/919798146740" target='_blank' className='w-full'>
+           <Button
               variant="contained"
               sx={{
                 width: '100%',
@@ -69,6 +71,7 @@ export default function RideOptionsSection() {
             >
               Book Now
             </Button>
+           </Link>
           </div>
         ))}
       </div>
