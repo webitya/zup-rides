@@ -1,6 +1,7 @@
 [
   {
     "name": "NTORQ 125",
+    "hourly": "79",
     "daily": "399",
     "weekly": "2799",
     "monthly": "11999",
@@ -8,6 +9,7 @@
   },
   {
     "name": "R15",
+    "hourly": "119",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
@@ -15,6 +17,7 @@
   },
   {
     "name": "Activa",
+    "hourly": "79",
     "daily": "399",
     "weekly": "2799",
     "monthly": "11999",
@@ -22,6 +25,7 @@
   },
   {
     "name": "MT-15",
+    "hourly": "119",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
@@ -29,6 +33,7 @@
   },
   {
     "name": "APACHE 160",
+    "hourly": "119",
     "daily": "599",
     "weekly": "4199",
     "monthly": "17999",
@@ -36,6 +41,7 @@
   },
   {
     "name": "NS 200",
+    "hourly": "119",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
@@ -43,6 +49,7 @@
   },
   {
     "name": "KTM 200 Duke",
+    "hourly": "119",
     "daily": "799",
     "weekly": "5599",
     "monthly": "23999",
@@ -50,6 +57,7 @@
   },
   {
     "name": "Himalayan",
+    "hourly": "119",
     "daily": "1199",
     "weekly": "8399",
     "monthly": "35999",
@@ -57,6 +65,7 @@
   },
   {
     "name": "THUNDERBIRD 350X",
+    "hourly": "119",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
@@ -64,6 +73,7 @@
   },
   {
     "name": "KTM 250 DUKE",
+    "hourly": "119",
     "daily": "999",
     "weekly": "6999",
     "monthly": "29999",
@@ -71,6 +81,7 @@
   },
   {
     "name": "KTM 390 DUKE",
+    "hourly": "119",
     "daily": "1199",
     "weekly": "8399",
     "monthly": "35999",
@@ -78,6 +89,7 @@
   },
   {
     "name": "SP SHINE 125",
+    "hourly": "119",
     "daily": "499",
     "weekly": "3499",
     "monthly": "14999",

@@ -40,6 +40,10 @@ export default function RideOptionsSection() {
             </Typography>
 
             <div className="flex flex-col items-center gap-4 mb-6 text-white/80 text-sm">
+            <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
+                <Star fontSize="small" />
+                Hourly: <span className="font-semibold text-white">₹{ride.hourly}</span>
+              </div>
               <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
                 <MonetizationOn fontSize="small" />
                 Daily: <span className="font-semibold text-white">₹{ride.daily}</span>
@@ -52,6 +56,7 @@ export default function RideOptionsSection() {
                 <Star fontSize="small" />
                 Monthly: <span className="font-semibold text-white">₹{ride.monthly}</span>
               </div>
+             
             </div>
 
            <Link href="https://wa.me/919798146740" target='_blank' className='w-full'>
