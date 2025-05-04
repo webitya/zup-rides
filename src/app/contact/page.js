@@ -113,16 +113,17 @@ export default function ContactPage() {
 
       {/* Map */}
       <div className="w-full h-64 sm:h-96">
-        <iframe
-          src="https://www.google.com/maps?q=Kanchan%20Stationery,%20Ranchi&output=embed"
-          width="100%"
-          height="100%"
-          loading="lazy"
-          style={{ border: 0 }}
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1537790098977!2d85.34509127541982!3d23.353530379008957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1a79ee0b42d%3A0xfb2091245f88b76!2sZupRides!5e0!3m2!1sen!2sin!4v1714812950407!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    loading="lazy"
+    style={{ border: 0 }}
+    allowFullScreen
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
     </div>
   );
 }
