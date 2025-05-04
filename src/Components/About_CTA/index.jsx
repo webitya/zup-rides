@@ -21,7 +21,7 @@ export default function CallToAction() {
 
         {/* Sub Text */}
         <p className="text-lg text-gray-700 mt-6">
-          Experience the freedom and excitement of riding with Ranchi Rides. Contact us today to
+          Experience the freedom and excitement of riding with Zup Rides. Contact us today to
           find your ideal bike or scooty and discover Ranchi, Jharkhand like never before.
         </p>
       </motion.div>

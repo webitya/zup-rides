@@ -21,7 +21,7 @@ export default function ContactSection() {
         {/* Map */}
         <div className="col-span-1">
   <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.155125812829!2d85.3450449!3d23.3535444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDIxJzEyLjgiTiA4NcKwMjAnNTEuNCJF!5e0!3m2!1sen!2sin!4v1681727384602!5m2!1sen!2sin"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.946272138365!2d85.3093279!3d23.3446913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1b66df4eebb%3A0x3f0272a2c061a3fa!2sWebitya%20Web%20Services!5e0!3m2!1sen!2sin!4v1714811796481!5m2!1sen!2sin"
     width="100%"
     height="500"
     style={{ border: 0 }}

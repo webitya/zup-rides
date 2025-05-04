@@ -19,7 +19,7 @@ export default function Mission() {
             Our <span className="text-green-500">Mission</span>
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            At Ranchi Rides Rental Service, our mission is to empower your journeys with reliable and stylish two-wheelers. 
+            At Zup Rides Rental Service, our mission is to empower your journeys with reliable and stylish two-wheelers. 
             Whether you’re exploring the city, embarking on a weekend getaway, or need a dependable ride for daily tasks, 
             we have the perfect vehicle for you.
           </p>

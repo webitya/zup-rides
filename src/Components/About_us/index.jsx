@@ -28,7 +28,7 @@ export default function Home() {
             About <span className="text-green-500">Us</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Welcome to Ranchi Rides Rental Service, your premier destination for bike and scooty rentals in Ranchi. 
+            Welcome to Zup Rides Rental Service, your premier destination for bike and scooty rentals in Ranchi. 
             Established in 2024, we are passionate about providing top-quality two-wheelers to both locals and visitors, 
             ensuring a seamless and enjoyable riding experience.
           </p>

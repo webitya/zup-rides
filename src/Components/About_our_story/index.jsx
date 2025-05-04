@@ -32,7 +32,7 @@ export default function OurStory() {
             Our <span className="text-green-500">Story</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Born out of a love for adventure and the open road, Ranchi Rides was founded to make personal 
+            Born out of a love for adventure and the open road, Zup Rides was founded to make personal 
             transportation accessible and fun. Recognizing the need for reliable and affordable rental 
             options in Ranchi, we set out to build a service that prioritizes customer satisfaction and 
             vehicle excellence.
