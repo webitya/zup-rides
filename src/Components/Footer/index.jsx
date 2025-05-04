@@ -22,7 +22,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/90">
             <li><Link href="/" className="hover:underline hover:text-white">Home</Link></li>
             <li><Link href="/vehicles" className="hover:underline hover:text-white">Vehicles</Link></li>
-            <li><Link href="/about-us" className="hover:underline hover:text-white">About Us</Link></li>
+            <li><Link href="/about_us" className="hover:underline hover:text-white">About Us</Link></li>
             <li><Link href="/contact" className="hover:underline hover:text-white">Contact</Link></li>
             <li><Link href="/privacy-policy" className="hover:underline hover:text-white">Privacy Policy</Link></li>
           </ul>
