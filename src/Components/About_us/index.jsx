@@ -29,7 +29,7 @@ export default function Home() {
           </h2>
           <p className="text-gray-600 text-lg">
             Welcome to Zup Rides Rental Service, your premier destination for bike and scooty rentals in Ranchi. 
-            Established in 2024, we are passionate about providing top-quality two-wheelers to both locals and visitors, 
+            Established in 2025, we are passionate about providing top-quality two-wheelers to both locals and visitors, 
             ensuring a seamless and enjoyable riding experience.
           </p>
         </motion.div>
