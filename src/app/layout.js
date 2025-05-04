@@ -6,7 +6,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const metadata = {
-  title: "Zuprides – Affordabl Bike Rentals in India",
+  title: "Zuprides – Affordabl Bike and Scooty Rentals in India",
   description:
     "Zuprides offers reliable, budget-friendly  bike rentals across India. Book online for hassle-free travel experiences with doorstep delivery, flexible pricing, and 24/7 support.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata = {
   ],
   authors: [{ name: "Zuprides India", url: "https://zuprides.in" }],
   openGraph: {
-    title: "Zuprides – Affordable  Bike Rentals",
+    title: "Zuprides – Affordable  Bike and Scooty Rentals",
     description:
       "Rent bikes at the best prices across India with Zuprides. Safe, reliable, and convenient options for local and outstation travel.",
     url: "https://zuprides.in",
@@ -31,7 +31,7 @@ export const metadata = {
         url: "/logo.jpg", // 🔁 Replace with your actual image URL
         width: 1200,
         height: 630,
-        alt: "Zuprides Car & Bike Rentals",
+        alt: "Zuprides Bike & Scooty Rentals",
       },
     ],
     locale: "en_IN",
@@ -40,7 +40,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@zuprides", // 🔁 Replace if your brand has a Twitter/X handle
-    title: "Zuprides – Rent Bikes Easily",
+    title: "Zuprides – Rent Bikes and Scooty Easily",
     description:
       "Book your ride with Zuprides for safe and affordable transportation across India. Instant booking and 24/7 support.",
     images: ["/logo.jpg"], // 🔁 Replace with your actual image URL
