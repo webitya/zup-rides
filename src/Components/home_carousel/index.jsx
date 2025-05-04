@@ -18,13 +18,13 @@ const slides = [
     id: 2,
     title: 'Escape into Nature',
     desc: 'Adventure-ready bikes for wild getaways.',
-    image: '/1.png',
+    image: '/pv.jpg',
   },
   {
     id: 3,
     title: 'Eco-Friendly Commuting',
     desc: 'Electric bikes to stay fast, fresh, and green.',
-    image: '/1.png',
+    image: '/cp.jpg',
   },
 ];
 
