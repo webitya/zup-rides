@@ -42,7 +42,7 @@ export default function HeroCarousel() {
   }, [current]);
 
   return (
-    <div className="relative w-full h-[220px] md:h-[70vh] overflow-hidden">
+    <div className="relative w-full h-[220px] md:h-[70vh] overflow-hidden bg-black">
       <AnimatePresence>
         {slides.map((slide, index) =>
           index === current ? (
@@ -61,10 +61,10 @@ export default function HeroCarousel() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 sm:px-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10" />
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
                 <motion.h2
-                  className="text-4xl md:text-6xl font-bold mb-2 drop-shadow-xl"
+                  className="text-2xl md:text-5xl font-bold text-teal-400 drop-shadow-lg mb-2"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
@@ -72,7 +72,7 @@ export default function HeroCarousel() {
                   {slide.title}
                 </motion.h2>
                 <motion.p
-                  className="text-lg md:text-2xl text-white/90 max-w-xl"
+                  className="text-sm md:text-xl text-white/80 max-w-xl"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -86,33 +86,33 @@ export default function HeroCarousel() {
       </AnimatePresence>
 
       {/* Navigation buttons */}
-      <div className="absolute inset-0 flex justify-between items-center px-4 sm:px-1 z-10">
+      <div className="absolute inset-0 flex justify-between items-center px-3 z-10">
         <IconButton
           onClick={prevSlide}
-          className="!bg-gradient-to-r !from-blue-500 !to-purple-500 text-white transition-all duration-300 hover:!bg-gradient-to-r hover:!from-blue-700 hover:!to-purple-700"
+          className="!bg-teal-600 !text-white hover:!bg-teal-700"
           aria-label="Previous"
         >
-          <ChevronLeftIcon fontSize="large" />
+          <ChevronLeftIcon fontSize="medium" />
         </IconButton>
         <IconButton
           onClick={nextSlide}
-          className="!bg-gradient-to-r !from-blue-500 !to-purple-500 text-white transition-all duration-300 hover:!bg-gradient-to-r hover:!from-blue-700 hover:!to-purple-700"
+          className="!bg-teal-600 !text-white hover:!bg-teal-700"
           aria-label="Next"
         >
-          <ChevronRightIcon fontSize="large" />
+          <ChevronRightIcon fontSize="medium" />
         </IconButton>
       </div>
 
       {/* Pagination dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === current
-                ? 'bg-white scale-125 shadow-md'
-                : 'bg-white/40 hover:bg-white/70'
+                ? 'bg-teal-400 scale-125 shadow-md'
+                : 'bg-white/30 hover:bg-teal-300'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

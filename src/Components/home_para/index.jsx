@@ -1,60 +1,38 @@
 'use client';
 
-import { Button, Typography, Grid, IconButton } from '@mui/material';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function DiscoverSection() {
   return (
-    <section className="relative bg-gradient-to-b from-white via-slate-50 to-white dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800 py-12 px-4 md:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <Typography
-          variant="h4"
-          component="h2"
-          className="font-bold text-neutral-800 dark:text-white mb-4 transition-transform duration-500 hover:scale-105 hover:text-indigo-600 dark:hover:text-indigo-400"
-        >
-          <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 animate-none hover:animate-pulse">
+    <section className="bg-white dark:bg-black py-10 px-4 md:px-8">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white mb-4">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-300">
             Discover Ranchi Like Never Before!
           </span>
           <br className="hidden md:block" />
-          <span className="text-indigo-500 dark:text-indigo-400">
+          <span className="text-teal-600 dark:text-teal-400 text-base md:text-lg">
             Renting with Ranchi Rides is the Best Choice.
           </span>
-        </Typography>
+        </h2>
 
-        <Typography
-          variant="body2"
-          className="text-slate-600  dark:text-slate-300 leading-relaxed transition-all duration-300 hover:text-slate-800 dark:hover:text-white !mb-6"
-        >
-          Ride into the heart of Ranchi and uncover the city’s hidden charms at your own pace. 
-          Ranchi Rides offers high-quality, stylish bikes that suit your lifestyle. 
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6">
+          Ride into the heart of Ranchi and uncover the city’s hidden charms at your own pace.
+          Ranchi Rides offers high-quality, stylish bikes that suit your lifestyle.
           Enjoy more than just a ride — you’ll experience freedom, joy, and adventure.
-        </Typography>
-       
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              startIcon={<DirectionsBikeIcon />}
-              className="!bg-gradient-to-r !from-blue-500 !to-purple-500 text-white"
-            >
-              Rent a Bike
-            </Button>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Button
-              variant="outlined"
-              color="primary"
-              fullWidth
-              startIcon={<LocationOnIcon />}
-              className="!text-indigo-600 dark:!text-indigo-400 border-indigo-600 dark:border-indigo-400"
-            >
-              Find a Location
-            </Button>
-          </Grid>
-        </Grid>
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button className="flex items-center justify-center gap-2 px-5 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-md text-sm font-medium transition-all">
+            <DirectionsBikeIcon fontSize="small" />
+            Rent a Bike
+          </button>
+          <button className="flex items-center justify-center gap-2 px-5 py-2 border border-teal-600 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900 rounded-md text-sm font-medium transition-all">
+            <LocationOnIcon fontSize="small" />
+            Find a Location
+          </button>
+        </div>
       </div>
     </section>
   );

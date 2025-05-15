@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
-import { Button, IconButton, Typography, Grid } from '@mui/material';
 import BikeScooterIcon from '@mui/icons-material/BikeScooter';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
@@ -28,34 +26,24 @@ export default function BenefitsSection() {
   ];
 
   return (
-    <section className="bg-white dark:bg-neutral-900 py-12 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <section className="bg-white dark:bg-black py-10 px-4 md:px-12">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         {benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center space-y-3"
-          >
-            <div className="text-4xl bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-teal-400 text-white p-4 rounded-full shadow-md flex justify-center items-center">
+          <div key={index} className="flex flex-col items-center space-y-3">
+            <div className="text-4xl text-white bg-teal-600 dark:bg-teal-500 p-4 rounded-full shadow-md flex justify-center items-center">
               {benefit.icon}
             </div>
-            <Typography
-              variant="body2"
-              className="text-sm md:text-base text-gray-800 dark:text-gray-300 font-medium leading-relaxed"
-            >
+            <p className="text-sm md:text-base text-gray-800 dark:text-gray-300 leading-relaxed">
               {benefit.text}
-            </Typography>
+            </p>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 text-center">
-        <Button
-          variant="contained"
-          color="primary"
-          className="!bg-gradient-to-r !from-indigo-500 !to-sky-500 text-white font-semibold px-4 py-2 rounded-full shadow-md"
-        >
+      <div className="mt-10 text-center">
+        <button className="px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium rounded-full transition-all shadow-md">
           Learn More About Us
-        </Button>
+        </button>
       </div>
     </section>
   );

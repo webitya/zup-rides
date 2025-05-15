@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white py-12 px-6">
+    <footer className="bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700 text-white py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* Brand */}
@@ -32,7 +32,7 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4 uppercase tracking-wide">Contact</h3>
           <ul className="space-y-2 text-sm text-white/90">
-            <li>📍 Amar chowk , harihar toli chutia ranchi , jharkhand</li>
+            <li>📍 Amar Chowk, Harihar Toli, Chutia, Ranchi, Jharkhand</li>
             <li>📞 +91 97981 46740</li>
             <li>✉️ support@zuprides.in</li>
           </ul>
@@ -42,13 +42,13 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4 uppercase tracking-wide">Follow Us</h3>
           <div className="flex space-x-4 mb-6">
-            <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition">
+            <a href="#" className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition">
               <Instagram className="text-white" size={24} />
             </a>
-            <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition">
+            <a href="#" className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition">
               <Facebook className="text-white" size={24} />
             </a>
-            <a href="#" className="bg-white/20 p-3 rounded-full hover:bg-white/30 transition">
+            <a href="#" className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition">
               <Twitter className="text-white" size={24} />
             </a>
           </div>
@@ -63,7 +63,7 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="bg-white text-pink-600 font-semibold py-2 rounded-full hover:scale-105 transition transform"
+              className="bg-white text-teal-800 font-semibold py-2 rounded-full hover:bg-teal-500 hover:text-white transition duration-300 hover:scale-105"
             >
               Subscribe
             </button>
@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-white/30 my-10"></div>
+      <div className="border-t border-white/20 my-10"></div>
 
       {/* Footer Bottom */}
       <div className="text-center text-sm text-white/70">

@@ -14,72 +14,66 @@ export default function RideOptionsSection() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] py-20 px-4 md:px-16">
-      <div className="max-w-7xl mx-auto text-center mb-10 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Explore Our Premium Ride Options
-        </h2>
-        <Typography variant="body1" className="text-base md:text-lg text-white/90 mx-auto">
-          Discover stylish, comfortable, and high-performance bikes tailored for your next ride.
-        </Typography>
+    <section className="bg-black text-white py-16 px-4 md:px-10">
+      <div className="max-w-6xl mx-auto text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-2">Choose Your Ride</h2>
+        <p className="text-teal-400 text-base md:text-lg">
+          Best bikes & scooties in town – affordable, flexible, and ready to ride!
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {vehicles.map((ride) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {vehicles.map((ride, index) => (
           <div
-            key={ride.name}
-            className="bg-white/10 backdrop-blur-md rounded-3xl p-6 flex flex-col items-center border border-white/30 shadow-lg hover:scale-[1.05] transition-all duration-300"
+            key={index}
+            className="bg-neutral-900 rounded-xl p-4 shadow-md border border-neutral-800 hover:border-teal-500 transition-all duration-200"
           >
             <img
               src={ride.image}
               alt={ride.name}
-              className="h-48 object-contain mb-6 rounded-xl shadow-md bg-white/20 p-2"
+              className="h-36 w-full object-contain mb-4 bg-white p-2 rounded-md"
             />
-            <Typography variant="h6" className="text-xl font-bold text-white mb-3">
+            <Typography variant="h6" className="text-lg font-semibold mb-2 text-white text-center">
               {ride.name}
             </Typography>
 
-            <div className="flex flex-col items-center gap-4 mb-6 text-white/80 text-sm">
-            <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
-                <Star fontSize="small" />
-                Hourly: <span className="font-semibold text-white">₹{ride.hourly}</span>
-              </div>
-              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
-                <MonetizationOn fontSize="small" />
-                Daily: <span className="font-semibold text-white">₹{ride.daily}</span>
-              </div>
-              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
-                <MonetizationOn fontSize="small" />
-                Weekly: <span className="font-semibold text-white">₹{ride.weekly}</span>
-              </div>
-              <div className="flex items-center gap-1 bg-white/20 p-2 rounded-lg w-full justify-center">
-                <Star fontSize="small" />
-                Monthly: <span className="font-semibold text-white">₹{ride.monthly}</span>
-              </div>
-             
+            <div className="space-y-1 text-sm text-gray-300 mb-4">
+              <PriceRow icon={<Star fontSize="small" />} label="Hourly" price={ride.hourly} />
+              <PriceRow icon={<MonetizationOn fontSize="small" />} label="Daily" price={ride.daily} />
+              <PriceRow icon={<MonetizationOn fontSize="small" />} label="Weekly" price={ride.weekly} />
+              <PriceRow icon={<Star fontSize="small" />} label="Monthly" price={ride.monthly} />
             </div>
 
-           <Link href="https://wa.me/919798146740" target='_blank' className='w-full'>
-           <Button
-              variant="contained"
-              sx={{
-                width: '100%',
-                py: 1.5,
-                fontWeight: 600,
-                borderRadius: 999,
-                background: 'linear-gradient(to right, #fd1d1d, #fcb045)',
-                color: '#fff',
-                '&:hover': {
-                  background: 'linear-gradient(to right, #fcb045, #fd1d1d)',
-                },
-              }}
-            >
-              Book Now
-            </Button>
-           </Link>
+            <Link href="https://wa.me/919798146740" target="_blank" className="block">
+              <Button
+                fullWidth
+                sx={{
+                  py: 1.2,
+                  fontWeight: 600,
+                  borderRadius: 999,
+                  backgroundColor: '#14b8a6',
+                  color: '#fff',
+                  textTransform: 'none',
+                  '&:hover': {
+                    backgroundColor: '#0d9488',
+                  },
+                }}
+              >
+                Book Now
+              </Button>
+            </Link>
           </div>
         ))}
       </div>
     </section>
+  );
+}
+
+function PriceRow({ icon, label, price }) {
+  return (
+    <div className="flex justify-between items-center bg-black/30 px-3 py-1.5 rounded-md">
+      <span className="flex items-center gap-1 text-white/80">{icon} {label}</span>
+      <span className="font-medium text-teal-400">₹{price}</span>
+    </div>
   );
 }
