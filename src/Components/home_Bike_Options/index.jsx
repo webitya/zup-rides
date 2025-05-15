@@ -6,6 +6,8 @@ import { Button, Typography } from '@mui/material';
 import { MonetizationOn, Star } from '@mui/icons-material';
 import Link from 'next/link';
 
+const whatsappNumber = '919798146740'; // Your WhatsApp number with country code
+
 export default function RideOptionsSection() {
   const [vehicles, setVehicles] = useState([]);
 
@@ -23,47 +25,56 @@ export default function RideOptionsSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {vehicles.map((ride, index) => (
-          <div
-            key={index}
-            className="bg-neutral-900 rounded-xl p-4 shadow-md border border-neutral-800 hover:border-teal-500 transition-all duration-200"
-          >
-            <img
-              src={ride.image}
-              alt={ride.name}
-              className="h-36 w-full object-contain mb-4 bg-white p-2 rounded-md"
-            />
-            <Typography variant="h6" className="text-lg font-semibold mb-2 text-white text-center">
-              {ride.name}
-            </Typography>
+        {vehicles.map((ride, index) => {
+          // Create the WhatsApp message for each vehicle
+          const message = `Hi, I am interested in renting the ${ride.name}. Could you please provide more details?`;
+          // Encode the message for URL
+          const encodedMessage = encodeURIComponent(message);
+          // WhatsApp link with pre-filled message
+          const waLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-            <div className="space-y-1 text-sm text-gray-300 mb-4">
-              <PriceRow icon={<Star fontSize="small" />} label="Hourly" price={ride.hourly} />
-              <PriceRow icon={<MonetizationOn fontSize="small" />} label="Daily" price={ride.daily} />
-              <PriceRow icon={<MonetizationOn fontSize="small" />} label="Weekly" price={ride.weekly} />
-              <PriceRow icon={<Star fontSize="small" />} label="Monthly" price={ride.monthly} />
+          return (
+            <div
+              key={index}
+              className="bg-neutral-900 rounded-xl p-4 shadow-md border border-neutral-800 hover:border-teal-500 transition-all duration-200"
+            >
+              <img
+                src={ride.image}
+                alt={ride.name}
+                className="h-36 w-full object-contain mb-4 bg-white p-2 rounded-md"
+              />
+              <Typography variant="h6" className="text-lg font-semibold mb-2 text-white text-center">
+                {ride.name}
+              </Typography>
+
+              <div className="space-y-1 text-sm text-gray-300 mb-4">
+                <PriceRow icon={<Star fontSize="small" />} label="Hourly" price={ride.hourly} />
+                <PriceRow icon={<MonetizationOn fontSize="small" />} label="Daily" price={ride.daily} />
+                <PriceRow icon={<MonetizationOn fontSize="small" />} label="Weekly" price={ride.weekly} />
+                <PriceRow icon={<Star fontSize="small" />} label="Monthly" price={ride.monthly} />
+              </div>
+
+              <Link href={waLink} target="_blank" className="block">
+                <Button
+                  fullWidth
+                  sx={{
+                    py: 1.2,
+                    fontWeight: 600,
+                    borderRadius: 999,
+                    backgroundColor: '#14b8a6',
+                    color: '#fff',
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: '#0d9488',
+                    },
+                  }}
+                >
+                  Book Now
+                </Button>
+              </Link>
             </div>
-
-            <Link href="https://wa.me/919798146740" target="_blank" className="block">
-              <Button
-                fullWidth
-                sx={{
-                  py: 1.2,
-                  fontWeight: 600,
-                  borderRadius: 999,
-                  backgroundColor: '#14b8a6',
-                  color: '#fff',
-                  textTransform: 'none',
-                  '&:hover': {
-                    backgroundColor: '#0d9488',
-                  },
-                }}
-              >
-                Book Now
-              </Button>
-            </Link>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
