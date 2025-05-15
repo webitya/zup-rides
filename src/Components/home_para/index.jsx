@@ -26,13 +26,13 @@ export default function DiscoverSection() {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link href="tel:+919798146740" >
-          <button className="flex items-center justify-center gap-2 px-5 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-md text-sm font-medium transition-all">
+          <button className="flex w-full items-center justify-center gap-2 px-5 py-2 text-white bg-teal-600 hover:bg-teal-700 rounded-md text-sm font-medium transition-all">
             <DirectionsBikeIcon fontSize="small" />
             Rent a Bike
           </button>
           </Link>
           <a
-      href="https://goo.gl/maps/tu2Q35TY2aN7XwdW7" // short shareable Google Maps link for ZupRides location
+      href="https://maps.app.goo.gl/2Wxfr3A6Vd87azFfA" // short shareable Google Maps link for ZupRides location
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-center gap-2 px-5 py-2 border border-teal-600 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900 rounded-md text-sm font-medium transition-all"
