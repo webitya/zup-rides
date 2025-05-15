@@ -14,13 +14,13 @@ export default function DiscoverSection() {
           </span>
           <br className="hidden md:block" />
           <span className="text-teal-600 dark:text-teal-400 text-base md:text-lg">
-            Renting with Ranchi Rides is the Best Choice.
+            Renting with Zup Rides is the Best Choice.
           </span>
         </h2>
 
         <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-6">
           Ride into the heart of Ranchi and uncover the city’s hidden charms at your own pace.
-          Ranchi Rides offers high-quality, stylish bikes that suit your lifestyle.
+          Zup Rides offers high-quality, stylish bikes that suit your lifestyle.
           Enjoy more than just a ride — you’ll experience freedom, joy, and adventure.
         </p>
 
