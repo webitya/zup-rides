@@ -12,7 +12,7 @@ export default function Home() {
    <>
    <HeroCarousel />
    <Home_para />
-   <Home_features />
+   {/* <Home_features /> */}
    <Rental_plans />
    <Bike_options />
    <Experince_freedom />
