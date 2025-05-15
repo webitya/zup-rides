@@ -2,9 +2,10 @@
 
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler'; // Scooty icon
 import SpeedIcon from '@mui/icons-material/Speed'; // Motorbike icon
-import Link from 'next/link';
 
 export default function RentalPlansSection() {
+  const whatsappNumber = '919798146740'; // Your WhatsApp number
+
   const plans = [
     {
       title: 'Scooters',
@@ -35,27 +36,34 @@ export default function RentalPlansSection() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
-        {plans.map((plan) => (
-          <div
-            key={plan.title}
-            className="bg-teal-900 border border-teal-400 p-6 rounded-2xl shadow-lg"
-          >
-            <div className="flex justify-center items-center mb-4">
-              <div className="bg-gradient-to-r from-teal-400 to-teal-600 text-white p-3 rounded-full shadow-lg">
-                {plan.icon}
+        {plans.map((plan) => {
+          // Create custom WhatsApp message
+          const message = `Hi, I am interested in renting a ${plan.title}. Please share more details.`;
+          const encodedMessage = encodeURIComponent(message);
+          const waLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+          return (
+            <div
+              key={plan.title}
+              className="bg-teal-900 border border-teal-400 p-6 rounded-2xl shadow-lg"
+            >
+              <div className="flex justify-center items-center mb-4">
+                <div className="bg-gradient-to-r from-teal-400 to-teal-600 text-white p-3 rounded-full shadow-lg">
+                  {plan.icon}
+                </div>
               </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {plan.title}
+              </h3>
+              <p className="text-sm text-teal-200 mb-4">{plan.description}</p>
+              <a href={waLink} target="_blank" rel="noopener noreferrer">
+                <button className="bg-teal-500 hover:bg-white hover:text-teal-900 text-white font-semibold px-6 py-2 rounded-full transition duration-300">
+                  Book Now
+                </button>
+              </a>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {plan.title}
-            </h3>
-            <p className="text-sm text-teal-200 mb-4">{plan.description}</p>
-            <a href="https://wa.me/919798146740" target="_blank" rel="noopener noreferrer">
-              <button className="bg-teal-500 hover:bg-white hover:text-teal-900 text-white font-semibold px-6 py-2 rounded-full transition duration-300">
-                Book Now
-              </button>
-            </a>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
