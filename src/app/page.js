@@ -14,6 +14,7 @@ export default function Home() {
     <div className="min-h-screen">
       <h1 className="bg-red-500 text-white text-2xl text-center">Content is under development..</h1>
       <Hero />
+      <h1 className="bg-red-500 text-white text-2xl text-center">Content is under development..</h1>
       <ClassesSection />
       <AboutSection />
       <CoursesSection />
