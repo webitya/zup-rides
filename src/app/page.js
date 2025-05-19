@@ -1,23 +1,28 @@
-import HeroCarousel from "@/Components/home_carousel";
-import Home_para from "@/Components/home_para"
-import Home_features from "@/Components/home_features"
-import Rental_plans from "@/Components/home_rental_plans"
-import Bike_options from "@/Components/home_Bike_Options"
-import Experince_freedom from "@/Components/experince_freedom"
-import Contact_us from "@/Components/home_contact_us"
-import Home_affordable from "@/Components/home_affordable"
+import Hero from "@/components/homepage/Hero"
+import ClassesSection from "@/components/homepage/ClassesSection"
+import AboutSection from "@/components/homepage/AboutSection"
+import CoursesSection from "@/components/homepage/CoursesSection"
+import EventsSection from "@/components/homepage/EventsSection"
+import TestimonialsSection from "@/components/homepage/TestimonialsSection"
+import RegisterSection from "@/components/homepage/RegisterSection"
+import BlogSection from "@/components/homepage/BlogSection"
+import InstructorCTA from "@/components/homepage/InstructorCTA"
+import StatsSection from "@/components/homepage/StatsSection"
 
 export default function Home() {
   return (
-   <>
-   <HeroCarousel />
-   <Home_para />
-   {/* <Home_features /> */}
-   <Rental_plans />
-   <Bike_options />
-   <Experince_freedom />
-   {/* <Home_affordable /> */}
-   <Contact_us />
-   </>
-  );
+    <div className="min-h-screen">
+      <h1 className="bg-red-500 text-white text-2xl text-center">Content is under development..</h1>
+      <Hero />
+      <ClassesSection />
+      <AboutSection />
+      <CoursesSection />
+      <StatsSection />
+      <EventsSection />
+      <RegisterSection />
+      <TestimonialsSection />
+      <InstructorCTA />
+      <BlogSection />
+    </div>
+  )
 }
