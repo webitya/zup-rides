@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import CloseIcon from "@mui/icons-material/Close"
 import PersonIcon from "@mui/icons-material/Person"
 import PhoneIcon from "@mui/icons-material/Phone"
@@ -11,12 +11,22 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
 
 export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePrice }) {
+  // Get today's date in YYYY-MM-DD format for min date
+  const getTodayDate = () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = String(today.getMonth() + 1).padStart(2, '0')
+    const day = String(today.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     address: "",
     pickupDate: "",
+    pickupTime: "10:00",
     durationDays: 1,
     durationHours: 0,
   })
@@ -24,6 +34,11 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const [minDate, setMinDate] = useState("")
+
+  useEffect(() => {
+    setMinDate(getTodayDate())
+  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -99,9 +114,9 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
       {/* Modal Box */}
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl relative animate-slideUp overflow-hidden">
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl relative animate-slideUp overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-5 relative">
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-5 relative sticky top-0 z-10">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-white/90 hover:text-white hover:bg-white/20 rounded-full p-1 transition-all"
@@ -207,12 +222,12 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             />
           </div>
 
-          {/* PICKUP DATE + DURATION */}
-          <div className="grid grid-cols-3 gap-3">
-            <div className="col-span-3 sm:col-span-1">
+          {/* PICKUP DATE & TIME */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
               <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
                 <EventIcon fontSize="small" className="text-gray-500" />
-                Date
+                Pickup Date
               </label>
               <input
                 type="date"
@@ -220,6 +235,7 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
                 className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                 value={formData.pickupDate}
                 onChange={handleInputChange}
+                min={minDate}
                 required
               />
             </div>
@@ -227,32 +243,50 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             <div>
               <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
                 <AccessTimeIcon fontSize="small" className="text-gray-500" />
-                Days
+                Time
               </label>
               <input
-                type="number"
-                name="durationDays"
+                type="time"
+                name="pickupTime"
                 className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                value={formData.durationDays}
+                value={formData.pickupTime}
                 onChange={handleInputChange}
-                min="0"
+                required
               />
             </div>
+          </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                Hours
-              </label>
-              <input
-                type="number"
-                name="durationHours"
-                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                value={formData.durationHours}
-                onChange={handleInputChange}
-                min="0"
-                max="23"
-              />
+          {/* DURATION */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-700 mb-2">Rental Duration</label>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Days</label>
+                <input
+                  type="number"
+                  name="durationDays"
+                  className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  value={formData.durationDays}
+                  onChange={handleInputChange}
+                  min="0"
+                  max="30"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Hours</label>
+                <input
+                  type="number"
+                  name="durationHours"
+                  className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  value={formData.durationHours}
+                  onChange={handleInputChange}
+                  min="0"
+                  max="23"
+                />
+              </div>
             </div>
+            <p className="text-xs text-gray-500 mt-1">Minimum 1 day or 1 hour rental required</p>
           </div>
 
           {/* AMOUNT */}
@@ -263,6 +297,11 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
                 ₹{(calculateAmount() / 100).toFixed(0)}
               </div>
             </div>
+            <p className="text-xs text-gray-600 mt-1">
+              {formData.durationDays > 0 && `${formData.durationDays} day(s)`}
+              {formData.durationDays > 0 && formData.durationHours > 0 && " + "}
+              {formData.durationHours > 0 && `${formData.durationHours} hour(s)`}
+            </p>
           </div>
 
           {/* BUTTON */}
