@@ -4,69 +4,6 @@ import SecurityIcon from "@mui/icons-material/Security"
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement"
 
 export default function Features() {
-  const sectionStyle = {
-    padding: "60px 20px",
-    backgroundColor: "#f5f5f5",
-  }
-
-  const containerStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-  }
-
-  const titleStyle = {
-    fontSize: "32px",
-    fontWeight: "bold",
-    marginBottom: "40px",
-    textAlign: "center",
-    color: "#1a1a1a",
-  }
-
-  const subtitleStyle = {
-    textAlign: "center",
-    color: "#666",
-    marginBottom: "40px",
-    fontSize: "16px",
-  }
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "30px",
-  }
-
-  const featureStyle = {
-    display: "flex",
-    gap: "15px",
-    backgroundColor: "#fff",
-    padding: "25px",
-    borderRadius: "8px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-  }
-
-  const iconStyle = {
-    fontSize: "40px",
-    color: "#FF5722",
-    minWidth: "50px",
-  }
-
-  const contentStyle = {
-    flex: 1,
-  }
-
-  const featureTitleStyle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "8px",
-    color: "#1a1a1a",
-  }
-
-  const featureTextStyle = {
-    fontSize: "14px",
-    color: "#666",
-    lineHeight: "1.5",
-  }
-
   const features = [
     {
       icon: VerifiedIcon,
@@ -91,20 +28,25 @@ export default function Features() {
   ]
 
   return (
-    <section style={sectionStyle}>
-      <div style={containerStyle}>
-        <h2 style={titleStyle}>Why Choose ZupRides?</h2>
-        <p style={subtitleStyle}>Your trusted partner for bike and car rentals in Ranchi</p>
+    <section className="py-16 px-5 bg-gray-100">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Why Choose ZupRides?</h2>
+        <p className="text-center text-gray-600 mb-10 text-base">
+          Your trusted partner for bike and car rentals in Ranchi
+        </p>
 
-        <div style={gridStyle}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, idx) => {
             const IconComponent = feature.icon
             return (
-              <div key={idx} style={featureStyle}>
-                <IconComponent style={iconStyle} />
-                <div style={contentStyle}>
-                  <div style={featureTitleStyle}>{feature.title}</div>
-                  <p style={featureTextStyle}>{feature.text}</p>
+              <div
+                key={idx}
+                className="flex gap-4 bg-white p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
+              >
+                <IconComponent className="text-4xl text-[#FF5722] min-w-[50px]" />
+                <div className="flex-1">
+                  <div className="text-lg font-bold mb-2 text-gray-900">{feature.title}</div>
+                  <p className="text-sm text-gray-600 leading-relaxed">{feature.text}</p>
                 </div>
               </div>
             )

@@ -10,117 +10,46 @@ const vehicles = [
 ]
 
 export default function FeaturedVehicles() {
-  const sectionStyle = {
-    padding: "60px 20px",
-    backgroundColor: "#fff",
-  }
-
-  const containerStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-  }
-
-  const titleStyle = {
-    fontSize: "32px",
-    fontWeight: "bold",
-    marginBottom: "40px",
-    textAlign: "center",
-    color: "#1a1a1a",
-  }
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "20px",
-    marginBottom: "30px",
-  }
-
-  const vehicleCardStyle = {
-    backgroundColor: "#f9f9f9",
-    padding: "20px",
-    borderRadius: "8px",
-    border: "1px solid #eee",
-    transition: "all 0.3s",
-  }
-
-  const vehicleNameStyle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "15px",
-    color: "#1a1a1a",
-  }
-
-  const priceRowStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    paddingBottom: "8px",
-    fontSize: "13px",
-    borderBottom: "1px solid #eee",
-  }
-
-  const labelStyle = {
-    color: "#666",
-  }
-
-  const priceStyle = {
-    color: "#FF5722",
-    fontWeight: "bold",
-  }
-
-  const ctaStyle = {
-    display: "block",
-    textAlign: "center",
-    marginTop: "30px",
-  }
-
-  const viewAllButtonStyle = {
-    backgroundColor: "#FF5722",
-    color: "#fff",
-    border: "none",
-    padding: "12px 40px",
-    fontSize: "16px",
-    fontWeight: "bold",
-    borderRadius: "25px",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-    textDecoration: "none",
-    display: "inline-block",
-  }
-
   return (
-    <section style={sectionStyle}>
-      <div style={containerStyle}>
-        <h2 style={titleStyle}>Choose Your Ride</h2>
-        <p style={{ textAlign: "center", color: "#666", marginBottom: "30px", fontSize: "16px" }}>
+    <section className="py-16 px-5 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Choose Your Ride</h2>
+        <p className="text-center text-gray-600 mb-8 text-base">
           Best bikes & scooters in town – affordable, flexible, and ready to ride!
         </p>
 
-        <div style={gridStyle}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {vehicles.map((vehicle) => (
-            <div key={vehicle.name} style={vehicleCardStyle}>
-              <div style={vehicleNameStyle}>{vehicle.name}</div>
-              <div style={priceRowStyle}>
-                <span style={labelStyle}>Hourly</span>
-                <span style={priceStyle}>{vehicle.hourly}</span>
+            <div
+              key={vehicle.name}
+              className="bg-gray-50 p-6 rounded-lg border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="text-lg font-bold mb-4 text-gray-900">{vehicle.name}</div>
+              <div className="flex justify-between pb-2 text-sm border-b border-gray-200">
+                <span className="text-gray-600">Hourly</span>
+                <span className="text-[#FF5722] font-bold">{vehicle.hourly}</span>
               </div>
-              <div style={priceRowStyle}>
-                <span style={labelStyle}>Daily</span>
-                <span style={priceStyle}>{vehicle.daily}</span>
+              <div className="flex justify-between py-2 text-sm border-b border-gray-200">
+                <span className="text-gray-600">Daily</span>
+                <span className="text-[#FF5722] font-bold">{vehicle.daily}</span>
               </div>
-              <div style={priceRowStyle}>
-                <span style={labelStyle}>Weekly</span>
-                <span style={priceStyle}>{vehicle.weekly}</span>
+              <div className="flex justify-between py-2 text-sm border-b border-gray-200">
+                <span className="text-gray-600">Weekly</span>
+                <span className="text-[#FF5722] font-bold">{vehicle.weekly}</span>
               </div>
-              <div style={{ ...priceRowStyle, borderBottom: "none" }}>
-                <span style={labelStyle}>Monthly</span>
-                <span style={priceStyle}>{vehicle.monthly}</span>
+              <div className="flex justify-between pt-2 text-sm">
+                <span className="text-gray-600">Monthly</span>
+                <span className="text-[#FF5722] font-bold">{vehicle.monthly}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={ctaStyle}>
-          <Link href="/vehicles" style={viewAllButtonStyle}>
+        <div className="text-center mt-8">
+          <Link
+            href="/vehicles"
+            className="inline-block bg-[#FF5722] text-white border-none py-3 px-10 text-base font-bold rounded-full cursor-pointer transition-colors duration-300 hover:bg-[#E64A19]"
+          >
             See All Vehicles
           </Link>
         </div>
