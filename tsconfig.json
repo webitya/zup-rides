@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/theme-provider.jsx", "src/lib/utils.js", "src/components/ui/accordion.jsx"  ],
+, "src/components/theme-provider.jsx", "src/lib/utils.js", "src/components/ui/accordion.jsx", "src/components/ui/alert-dialog.jsx", "src/components/ui/alert.jsx"  ],
   "exclude": [
     "node_modules"
   ]
