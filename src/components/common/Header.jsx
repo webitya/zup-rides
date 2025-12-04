@@ -54,11 +54,11 @@ export default function Header() {
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg py-3 border-b border-orange-100/50"
-            : "bg-white/95 backdrop-blur-sm py-5 border-b border-gray-100/50"
+            ? "bg-white/80 backdrop-blur-xl shadow-lg py-1 border-b border-orange-100/50"
+            : "bg-white/95 backdrop-blur-sm py-1 border-b border-gray-100/50"
           }`}
       >
-        <div className="max-w-[1200px] mx-auto px-5 flex justify-between items-center">
+        <div className="mx-auto px-5 flex justify-between items-center">
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3 group relative">
             <div className="flex flex-col">
@@ -108,7 +108,7 @@ export default function Header() {
           {isMobile && (
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2.5 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-full transition-all duration-300 active:scale-95"
+              className="md:hidden text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-full transition-all duration-300 active:scale-95"
               aria-label="Open menu"
             >
               <MenuIcon fontSize="large" />
