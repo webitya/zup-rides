@@ -23,7 +23,7 @@ export default function Contact() {
         <div className="relative max-w-4xl mx-auto px-5 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Get In Touch</h1>
           <p className="text-lg md:text-xl opacity-95">
-            Have questions? We're here to help! Reach out to us anytime.
+            Have questions? We are here to help! Reach out to us anytime.
           </p>
         </div>
       </div>
