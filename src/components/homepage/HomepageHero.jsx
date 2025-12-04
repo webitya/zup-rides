@@ -18,7 +18,7 @@ export default function HomepageHero() {
   }, [])
 
   return (
-    <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-red-500 text-white overflow-hidden max-h-[90vh] flex items-center">
+    <div className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-red-500 text-white overflow-hidden min-h-[90vh] flex items-center py-8">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
@@ -47,11 +47,11 @@ export default function HomepageHero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative w-full max-w-7xl mx-auto px-5 py-16 md:py-20">
+      <div className="relative w-full max-w-7xl mx-auto px-5 py-8 md:py-12">
         <div className="text-center max-w-5xl mx-auto">
-          {/* Badge */}
+          {/* Badge - Hidden on mobile */}
           <div
-            className={`inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-full mb-6 border border-white/30 shadow-lg transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+            className={`hidden md:inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-full mb-6 border border-white/30 shadow-lg transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
               }`}
           >
             <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></span>
@@ -60,18 +60,18 @@ export default function HomepageHero() {
 
           {/* Main Heading */}
           <h1
-            className={`text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`text-3xl md:text-5xl lg:text-5xl font-extrabold mb-4 md:mb-6 leading-tight transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
           >
-            <span className="block mb-2">Discover Ranchi</span>
+            <span className="block mb-1 md:mb-2">Discover Ranchi</span>
             <span className="block bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 bg-clip-text text-transparent drop-shadow-2xl">
               Like Never Before!
             </span>
           </h1>
 
-          {/* Subheading */}
+          {/* Subheading - Hidden on mobile */}
           <p
-            className={`text-lg md:text-2xl lg:text-3xl mb-10 opacity-95 leading-relaxed max-w-3xl mx-auto font-light px-4 transition-all duration-700 delay-200 ${mounted ? 'opacity-95 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`hidden md:block text-lg md:text-2xl lg:text-3xl mb-10 opacity-95 leading-relaxed max-w-3xl mx-auto font-light px-4 transition-all duration-700 delay-200 ${mounted ? 'opacity-95 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
           >
             Rent premium bikes and scooters from just{' '}
@@ -81,20 +81,21 @@ export default function HomepageHero() {
 
           {/* CTA Buttons */}
           <div
-            className={`flex gap-4 justify-center flex-wrap mb-12 px-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`flex gap-3 md:gap-4 justify-center flex-wrap mb-6 md:mb-12 px-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
           >
             <Link
               href="/vehicles"
-              className="group bg-white text-orange-600 px-8 py-4 text-lg font-bold rounded-full transition-all duration-300 hover:bg-yellow-50 hover:scale-110 hover:shadow-2xl shadow-xl flex items-center gap-3 hover:gap-4"
+              className="group bg-white text-orange-600 px-5 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-full transition-all duration-300 hover:bg-yellow-50 hover:scale-110 hover:shadow-2xl shadow-xl flex items-center gap-2 md:gap-3 hover:gap-4"
             >
-              <DirectionsBikeIcon className="text-2xl group-hover:rotate-12 transition-transform" />
-              Book Your Ride Now
-              <span className="group-hover:translate-x-1 transition-transform text-xl">→</span>
+              <DirectionsBikeIcon className="text-xl md:text-2xl group-hover:rotate-12 transition-transform" />
+              <span className="hidden sm:inline">Book Your Ride Now</span>
+              <span className="sm:hidden">Book Now</span>
+              <span className="group-hover:translate-x-1 transition-transform text-lg md:text-xl">→</span>
             </Link>
             <Link
               href="/contact"
-              className="bg-white/10 text-white border-2 border-white px-8 py-4 text-lg font-bold rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-110 backdrop-blur-md shadow-lg hover:shadow-2xl"
+              className="bg-white/10 text-white border-2 border-white px-5 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-110 backdrop-blur-md shadow-lg hover:shadow-2xl"
             >
               Contact Us
             </Link>
