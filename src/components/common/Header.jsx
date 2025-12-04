@@ -61,12 +61,6 @@ export default function Header() {
         <div className="max-w-[1200px] mx-auto px-5 flex justify-between items-center">
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3 group relative">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-              <span className="text-3xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10 block">
-                🏍️
-              </span>
-            </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold text-gray-900 leading-none">
                 Zup
