@@ -5,8 +5,6 @@ import AboutHero from "../../components/about/AboutHero"
 import AboutValues from "../../components/about/AboutValues"
 import Footer from "../../components/common/Footer"
 
-
-
 export default function About() {
   return (
     <>
