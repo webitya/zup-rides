@@ -1,5 +1,5 @@
-import Header from "@/components/common/Header"
-import Footer from "@/components/common/Footer"
+import Header from "../../components/common/Header"
+import Footer from "../../components/common/Footer"
 
 export const metadata = {
   title: "Terms & Conditions - ZupRides | Bike & Car Rentals in Ranchi",
