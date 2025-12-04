@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react"
+
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
@@ -8,241 +9,106 @@ import EmailIcon from "@mui/icons-material/Email"
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  const navStyle = {
-    backgroundColor: "#fff",
-    borderBottom: "2px solid #FF5722",
-    padding: "16px 0",
-    position: "sticky",
-    top: 0,
-    zIndex: 1000,
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  }
-
-  const containerStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 20px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  }
-
-  const logoStyle = {
-    fontSize: "24px",
-    fontWeight: "700",
-    color: "#FF5722",
-    textDecoration: "none",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    transition: "transform 0.3s ease",
-  }
-
-  const drawerOverlayStyle = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: mobileOpen ? "rgba(0,0,0,0.5)" : "transparent",
-    zIndex: mobileOpen ? 98 : -1,
-    transition: "background-color 0.3s ease",
-    pointerEvents: mobileOpen ? "auto" : "none",
-  }
-
-  const navLinksStyle = {
-    display: "flex",
-    flexDirection: "column",
-    position: "fixed",
-    top: 0,
-    right: mobileOpen ? 0 : "-100%",
-    bottom: 0,
-    width: "85%",
-    maxWidth: "300px",
-    backgroundColor: "#fff",
-    padding: "80px 20px 20px 20px",
-    gap: "20px",
-    zIndex: 99,
-    transition: "right 0.3s ease-in-out",
-    overflowY: "auto",
-    boxShadow: mobileOpen ? "-4px 0 12px rgba(0,0,0,0.15)" : "none",
-  }
-
-  // Desktop navigation styles
-  const desktopNavStyle = {
-    display: "flex",
-    gap: "35px",
-    alignItems: "center",
-  }
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "#333",
-    fontSize: "15px",
-    fontWeight: "500",
-    padding: "8px 0",
-    transition: "color 0.3s ease, border-bottom 0.3s ease",
-    borderBottom: "2px solid transparent",
-    cursor: "pointer",
-  }
-
-  const mobileContactStyle = {
-    borderTop: "1px solid #eee",
-    paddingTop: "20px",
-    marginTop: "10px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
-  }
-
-  const contactItemStyle = {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    color: "#666",
-    fontSize: "14px",
-    textDecoration: "none",
-  }
-
-  const menuButtonStyle = {
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "8px",
-    zIndex: 101,
-  }
-
-  const closeButtonStyle = {
-    position: "absolute",
-    top: "16px",
-    right: "20px",
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    zIndex: 102,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }
-
-  const desktopOnlyStyle = {
-    display: window.innerWidth < 768 ? "none" : "flex",
-  }
-
-  const mobileOnlyStyle = {
-    display: window.innerWidth < 768 ? "block" : "none",
-  }
+  // Detect screen width safely on client
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   return (
     <>
-      <nav style={navStyle}>
-        <div style={containerStyle}>
-          <Link href="/" style={logoStyle}>
+      {/* NAVBAR */}
+      <nav className="bg-white border-b-2 border-orange-600 shadow-md sticky top-0 z-50">
+        <div className="max-w-[1200px] mx-auto px-5 py-4 flex justify-between items-center">
+
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-orange-600">
             <span>🏍️</span>
-            <span style={{ letterSpacing: "-0.5px" }}>ZupRides</span>
+            <span className="-tracking-[0.5px]">ZupRides</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div style={{ ...desktopNavStyle, ...desktopOnlyStyle }}>
-            <Link
-              href="/"
-              style={linkStyle}
-              onMouseEnter={(e) => (e.target.style.color = "#FF5722")}
-              onMouseLeave={(e) => (e.target.style.color = "#333")}
-            >
-              Home
-            </Link>
-            <Link
-              href="/vehicles"
-              style={linkStyle}
-              onMouseEnter={(e) => (e.target.style.color = "#FF5722")}
-              onMouseLeave={(e) => (e.target.style.color = "#333")}
-            >
-              Vehicles
-            </Link>
-            <Link
-              href="/about"
-              style={linkStyle}
-              onMouseEnter={(e) => (e.target.style.color = "#FF5722")}
-              onMouseLeave={(e) => (e.target.style.color = "#333")}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              style={linkStyle}
-              onMouseEnter={(e) => (e.target.style.color = "#FF5722")}
-              onMouseLeave={(e) => (e.target.style.color = "#333")}
-            >
-              Contact
-            </Link>
-          </div>
+          {/* DESKTOP NAV */}
+          {!isMobile && (
+            <div className="hidden md:flex gap-10 items-center">
+              <Link href="/" className="text-gray-800 font-medium hover:text-orange-600">
+                Home
+              </Link>
+              <Link href="/vehicles" className="text-gray-800 font-medium hover:text-orange-600">
+                Vehicles
+              </Link>
+              <Link href="/about" className="text-gray-800 font-medium hover:text-orange-600">
+                About
+              </Link>
+              <Link href="/contact" className="text-gray-800 font-medium hover:text-orange-600">
+                Contact
+              </Link>
+            </div>
+          )}
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ ...menuButtonStyle, ...mobileOnlyStyle }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <CloseIcon style={{ fontSize: "28px", color: "#FF5722" }} />
-            ) : (
-              <MenuIcon style={{ fontSize: "28px", color: "#FF5722" }} />
-            )}
-          </button>
+          {/* MOBILE MENU BUTTON */}
+          {isMobile && (
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="md:hidden p-2"
+            >
+              <MenuIcon className="text-orange-600" fontSize="large" />
+            </button>
+          )}
         </div>
       </nav>
 
-      {/* Drawer Overlay */}
-      <div style={drawerOverlayStyle} onClick={() => setMobileOpen(false)} />
+      {/* OVERLAY */}
+      {mobileOpen && (
+        <div
+          onClick={() => setMobileOpen(false)}
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+        />
+      )}
 
-      {/* Mobile Navigation Drawer (Right-to-Left) */}
-      <div style={navLinksStyle}>
-        <button onClick={() => setMobileOpen(false)} style={closeButtonStyle} aria-label="Close menu">
-          <CloseIcon style={{ fontSize: "28px", color: "#FF5722" }} />
+      {/* MOBILE DRAWER */}
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-xl p-6 z-50 transform transition-transform duration-300 ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setMobileOpen(false)}
+          className="absolute top-4 right-4 p-2"
+        >
+          <CloseIcon className="text-orange-600" fontSize="large" />
         </button>
 
-        <Link
-          href="/"
-          style={{ ...linkStyle, fontSize: "16px", fontWeight: "600" }}
-          onClick={() => setMobileOpen(false)}
-        >
-          Home
-        </Link>
-        <Link
-          href="/vehicles"
-          style={{ ...linkStyle, fontSize: "16px", fontWeight: "600" }}
-          onClick={() => setMobileOpen(false)}
-        >
-          Vehicles
-        </Link>
-        <Link
-          href="/about"
-          style={{ ...linkStyle, fontSize: "16px", fontWeight: "600" }}
-          onClick={() => setMobileOpen(false)}
-        >
-          About
-        </Link>
-        <Link
-          href="/contact"
-          style={{ ...linkStyle, fontSize: "16px", fontWeight: "600" }}
-          onClick={() => setMobileOpen(false)}
-        >
-          Contact
-        </Link>
+        <div className="mt-12 flex flex-col gap-6 text-lg font-semibold">
+          <Link href="/" onClick={() => setMobileOpen(false)} className="text-gray-800 hover:text-orange-600">
+            Home
+          </Link>
+          <Link href="/vehicles" onClick={() => setMobileOpen(false)} className="text-gray-800 hover:text-orange-600">
+            Vehicles
+          </Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)} className="text-gray-800 hover:text-orange-600">
+            About
+          </Link>
+          <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-gray-800 hover:text-orange-600">
+            Contact
+          </Link>
+        </div>
 
-        {/* Mobile Contact Info */}
-        <div style={mobileContactStyle}>
-          <a href="tel:+919798146740" style={contactItemStyle}>
-            <PhoneIcon style={{ fontSize: "18px", color: "#FF5722" }} />
+        {/* CONTACT INFO */}
+        <div className="mt-10 border-t pt-5 flex flex-col gap-4">
+          <a href="tel:+919798146740" className="flex items-center gap-3 text-gray-600">
+            <PhoneIcon className="text-orange-600" />
             +91 97981 46740
           </a>
-          <a href="mailto:support@zuprides.in" style={contactItemStyle}>
-            <EmailIcon style={{ fontSize: "18px", color: "#FF5722" }} />
+
+          <a href="mailto:support@zuprides.in" className="flex items-center gap-3 text-gray-600">
+            <EmailIcon className="text-orange-600" />
             support@zuprides.in
           </a>
         </div>
