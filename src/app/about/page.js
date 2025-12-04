@@ -1,5 +1,6 @@
-export const dynamic = "force-dynamic"
 "use client"
+
+export const dynamic = "force-dynamic"
 
 import Header from "../../components/common/Header"
 import AboutHero from "../../components/about/AboutHero"
