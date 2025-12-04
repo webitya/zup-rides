@@ -54,8 +54,8 @@ export default function Header() {
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg py-1 border-b border-orange-100/50"
-            : "bg-white/95 backdrop-blur-sm py-1 border-b border-gray-100/50"
+            ? "bg-white/80 backdrop-blur-xl shadow-lg  border-b border-orange-100/50"
+            : "bg-white/95 backdrop-blur-sm  border-b border-gray-100/50"
           }`}
       >
         <div className="mx-auto px-5 flex justify-between items-center">
