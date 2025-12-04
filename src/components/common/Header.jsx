@@ -133,7 +133,7 @@ export default function Header() {
           {/* Drawer Header */}
           <div className="p-6 flex justify-between items-center border-b border-gray-100 bg-gradient-to-r from-orange-50 to-white">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🏍️</span>
+            
               <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Menu
               </span>
