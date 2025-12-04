@@ -1,11 +1,12 @@
-import Header from "@/components/common/Header"
-import HomepageHero from "@/components/homepage/HomepageHero"
-import HomepageCTA from "@/components/homepage/HomepageCTA"
-import FeaturedVehicles from "@/components/homepage/FeaturedVehicles"
-import Features from "@/components/homepage/Features"
-import Testimonials from "@/components/homepage/Testimonials"
-import Newsletter from "@/components/homepage/Newsletter"
-import Footer from "@/components/common/Footer"
+import Header from "../components/common/Header"
+import HomepageHero from "../components/homepage/HomepageHero"
+import HomepageCTA from "../components/homepage/HomepageCTA"
+import FeaturedVehicles from "../components/homepage/FeaturedVehicles"
+import Features from "../components/homepage/Features"
+import Testimonials from "../components/homepage/Testimonials"
+import Newsletter from "../components/homepage/Newsletter"
+import Footer from "../components/common/Footer"
+import HomepageVehicles from "../components/homepage/HomepageVehicles"
 
 export const metadata = {
   title: "ZupRides - Bike & Car Rentals in Ranchi from ₹299",
@@ -23,8 +24,9 @@ export default function Home() {
     <>
       <Header />
       <HomepageHero />
-      <HomepageCTA />
+      {/* <HomepageCTA /> */}
       <FeaturedVehicles />
+       <HomepageVehicles />
       <Features />
       <Testimonials />
       <Newsletter />

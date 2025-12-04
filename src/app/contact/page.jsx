@@ -1,7 +1,7 @@
-import Header from "@/components/common/Header"
-import ContactForm from "@/components/contact/ContactForm"
-import ContactInfo from "@/components/contact/ContactInfo"
-import Footer from "@/components/common/Footer"
+import Header from "../../components/common/Header"
+import ContactForm from "../../components/contact/ContactForm"
+import ContactInfo from "../../components/contact/ContactInfo"
+import Footer from "../../components/common/Footer"
 
 export const metadata = {
   title: "Contact ZupRides - Get in Touch with Our Team",

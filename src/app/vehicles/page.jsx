@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react"
-import Header from "@/components/common/Header"
-import VehicleGrid from "@/components/vehicles/VehicleGrid"
-import VehicleFilters from "@/components/vehicles/VehicleFilters"
-import Footer from "@/components/common/Footer"
+import Header from "../../components/common/Header"
+import VehicleGrid from "../../components/vehicles/VehicleGrid"
+import VehicleFilters from "../../components/vehicles/VehicleFilters"
+import Footer from "../../components/common/Footer"
 
 export default function Vehicles() {
   const [filter, setFilter] = useState("all")

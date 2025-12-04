@@ -1,4 +1,5 @@
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
+import BookingCTA from "../../components/homepage/BookingCTA"
 
 export default function VehicleCard({ vehicle }) {
   const cardStyle = {
@@ -69,17 +70,7 @@ export default function VehicleCard({ vehicle }) {
     color: "#FF5722",
   }
 
-  const buttonStyle = {
-    width: "100%",
-    backgroundColor: "#FF5722",
-    color: "#fff",
-    border: "none",
-    padding: "10px",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    transition: "background-color 0.3s",
-  }
+  const dailyPrice = Number.parseInt(vehicle.daily.replace("₹", "").trim())
 
   return (
     <div style={cardStyle}>
@@ -101,7 +92,7 @@ export default function VehicleCard({ vehicle }) {
           </div>
         </div>
 
-        <button style={buttonStyle}>Book Now</button>
+        <BookingCTA vehicleName={vehicle.name} vehiclePrice={dailyPrice} />
       </div>
     </div>
   )

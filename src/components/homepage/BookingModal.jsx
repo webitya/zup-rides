@@ -134,44 +134,49 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 1000,
     overflow: "auto",
+    padding: "10px",
   }
 
   const modalContentStyle = {
     backgroundColor: "#fff",
-    margin: "50px auto",
-    padding: "30px",
-    borderRadius: "10px",
-    maxWidth: "500px",
+    margin: "10px auto",
+    padding: "20px",
+    borderRadius: "8px",
+    maxWidth: "90vw",
+    width: "100%",
     position: "relative",
     animation: "slideUp 0.3s",
+    maxHeight: "90vh",
+    overflowY: "auto",
   }
 
   const closeButtonStyle = {
     position: "absolute",
-    top: "15px",
-    right: "15px",
+    top: "12px",
+    right: "12px",
     backgroundColor: "transparent",
     border: "none",
-    fontSize: "24px",
+    fontSize: "20px",
     cursor: "pointer",
     color: "#666",
+    padding: "4px",
   }
 
   const formGroupStyle = {
-    marginBottom: "20px",
+    marginBottom: "15px",
   }
 
   const labelStyle = {
     display: "block",
-    marginBottom: "8px",
+    marginBottom: "6px",
     fontWeight: "bold",
     color: "#1a1a1a",
-    fontSize: "14px",
+    fontSize: "13px",
   }
 
   const inputStyle = {
     width: "100%",
-    padding: "12px",
+    padding: "10px",
     border: "1px solid #ddd",
     borderRadius: "5px",
     fontSize: "14px",
@@ -182,31 +187,31 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   const rowStyle = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    gap: "15px",
+    gap: "12px",
   }
 
   const amountDisplayStyle = {
     backgroundColor: "#f5f5f5",
-    padding: "15px",
+    padding: "12px",
     borderRadius: "5px",
-    marginBottom: "20px",
+    marginBottom: "15px",
     textAlign: "center",
   }
 
   const amountStyle = {
-    fontSize: "28px",
+    fontSize: "24px",
     fontWeight: "bold",
     color: "#FF5722",
   }
 
   const submitButtonStyle = {
     width: "100%",
-    padding: "12px",
+    padding: "11px",
     backgroundColor: "#FF5722",
     color: "#fff",
     border: "none",
     borderRadius: "5px",
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "bold",
     cursor: loading ? "not-allowed" : "pointer",
     opacity: loading ? 0.7 : 1,
@@ -216,26 +221,29 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   const successMessageStyle = {
     backgroundColor: "#d4edda",
     color: "#155724",
-    padding: "12px",
+    padding: "10px",
     borderRadius: "5px",
-    marginBottom: "15px",
+    marginBottom: "12px",
     textAlign: "center",
+    fontSize: "13px",
   }
 
   const errorMessageStyle = {
     backgroundColor: "#f8d7da",
     color: "#721c24",
-    padding: "12px",
+    padding: "10px",
     borderRadius: "5px",
-    marginBottom: "15px",
+    marginBottom: "12px",
     textAlign: "center",
+    fontSize: "13px",
   }
 
   const titleStyle = {
-    fontSize: "24px",
+    fontSize: "20px",
     fontWeight: "bold",
-    marginBottom: "20px",
+    marginBottom: "15px",
     color: "#1a1a1a",
+    paddingRight: "30px",
   }
 
   return (
@@ -251,12 +259,17 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             opacity: 1;
           }
         }
+        @media (max-width: 480px) {
+          .booking-modal-content {
+            max-width: 95vw !important;
+          }
+        }
       `}</style>
 
       <div style={modalStyle} onClick={onClose}>
-        <div style={modalContentStyle} onClick={(e) => e.stopPropagation()}>
-          <button style={closeButtonStyle} onClick={onClose}>
-            <CloseIcon style={{ fontSize: "24px" }} />
+        <div style={modalContentStyle} onClick={(e) => e.stopPropagation()} className="booking-modal-content">
+          <button style={closeButtonStyle} onClick={onClose} aria-label="Close modal">
+            <CloseIcon style={{ fontSize: "20px" }} />
           </button>
 
           <h2 style={titleStyle}>Book Your Ride</h2>
@@ -274,7 +287,7 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
                 value={formData.name}
                 onChange={handleInputChange}
                 style={inputStyle}
-                placeholder="Enter your name"
+                placeholder="Your name"
                 required
               />
             </div>
@@ -282,7 +295,7 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             <div style={rowStyle}>
               <div style={formGroupStyle}>
                 <label style={labelStyle}>
-                  <EmailIcon style={{ fontSize: "16px", marginRight: "5px", verticalAlign: "middle" }} />
+                  <EmailIcon style={{ fontSize: "14px", marginRight: "4px", verticalAlign: "middle" }} />
                   Email *
                 </label>
                 <input
@@ -298,7 +311,7 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
 
               <div style={formGroupStyle}>
                 <label style={labelStyle}>
-                  <PhoneIcon style={{ fontSize: "16px", marginRight: "5px", verticalAlign: "middle" }} />
+                  <PhoneIcon style={{ fontSize: "14px", marginRight: "4px", verticalAlign: "middle" }} />
                   Phone *
                 </label>
                 <input
@@ -316,7 +329,7 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
 
             <div style={formGroupStyle}>
               <label style={labelStyle}>
-                <LocationOnIcon style={{ fontSize: "16px", marginRight: "5px", verticalAlign: "middle" }} />
+                <LocationOnIcon style={{ fontSize: "14px", marginRight: "4px", verticalAlign: "middle" }} />
                 Pickup Address *
               </label>
               <input
@@ -325,14 +338,14 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
                 value={formData.address}
                 onChange={handleInputChange}
                 style={inputStyle}
-                placeholder="Enter pickup address"
+                placeholder="Enter address"
                 required
               />
             </div>
 
             <div style={formGroupStyle}>
               <label style={labelStyle}>
-                <EventIcon style={{ fontSize: "16px", marginRight: "5px", verticalAlign: "middle" }} />
+                <EventIcon style={{ fontSize: "14px", marginRight: "4px", verticalAlign: "middle" }} />
                 Pickup Date *
               </label>
               <input
@@ -373,12 +386,12 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             </div>
 
             <div style={amountDisplayStyle}>
-              <div style={{ fontSize: "14px", marginBottom: "8px", color: "#666" }}>Total Amount</div>
+              <div style={{ fontSize: "12px", marginBottom: "6px", color: "#666" }}>Total Amount</div>
               <div style={amountStyle}>₹{(calculateAmount() / 100).toFixed(2)}</div>
             </div>
 
             <button type="submit" style={submitButtonStyle} disabled={loading}>
-              {loading ? "Processing..." : "Pay Now with PhonePay"}
+              {loading ? "Processing..." : "Pay Now"}
             </button>
           </form>
         </div>
