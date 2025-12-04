@@ -108,14 +108,25 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
-      <div className="bg-white w-full max-w-lg rounded-2xl shadow-2xl relative overflow-hidden max-h-[95vh] sm:max-h-[90vh] flex flex-col animate-slideUp">
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-3 sm:p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <div
+        className="bg-white w-full max-w-lg rounded-2xl shadow-2xl relative overflow-hidden max-h-[95vh] sm:max-h-[90vh] flex flex-col"
+        style={{
+          animation: 'modalSlideUp 0.3s ease-out forwards'
+        }}
+      >
         {/* Header - Fixed */}
         <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-4 sm:p-5 relative flex-shrink-0">
           <button
             onClick={onClose}
             className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white/90 hover:text-white hover:bg-white/20 rounded-full p-1 transition-all"
             aria-label="Close"
+            type="button"
           >
             <CloseIcon fontSize="small" />
           </button>
@@ -323,15 +334,17 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
       </div>
 
       <style jsx>{`
-        @keyframes slideUp {
-          from { transform: translateY(20px) scale(0.96); opacity: 0; }
-          to { transform: translateY(0) scale(1); opacity: 1; }
-        }
-        .animate-slideUp {
-          animation: slideUp 0.3s ease-out;
+        @keyframes modalSlideUp {
+          from { 
+            transform: translateY(30px);
+            opacity: 0;
+          }
+          to { 
+            transform: translateY(0);
+            opacity: 1;
+          }
         }
       `}</style>
     </div>
   )
 }
-
