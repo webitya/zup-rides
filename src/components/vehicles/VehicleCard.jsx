@@ -1,97 +1,43 @@
-import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
+import Image from "next/image"
 import BookingCTA from "../../components/homepage/BookingCTA"
 
 export default function VehicleCard({ vehicle }) {
-  const cardStyle = {
-    backgroundColor: "#fff",
-    borderRadius: "8px",
-    overflow: "hidden",
-    boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-    transition: "transform 0.3s, box-shadow 0.3s",
-    cursor: "pointer",
-    border: "1px solid #eee",
-  }
-
-  const imageStyle = {
-    width: "100%",
-    height: "200px",
-    backgroundColor: "#f0f0f0",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottom: "1px solid #eee",
-  }
-
-  const iconStyle = {
-    fontSize: "60px",
-    color: "#FF5722",
-  }
-
-  const contentStyle = {
-    padding: "20px",
-  }
-
-  const nameStyle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "5px",
-    color: "#1a1a1a",
-  }
-
-  const descriptionStyle = {
-    fontSize: "13px",
-    color: "#999",
-    marginBottom: "15px",
-  }
-
-  const pricesStyle = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "10px",
-    marginBottom: "15px",
-  }
-
-  const priceItemStyle = {
-    textAlign: "center",
-    padding: "10px",
-    backgroundColor: "#f5f5f5",
-    borderRadius: "5px",
-  }
-
-  const priceTypStyle = {
-    fontSize: "11px",
-    color: "#999",
-    textTransform: "uppercase",
-  }
-
-  const priceStyle = {
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: "#FF5722",
-  }
-
   const dailyPrice = Number.parseInt(vehicle.daily.replace("₹", "").trim())
 
   return (
-    <div style={cardStyle}>
-      <div style={imageStyle}>
-        <TwoWheelerIcon style={iconStyle} />
+    <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+      {/* Image Container */}
+      <div className="relative h-56 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+        <Image
+          src={vehicle.image}
+          alt={vehicle.name}
+          fill
+          className="object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+        />
+        {/* Type Badge */}
+        <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase">
+          {vehicle.type}
+        </div>
       </div>
-      <div style={contentStyle}>
-        <div style={nameStyle}>{vehicle.name}</div>
-        <p style={descriptionStyle}>{vehicle.description}</p>
 
-        <div style={pricesStyle}>
-          <div style={priceItemStyle}>
-            <div style={priceTypStyle}>Daily</div>
-            <div style={priceStyle}>{vehicle.daily}</div>
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{vehicle.name}</h3>
+        <p className="text-sm text-gray-500 mb-4">{vehicle.description}</p>
+
+        {/* Pricing Grid */}
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-3 rounded-xl text-center border border-orange-200">
+            <div className="text-xs text-gray-600 uppercase font-medium mb-1">Daily</div>
+            <div className="text-lg font-bold text-orange-600">{vehicle.daily}</div>
           </div>
-          <div style={priceItemStyle}>
-            <div style={priceTypStyle}>Monthly</div>
-            <div style={priceStyle}>{vehicle.monthly}</div>
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-3 rounded-xl text-center border border-orange-200">
+            <div className="text-xs text-gray-600 uppercase font-medium mb-1">Monthly</div>
+            <div className="text-lg font-bold text-orange-600">{vehicle.monthly}</div>
           </div>
         </div>
 
+        {/* CTA Button */}
         <BookingCTA vehicleName={vehicle.name} vehiclePrice={dailyPrice} />
       </div>
     </div>

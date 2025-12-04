@@ -2,10 +2,13 @@
 
 import { useState } from "react"
 import CloseIcon from "@mui/icons-material/Close"
+import PersonIcon from "@mui/icons-material/Person"
 import PhoneIcon from "@mui/icons-material/Phone"
 import EmailIcon from "@mui/icons-material/Email"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import EventIcon from "@mui/icons-material/Event"
+import AccessTimeIcon from "@mui/icons-material/AccessTime"
+import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
 
 export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePrice }) {
   const [formData, setFormData] = useState({
@@ -94,43 +97,57 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-4 overflow-auto">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
       {/* Modal Box */}
-      <div className="bg-white w-full max-w-lg rounded-lg shadow-lg p-6 relative animate-[slideUp_0.3s_ease]">
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-        >
-          <CloseIcon />
-        </button>
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl relative animate-slideUp overflow-hidden">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-5 relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-white/90 hover:text-white hover:bg-white/20 rounded-full p-1 transition-all"
+          >
+            <CloseIcon fontSize="small" />
+          </button>
 
-        {/* Title */}
-        <h2 className="text-xl font-bold mb-4 text-gray-900">Book Your Ride</h2>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+              <TwoWheelerIcon />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold">Book Your Ride</h2>
+              <p className="text-sm text-white/90">{vehicleName}</p>
+            </div>
+          </div>
+        </div>
 
         {/* Messages */}
         {success && (
-          <div className="bg-green-100 text-green-700 px-3 py-2 rounded mb-3 text-sm text-center">
-            Booking confirmed! Check your email.
+          <div className="mx-5 mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+            <span className="text-lg">✓</span>
+            <span>Booking confirmed! Check your email.</span>
           </div>
         )}
 
         {error && (
-          <div className="bg-red-100 text-red-700 px-3 py-2 rounded mb-3 text-sm text-center">
-            {error}
+          <div className="mx-5 mt-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
+            <span className="text-lg">⚠</span>
+            <span>{error}</span>
           </div>
         )}
 
         {/* Form */}
-        <form onSubmit={handleBooking} className="space-y-4">
-
+        <form onSubmit={handleBooking} className="p-5 space-y-4">
           {/* NAME */}
           <div>
-            <label className="block text-sm font-semibold mb-1">Full Name *</label>
+            <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+              <PersonIcon fontSize="small" className="text-gray-500" />
+              Full Name
+            </label>
             <input
               type="text"
               name="name"
-              className="w-full border p-2 rounded text-sm"
+              className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              placeholder="Enter your name"
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -140,13 +157,15 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
           {/* EMAIL + PHONE */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
-                <EmailIcon fontSize="small" /> Email *
+              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+                <EmailIcon fontSize="small" className="text-gray-500" />
+                Email
               </label>
               <input
                 type="email"
                 name="email"
-                className="w-full border p-2 rounded text-sm"
+                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                placeholder="you@example.com"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
@@ -154,13 +173,15 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
-                <PhoneIcon fontSize="small" /> Phone *
+              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+                <PhoneIcon fontSize="small" className="text-gray-500" />
+                Phone
               </label>
               <input
                 type="tel"
                 name="phone"
-                className="w-full border p-2 rounded text-sm"
+                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                placeholder="10-digit number"
                 value={formData.phone}
                 onChange={handleInputChange}
                 pattern="[0-9]{10}"
@@ -171,42 +192,47 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
 
           {/* ADDRESS */}
           <div>
-            <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
-              <LocationOnIcon fontSize="small" /> Pickup Address *
+            <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+              <LocationOnIcon fontSize="small" className="text-gray-500" />
+              Pickup Address
             </label>
             <input
               type="text"
               name="address"
-              className="w-full border p-2 rounded text-sm"
+              className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              placeholder="Enter pickup location"
               value={formData.address}
               onChange={handleInputChange}
               required
             />
           </div>
 
-          {/* PICKUP DATE */}
-          <div>
-            <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
-              <EventIcon fontSize="small" /> Pickup Date *
-            </label>
-            <input
-              type="date"
-              name="pickupDate"
-              className="w-full border p-2 rounded text-sm"
-              value={formData.pickupDate}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+          {/* PICKUP DATE + DURATION */}
+          <div className="grid grid-cols-3 gap-3">
+            <div className="col-span-3 sm:col-span-1">
+              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+                <EventIcon fontSize="small" className="text-gray-500" />
+                Date
+              </label>
+              <input
+                type="date"
+                name="pickupDate"
+                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                value={formData.pickupDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
 
-          {/* DAYS / HOURS */}
-          <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-semibold mb-1">Days</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
+                <AccessTimeIcon fontSize="small" className="text-gray-500" />
+                Days
+              </label>
               <input
                 type="number"
                 name="durationDays"
-                className="w-full border p-2 rounded text-sm"
+                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                 value={formData.durationDays}
                 onChange={handleInputChange}
                 min="0"
@@ -214,11 +240,13 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-1">Hours</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                Hours
+              </label>
               <input
                 type="number"
                 name="durationHours"
-                className="w-full border p-2 rounded text-sm"
+                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                 value={formData.durationHours}
                 onChange={handleInputChange}
                 min="0"
@@ -228,10 +256,12 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
           </div>
 
           {/* AMOUNT */}
-          <div className="bg-gray-100 p-4 rounded text-center">
-            <div className="text-xs text-gray-500 mb-1">Total Amount</div>
-            <div className="text-2xl font-bold text-orange-600">
-              ₹{(calculateAmount() / 100).toFixed(2)}
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 p-4 rounded-xl">
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-semibold text-gray-700">Total Amount</span>
+              <div className="text-3xl font-bold text-orange-600">
+                ₹{(calculateAmount() / 100).toFixed(0)}
+              </div>
             </div>
           </div>
 
@@ -239,22 +269,37 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-orange-600 text-white py-2 rounded font-semibold hover:bg-orange-700 transition disabled:opacity-70"
+            className="w-full bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3.5 rounded-xl font-bold hover:from-orange-700 hover:to-orange-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
           >
-            {loading ? "Processing..." : "Pay Now"}
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                Processing...
+              </span>
+            ) : (
+              "Pay Now"
+            )}
           </button>
         </form>
       </div>
 
       {/* Animation CSS */}
-      <style>
-        {`
-          @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-          }
-        `}
-      </style>
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from { transform: translateY(20px) scale(0.95); opacity: 0; }
+          to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease;
+        }
+        .animate-slideUp {
+          animation: slideUp 0.3s ease;
+        }
+      `}</style>
     </div>
   )
 }

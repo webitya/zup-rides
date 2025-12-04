@@ -1,5 +1,5 @@
 "use client"
-import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
+import Image from "next/image"
 import BookingCTA from "./BookingCTA"
 
 const allVehicles = [
@@ -10,6 +10,7 @@ const allVehicles = [
     daily: "₹399",
     monthly: "₹11999",
     description: "Perfect city commuter",
+    image: "/images/vehicles/scooter_red.png",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const allVehicles = [
     daily: "₹999",
     monthly: "₹29999",
     description: "Sporty and stylish",
+    image: "/images/vehicles/sport_bike_blue.png",
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ const allVehicles = [
     daily: "₹399",
     monthly: "₹11999",
     description: "Reliable and efficient",
+    image: "/images/vehicles/scooter_red.png",
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const allVehicles = [
     daily: "₹799",
     monthly: "₹23999",
     description: "Agile and powerful",
+    image: "/images/vehicles/sport_bike_black.png",
   },
   {
     id: 5,
@@ -42,6 +46,7 @@ const allVehicles = [
     daily: "₹599",
     monthly: "₹17999",
     description: "Street fighter style",
+    image: "/images/vehicles/sport_bike_black.png",
   },
   {
     id: 6,
@@ -50,87 +55,44 @@ const allVehicles = [
     daily: "₹799",
     monthly: "₹23999",
     description: "Powerful performance",
+    image: "/images/vehicles/sport_bike_black.png",
   },
 ]
 
 export default function HomepageVehicles() {
-  const sectionStyle = {
-    padding: "60px 20px",
-    backgroundColor: "#fff",
-  }
-
-  const containerStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-  }
-
-  const titleStyle = {
-    fontSize: "32px",
-    fontWeight: "bold",
-    marginBottom: "40px",
-    textAlign: "center",
-    color: "#1a1a1a",
-  }
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-    gap: "20px",
-  }
-
-  const vehicleCardStyle = {
-    backgroundColor: "#f9f9f9",
-    padding: "20px",
-    borderRadius: "8px",
-    border: "1px solid #eee",
-    textAlign: "center",
-    transition: "all 0.3s",
-  }
-
-  const iconStyle = {
-    fontSize: "50px",
-    color: "#FF5722",
-    marginBottom: "10px",
-  }
-
-  const vehicleNameStyle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "8px",
-    color: "#1a1a1a",
-  }
-
-  const descriptionStyle = {
-    fontSize: "13px",
-    color: "#999",
-    marginBottom: "12px",
-  }
-
-  const priceStyle = {
-    fontSize: "16px",
-    fontWeight: "bold",
-    color: "#FF5722",
-    marginBottom: "15px",
-  }
-
   const dailyPrice = (priceStr) => Number.parseInt(priceStr.replace("₹", "").trim())
 
   return (
-    <section style={sectionStyle}>
-      <div style={containerStyle}>
-        <h2 style={titleStyle}>Book Your Favorite Vehicle</h2>
-        <p style={{ textAlign: "center", color: "#666", marginBottom: "40px", fontSize: "16px" }}>
+    <section className="py-20 px-5 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Book Your Favorite Vehicle</h2>
+        <p className="text-center text-gray-600 mb-12 text-lg max-w-2xl mx-auto">
           Choose from our wide range of bikes and scooters - all available for hourly, daily, or monthly rentals
         </p>
 
-        <div style={gridStyle}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {allVehicles.map((vehicle) => (
-            <div key={vehicle.id} style={vehicleCardStyle}>
-              <TwoWheelerIcon style={iconStyle} />
-              <div style={vehicleNameStyle}>{vehicle.name}</div>
-              <p style={descriptionStyle}>{vehicle.description}</p>
-              <div style={priceStyle}>{vehicle.daily}</div>
-              <BookingCTA vehicleName={vehicle.name} vehiclePrice={dailyPrice(vehicle.daily)} />
+            <div key={vehicle.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
+              {/* Vehicle Image */}
+              <div className="relative h-56 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  fill
+                  className="object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                  {vehicle.type}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{vehicle.name}</h3>
+                <p className="text-sm text-gray-500 mb-4">{vehicle.description}</p>
+                <div className="text-2xl font-bold text-orange-600 mb-4">{vehicle.daily}</div>
+                <BookingCTA vehicleName={vehicle.name} vehiclePrice={dailyPrice(vehicle.daily)} />
+              </div>
             </div>
           ))}
         </div>

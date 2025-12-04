@@ -1,7 +1,6 @@
 import Header from "../components/common/Header"
 import HomepageHero from "../components/homepage/HomepageHero"
 import HomepageCTA from "../components/homepage/HomepageCTA"
-import FeaturedVehicles from "../components/homepage/FeaturedVehicles"
 import Features from "../components/homepage/Features"
 import Testimonials from "../components/homepage/Testimonials"
 import Newsletter from "../components/homepage/Newsletter"
@@ -25,8 +24,7 @@ export default function Home() {
       <Header />
       <HomepageHero />
       {/* <HomepageCTA /> */}
-      <FeaturedVehicles />
-       <HomepageVehicles />
+      <HomepageVehicles />
       <Features />
       <Testimonials />
       <Newsletter />

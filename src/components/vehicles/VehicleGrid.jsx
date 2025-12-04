@@ -10,6 +10,7 @@ const allVehicles = [
     weekly: "₹2799",
     monthly: "₹11999",
     description: "Perfect city commuter",
+    image: "/images/vehicles/scooter_red.png",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const allVehicles = [
     weekly: "₹6999",
     monthly: "₹29999",
     description: "Sporty and stylish",
+    image: "/images/vehicles/sport_bike_blue.png",
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const allVehicles = [
     weekly: "₹2799",
     monthly: "₹11999",
     description: "Reliable and efficient",
+    image: "/images/vehicles/scooter_red.png",
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ const allVehicles = [
     weekly: "₹5599",
     monthly: "₹23999",
     description: "Agile and powerful",
+    image: "/images/vehicles/sport_bike_black.png",
   },
   {
     id: 5,
@@ -50,6 +54,7 @@ const allVehicles = [
     weekly: "₹4199",
     monthly: "₹17999",
     description: "Street fighter style",
+    image: "/images/vehicles/sport_bike_black.png",
   },
   {
     id: 6,
@@ -60,6 +65,7 @@ const allVehicles = [
     weekly: "₹5599",
     monthly: "₹23999",
     description: "Powerful performance",
+    image: "/images/vehicles/sport_bike_black.png",
   },
   {
     id: 7,
@@ -70,6 +76,7 @@ const allVehicles = [
     weekly: "₹5599",
     monthly: "₹23999",
     description: "Premium adventure",
+    image: "/images/vehicles/adventure_bike_orange.png",
   },
   {
     id: 8,
@@ -80,6 +87,7 @@ const allVehicles = [
     weekly: "₹8399",
     monthly: "₹35999",
     description: "Off-road capability",
+    image: "/images/vehicles/cruiser_bike_black.png",
   },
   {
     id: 9,
@@ -90,6 +98,7 @@ const allVehicles = [
     weekly: "₹6999",
     monthly: "₹29999",
     description: "Classic cruiser",
+    image: "/images/vehicles/cruiser_bike_black.png",
   },
   {
     id: 10,
@@ -100,6 +109,7 @@ const allVehicles = [
     weekly: "₹6999",
     monthly: "₹29999",
     description: "Aggressive styling",
+    image: "/images/vehicles/adventure_bike_orange.png",
   },
   {
     id: 11,
@@ -110,6 +120,7 @@ const allVehicles = [
     weekly: "₹8399",
     monthly: "₹35999",
     description: "Premium duke series",
+    image: "/images/vehicles/adventure_bike_orange.png",
   },
   {
     id: 12,
@@ -120,21 +131,15 @@ const allVehicles = [
     weekly: "₹3499",
     monthly: "₹14999",
     description: "Budget friendly",
+    image: "/images/vehicles/scooter_red.png",
   },
 ]
 
 export default function VehicleGrid({ filter }) {
   const filteredVehicles = filter === "all" ? allVehicles : allVehicles.filter((v) => v.type === filter)
 
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-    gap: "25px",
-    marginTop: "30px",
-  }
-
   return (
-    <div style={gridStyle}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
       {filteredVehicles.map((vehicle) => (
         <VehicleCard key={vehicle.id} vehicle={vehicle} />
       ))}
