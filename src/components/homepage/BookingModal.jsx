@@ -11,13 +11,9 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler"
 
 export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePrice }) {
-  // Get today's date in YYYY-MM-DD format for min date
   const getTodayDate = () => {
     const today = new Date()
-    const year = today.getFullYear()
-    const month = String(today.getMonth() + 1).padStart(2, '0')
-    const day = String(today.getDate()).padStart(2, '0')
-    return `${year}-${month}-${day}`
+    return today.toISOString().split('T')[0]
   }
 
   const [formData, setFormData] = useState({
@@ -112,233 +108,230 @@ export default function BookingModal({ isOpen, onClose, vehicleName, vehiclePric
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-      {/* Modal Box */}
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl relative animate-slideUp overflow-hidden max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-5 relative sticky top-0 z-10">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+      <div className="bg-white w-full max-w-lg rounded-2xl shadow-2xl relative overflow-hidden max-h-[95vh] sm:max-h-[90vh] flex flex-col animate-slideUp">
+        {/* Header - Fixed */}
+        <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white p-4 sm:p-5 relative flex-shrink-0">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-white/90 hover:text-white hover:bg-white/20 rounded-full p-1 transition-all"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white/90 hover:text-white hover:bg-white/20 rounded-full p-1 transition-all"
+            aria-label="Close"
           >
             <CloseIcon fontSize="small" />
           </button>
 
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-              <TwoWheelerIcon />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <TwoWheelerIcon fontSize="small" />
             </div>
-            <div>
-              <h2 className="text-xl font-bold">Book Your Ride</h2>
-              <p className="text-sm text-white/90">{vehicleName}</p>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl font-bold truncate">Book Your Ride</h2>
+              <p className="text-xs sm:text-sm text-white/90 truncate">{vehicleName}</p>
             </div>
           </div>
         </div>
 
-        {/* Messages */}
-        {success && (
-          <div className="mx-5 mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
-            <span className="text-lg">✓</span>
-            <span>Booking confirmed! Check your email.</span>
-          </div>
-        )}
+        {/* Scrollable Content */}
+        <div className="overflow-y-auto flex-1">
+          {/* Messages */}
+          {success && (
+            <div className="mx-4 mt-3 bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-lg text-xs sm:text-sm flex items-center gap-2">
+              <span>✓</span>
+              <span>Booking confirmed! Check your email.</span>
+            </div>
+          )}
 
-        {error && (
-          <div className="mx-5 mt-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2">
-            <span className="text-lg">⚠</span>
-            <span>{error}</span>
-          </div>
-        )}
+          {error && (
+            <div className="mx-4 mt-3 bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-xs sm:text-sm flex items-center gap-2">
+              <span>⚠</span>
+              <span>{error}</span>
+            </div>
+          )}
 
-        {/* Form */}
-        <form onSubmit={handleBooking} className="p-5 space-y-4">
-          {/* NAME */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-              <PersonIcon fontSize="small" className="text-gray-500" />
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* EMAIL + PHONE */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Form */}
+          <form onSubmit={handleBooking} className="p-4 sm:p-5 space-y-3">
+            {/* NAME */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-                <EmailIcon fontSize="small" className="text-gray-500" />
-                Email
+              <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                <PersonIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                Full Name
               </label>
               <input
-                type="email"
-                name="email"
-                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                placeholder="you@example.com"
-                value={formData.email}
+                type="text"
+                name="name"
+                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                placeholder="Enter your name"
+                value={formData.name}
                 onChange={handleInputChange}
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-                <PhoneIcon fontSize="small" className="text-gray-500" />
-                Phone
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                placeholder="10-digit number"
-                value={formData.phone}
-                onChange={handleInputChange}
-                pattern="[0-9]{10}"
-                required
-              />
-            </div>
-          </div>
+            {/* EMAIL + PHONE */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                  <EmailIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
 
-          {/* ADDRESS */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-              <LocationOnIcon fontSize="small" className="text-gray-500" />
-              Pickup Address
-            </label>
-            <input
-              type="text"
-              name="address"
-              className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-              placeholder="Enter pickup location"
-              value={formData.address}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          {/* PICKUP DATE & TIME */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-                <EventIcon fontSize="small" className="text-gray-500" />
-                Pickup Date
-              </label>
-              <input
-                type="date"
-                name="pickupDate"
-                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                value={formData.pickupDate}
-                onChange={handleInputChange}
-                min={minDate}
-                required
-              />
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                  <PhoneIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  placeholder="10-digit number"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  pattern="[0-9]{10}"
+                  required
+                />
+              </div>
             </div>
 
+            {/* ADDRESS */}
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1">
-                <AccessTimeIcon fontSize="small" className="text-gray-500" />
-                Time
+              <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                <LocationOnIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                Pickup Address
               </label>
               <input
-                type="time"
-                name="pickupTime"
-                className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                value={formData.pickupTime}
+                type="text"
+                name="address"
+                className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                placeholder="Enter pickup location"
+                value={formData.address}
                 onChange={handleInputChange}
                 required
               />
             </div>
-          </div>
 
-          {/* DURATION */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-2">Rental Duration</label>
+            {/* DATE & TIME */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-gray-600 mb-1">Days</label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                  <EventIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                  Date
+                </label>
                 <input
-                  type="number"
-                  name="durationDays"
-                  className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  value={formData.durationDays}
+                  type="date"
+                  name="pickupDate"
+                  className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  value={formData.pickupDate}
                   onChange={handleInputChange}
-                  min="0"
-                  max="30"
+                  min={minDate}
+                  required
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-gray-600 mb-1">Hours</label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                  <AccessTimeIcon sx={{ fontSize: 14 }} className="text-gray-500" />
+                  Time
+                </label>
                 <input
-                  type="number"
-                  name="durationHours"
-                  className="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                  value={formData.durationHours}
+                  type="time"
+                  name="pickupTime"
+                  className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                  value={formData.pickupTime}
                   onChange={handleInputChange}
-                  min="0"
-                  max="23"
+                  required
                 />
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-1">Minimum 1 day or 1 hour rental required</p>
-          </div>
 
-          {/* AMOUNT */}
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 p-4 rounded-xl">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Total Amount</span>
-              <div className="text-3xl font-bold text-orange-600">
-                ₹{(calculateAmount() / 100).toFixed(0)}
+            {/* DURATION */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-700 mb-1">Duration</label>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <input
+                    type="number"
+                    name="durationDays"
+                    className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                    placeholder="Days"
+                    value={formData.durationDays}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="30"
+                  />
+                </div>
+
+                <div>
+                  <input
+                    type="number"
+                    name="durationHours"
+                    className="w-full border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                    placeholder="Hours"
+                    value={formData.durationHours}
+                    onChange={handleInputChange}
+                    min="0"
+                    max="23"
+                  />
+                </div>
               </div>
             </div>
-            <p className="text-xs text-gray-600 mt-1">
-              {formData.durationDays > 0 && `${formData.durationDays} day(s)`}
-              {formData.durationDays > 0 && formData.durationHours > 0 && " + "}
-              {formData.durationHours > 0 && `${formData.durationHours} hour(s)`}
-            </p>
-          </div>
 
-          {/* BUTTON */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3.5 rounded-xl font-bold hover:from-orange-700 hover:to-orange-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
-          >
-            {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                Processing...
-              </span>
-            ) : (
-              "Pay Now"
-            )}
-          </button>
-        </form>
+            {/* AMOUNT */}
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 p-3 rounded-xl">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-semibold text-gray-700">Total</span>
+                <div className="text-2xl sm:text-3xl font-bold text-orange-600">
+                  ₹{(calculateAmount() / 100).toFixed(0)}
+                </div>
+              </div>
+              {(formData.durationDays > 0 || formData.durationHours > 0) && (
+                <p className="text-xs text-gray-600 mt-1">
+                  {formData.durationDays > 0 && `${formData.durationDays}d`}
+                  {formData.durationDays > 0 && formData.durationHours > 0 && " + "}
+                  {formData.durationHours > 0 && `${formData.durationHours}h`}
+                </p>
+              )}
+            </div>
+
+            {/* BUTTON */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 rounded-xl font-bold hover:from-orange-700 hover:to-orange-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                  Processing...
+                </span>
+              ) : (
+                "Pay Now"
+              )}
+            </button>
+          </form>
+        </div>
       </div>
 
-      {/* Animation CSS */}
       <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
         @keyframes slideUp {
-          from { transform: translateY(20px) scale(0.95); opacity: 0; }
+          from { transform: translateY(20px) scale(0.96); opacity: 0; }
           to { transform: translateY(0) scale(1); opacity: 1; }
         }
-        .animate-fadeIn {
-          animation: fadeIn 0.2s ease;
-        }
         .animate-slideUp {
-          animation: slideUp 0.3s ease;
+          animation: slideUp 0.3s ease-out;
         }
       `}</style>
     </div>
   )
 }
+
