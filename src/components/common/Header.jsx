@@ -108,7 +108,7 @@ export default function Header() {
           {isMobile && (
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden py-1 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-full transition-all duration-300 active:scale-95"
+              className="md:hidden py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-full transition-all duration-300 active:scale-95"
               aria-label="Open menu"
             >
               <MenuIcon fontSize="large" />
