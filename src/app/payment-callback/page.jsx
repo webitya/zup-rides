@@ -13,20 +13,30 @@ import DownloadIcon from "@mui/icons-material/Download"
 export default function PaymentCallback() {
   const searchParams = useSearchParams()
   const bookingId = searchParams.get("bookingId")
-  const txnId = searchParams.get("txnId")
+  const merchantOrderId = searchParams.get("merchantOrderId")
+  const txnId = searchParams.get("txnId") // Fallback
+  const orderId = merchantOrderId || txnId
+
   const [status, setStatus] = useState("loading")
   const [paymentDetails, setPaymentDetails] = useState(null)
 
   useEffect(() => {
     const verifyPayment = async () => {
       try {
-        if (!txnId) {
+        if (!orderId) {
           setStatus("failed")
           return
         }
 
         // Call backend to verify payment status
-        const response = await fetch(`/api/phonepe-status?txnId=${txnId}`)
+        const response = await fetch("/api/phonepe-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ merchantOrderId: orderId }),
+        })
+
         const data = await response.json()
 
         if (data.success && (data.code === "PAYMENT_SUCCESS" || data.state === "COMPLETED")) {
@@ -45,7 +55,7 @@ export default function PaymentCallback() {
     }
 
     verifyPayment()
-  }, [txnId])
+  }, [orderId])
 
   const downloadReceipt = () => {
     if (!paymentDetails) return
