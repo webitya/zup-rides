@@ -7,6 +7,9 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle"
 import ErrorIcon from "@mui/icons-material/Error"
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty"
 
+import { jsPDF } from "jspdf"
+import DownloadIcon from "@mui/icons-material/Download"
+
 export default function PaymentCallback() {
   const searchParams = useSearchParams()
   const bookingId = searchParams.get("bookingId")
@@ -44,6 +47,78 @@ export default function PaymentCallback() {
     verifyPayment()
   }, [txnId])
 
+  const downloadReceipt = () => {
+    if (!paymentDetails) return
+
+    const doc = new jsPDF()
+    const pageWidth = doc.internal.pageSize.getWidth()
+    const margin = 20
+
+    // Header
+    doc.setFontSize(22)
+    doc.setTextColor(40, 40, 40)
+    doc.text("Zup Rides", margin, 20)
+
+    doc.setFontSize(14)
+    doc.setTextColor(100, 100, 100)
+    doc.text("Payment Receipt", margin, 30)
+
+    // Divider
+    doc.setLineWidth(0.5)
+    doc.setDrawColor(200, 200, 200)
+    doc.line(margin, 35, pageWidth - margin, 35)
+
+    // Content
+    let yPos = 50
+    const lineHeight = 10
+
+    const addRow = (label, value) => {
+      doc.setFontSize(12)
+      doc.setFont("helvetica", "bold")
+      doc.setTextColor(0, 0, 0)
+      doc.text(label, margin, yPos)
+
+      doc.setFont("helvetica", "normal")
+      doc.setTextColor(60, 60, 60)
+      const textWidth = doc.getTextWidth(value)
+      doc.text(value, pageWidth - margin - textWidth, yPos)
+
+      yPos += lineHeight
+    }
+
+    // Details from paymentDetails
+    const amount = (paymentDetails.amount / 100).toFixed(2)
+    const date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+
+    addRow("Date:", date)
+    addRow("Booking ID:", bookingId || "N/A")
+    addRow("Transaction ID:", paymentDetails.transactionId || txnId || "N/A")
+    addRow("Payment Status:", "Successful")
+
+    // Detailed Line
+    yPos += 5
+    doc.line(margin, yPos, pageWidth - margin, yPos)
+    yPos += 15
+
+    // Total Amount
+    doc.setFontSize(16)
+    doc.setFont("helvetica", "bold")
+    doc.setTextColor(0, 50, 0)
+    doc.text("Total Amount Paid", margin, yPos)
+
+    const amountText = `Rs. ${amount}`
+    const amountWidth = doc.getTextWidth(amountText)
+    doc.text(amountText, pageWidth - margin - amountWidth, yPos)
+
+    // Footer
+    yPos += 40
+    doc.setFontSize(10)
+    doc.setTextColor(150, 150, 150)
+    doc.text("Thank you for choosing Zup Rides!", pageWidth / 2, yPos, { align: "center" })
+
+    doc.save(`Receipt_${bookingId || txnId}.pdf`)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
@@ -76,10 +151,10 @@ export default function PaymentCallback() {
                 {paymentDetails && (
                   <>
                     <p className="text-sm text-green-800 mb-2">
-                      <strong>Transaction ID:</strong> {paymentDetails.transactionId}
+                      <strong>Transaction ID:</strong> {paymentDetails.transactionId || txnId}
                     </p>
                     <p className="text-sm text-green-800">
-                      <strong>Amount Paid:</strong> ₹{(paymentDetails.amount / 100).toFixed(2)}
+                      <strong>Amount Paid:</strong> Rs. {(paymentDetails.amount / 100).toFixed(2)}
                     </p>
                   </>
                 )}
@@ -87,12 +162,21 @@ export default function PaymentCallback() {
               <p className="text-gray-700 mb-6 text-center">
                 Your booking has been confirmed! Check your email for booking details and vehicle pickup information.
               </p>
-              <Link
-                href="/"
-                className="block w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-center py-3 rounded-lg font-bold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
-              >
-                Back to Home
-              </Link>
+
+              <div className="flex gap-3">
+                <Link
+                  href="/"
+                  className="flex-1 bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-bold hover:bg-gray-200 transition-all shadow-sm border border-gray-200"
+                >
+                  Back to Home
+                </Link>
+                <button
+                  onClick={downloadReceipt}
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-3 rounded-lg font-bold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg flex items-center justify-center gap-2"
+                >
+                  <DownloadIcon fontSize="small" /> Receipt
+                </button>
+              </div>
             </div>
           </div>
         )}
