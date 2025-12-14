@@ -75,7 +75,7 @@ export default function HomepageHero() {
               }`}
           >
             Rent premium bikes and scooters from just{' '}
-            <span className="font-bold text-yellow-300 bg-white/10 px-3 py-1 rounded-lg">₹299</span>
+            <span className="font-bold text-yellow-300 bg-white/10 px-3 py-1 rounded-lg">₹399</span>
             {' '}and explore the city at your own pace
           </p>
 
@@ -108,7 +108,7 @@ export default function HomepageHero() {
           >
             <div className="group bg-white/15 backdrop-blur-md p-5 md:p-7 rounded-2xl border border-white/30 hover:bg-white/25 transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg hover:-translate-y-2">
               <LocalOfferIcon className="text-4xl md:text-6xl text-yellow-300 mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-              <div className="text-2xl md:text-3xl font-bold mb-1">₹299</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">₹399</div>
               <div className="text-sm md:text-base opacity-90 font-medium">Starting Price</div>
             </div>
 
