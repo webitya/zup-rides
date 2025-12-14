@@ -56,7 +56,9 @@ export default function Footer() {
                 <FacebookIcon className="text-lg" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/zuprides.ranchi?igsh=a2JvY3F1NXg2ZW0y"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-11 h-11 rounded-xl bg-gradient-to-br from-gray-800 to-gray-700 flex items-center justify-center text-orange-500 hover:from-orange-500 hover:to-orange-600 hover:text-white hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-lg hover:shadow-orange-500/50 group"
               >
                 <InstagramIcon className="text-lg" />
