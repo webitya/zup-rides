@@ -114,14 +114,14 @@ export default function HomepageHero() {
 
             <div className="group bg-white/15 backdrop-blur-md p-5 md:p-7 rounded-2xl border border-white/30 hover:bg-white/25 transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg hover:-translate-y-2">
               <DirectionsBikeIcon className="text-4xl md:text-6xl text-yellow-300 mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-              <div className="text-2xl md:text-3xl font-bold mb-1">12+</div>
-              <div className="text-sm md:text-base opacity-90 font-medium">Quality Bikes</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">50+</div>
+              <div className="text-sm md:text-base opacity-90 font-medium">Quality Scooty & Bikes</div>
             </div>
 
             <div className="group bg-white/15 backdrop-blur-md p-5 md:p-7 rounded-2xl border border-white/30 hover:bg-white/25 transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg hover:-translate-y-2">
               <VerifiedUserIcon className="text-4xl md:text-6xl text-yellow-300 mb-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-              <div className="text-2xl md:text-3xl font-bold mb-1">Free</div>
-              <div className="text-sm md:text-base opacity-90 font-medium">Helmets Included</div>
+              <div className="text-2xl md:text-3xl font-bold mb-1">1 Free</div>
+              <div className="text-sm md:text-base opacity-90 font-medium">Helmet Included</div>
             </div>
 
             <div className="group bg-white/15 backdrop-blur-md p-5 md:p-7 rounded-2xl border border-white/30 hover:bg-white/25 transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg hover:-translate-y-2">
