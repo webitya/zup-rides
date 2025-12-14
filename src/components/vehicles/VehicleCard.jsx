@@ -6,10 +6,11 @@ import DateRangeIcon from "@mui/icons-material/DateRange"
 import EventNoteIcon from "@mui/icons-material/EventNote"
 
 export default function VehicleCard({ vehicle }) {
-  const dailyPrice = Number.parseInt(vehicle.daily.replace("₹", "").trim())
-  const hourlyPrice = Math.round(dailyPrice / 24)
-  const weeklyPrice = dailyPrice * 6
-  const monthlyPrice = dailyPrice * 25
+  // Use actual prices from vehicle data
+  const hourlyPrice = vehicle.hourly
+  const dailyPrice = vehicle.daily
+  const weeklyPrice = vehicle.weekly
+  const monthlyPrice = vehicle.monthly
 
   const pricingOptions = [
     { label: "Hourly", price: hourlyPrice, icon: AccessTimeIcon, color: "from-blue-50 to-blue-100 border-blue-200" },
@@ -49,14 +50,14 @@ export default function VehicleCard({ vehicle }) {
                   <Icon sx={{ fontSize: 14 }} className="text-gray-600" />
                   <div className="text-xs text-gray-600 uppercase font-semibold">{option.label}</div>
                 </div>
-                <div className="text-lg font-bold text-gray-900">₹{option.price}</div>
+                <div className="text-lg font-bold text-gray-900">{option.price}</div>
               </div>
             )
           })}
         </div>
 
         {/* CTA Button */}
-        <BookingCTA vehicleName={vehicle.name} vehiclePrice={dailyPrice} />
+        <BookingCTA vehicleName={vehicle.name} vehiclePrice={vehicle.daily} />
       </div>
     </div>
   )
