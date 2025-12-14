@@ -1,83 +1,103 @@
 import crypto from "crypto"
-import nodemailer from "nodemailer"
 
-const SALT_KEY = process.env.PHONEPE_SALT_KEY
-const SALT_INDEX = process.env.PHONEPE_SALT_INDEX || "1"
+const PHONEPE_HOST_URL = "https://api.phonepe.com/apis/heroku"
+const MERCHANT_ID = process.env.PHONEPE_MERCHANT_ID || "SU2512041550424925141295"
+const CLIENT_SECRET = process.env.PHONEPE_CLIENT_SECRET || "dbc4255f-e057-4886-ace8-790ecbd3de5f"
+const CLIENT_VERSION = process.env.PHONEPE_CLIENT_VERSION || "1"
 
 export async function POST(request) {
   try {
     const body = await request.json()
-    const { response: encodedResponse } = body
+    console.log("[PhonePe Callback] Received:", body)
 
-    // Decode and verify response
+    // PhonePe sends the response in base64 encoded format
+    const { response: encodedResponse, merchantTransactionId } = body
+
+    if (!encodedResponse) {
+      return Response.json({
+        success: false,
+        error: "No response data received"
+      }, { status: 400 })
+    }
+
+    // Decode the response
     const decodedResponse = Buffer.from(encodedResponse, "base64").toString("utf8")
     const responseData = JSON.parse(decodedResponse)
 
-    console.log("[v0] PhonePay callback response:", responseData)
+    console.log("[PhonePe Callback] Decoded response:", responseData)
 
-    // Verify checksum (if needed)
-    // Generate checksum from response
-    const string = encodedResponse + "/pg/v1/pay/verify" + SALT_KEY
+    // Verify the checksum
+    const string = encodedResponse + "/pg/v1/status" + CLIENT_SECRET
     const sha256 = crypto.createHash("sha256").update(string).digest("hex")
-    const checksum = sha256 + "###" + SALT_INDEX
+    const expectedChecksum = sha256 + "###" + CLIENT_VERSION
 
-    // Check transaction status
-    if (responseData.code === "PAYMENT_SUCCESS") {
-      // Setup nodemailer for payment confirmation
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_APP_PASSWORD,
-        },
-      })
+    // Verify payment status by calling status check API
+    const txnId = responseData.data?.merchantTransactionId || merchantTransactionId
 
-      const paymentConfirmationEmail = `
-        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-          <div style="background-color: #4caf50; color: white; padding: 20px; text-align: center; border-radius: 5px;">
-            <h1>Payment Successful!</h1>
-          </div>
-          
-          <div style="padding: 20px; background-color: #f5f5f5; margin: 20px 0; border-radius: 5px;">
-            <h2>Payment Confirmation</h2>
-            <p><strong>Transaction ID:</strong> ${responseData.data.transactionId}</p>
-            <p><strong>Amount:</strong> ₹${(responseData.data.amount / 100).toFixed(2)}</p>
-            <p><strong>Status:</strong> ${responseData.code}</p>
-            <p><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
-          </div>
+    if (txnId) {
+      const statusResponse = await checkPaymentStatus(txnId)
 
-          <div style="padding: 20px;">
-            <p>Your booking is confirmed! Our team will contact you shortly with vehicle pickup details.</p>
-            <p style="color: #666; font-size: 12px;">Thank you for choosing ZupRides!</p>
-          </div>
-        </div>
-      `
+      if (statusResponse.success && statusResponse.code === "PAYMENT_SUCCESS") {
+        console.log("[PhonePe Callback] Payment verified successfully:", {
+          transactionId: statusResponse.data.transactionId,
+          amount: statusResponse.data.amount,
+        })
 
-      // Send payment confirmation to user (in production, fetch user email from booking)
-      // await transporter.sendMail({
-      //   from: process.env.EMAIL_USER,
-      //   to: userEmail,
-      //   subject: `Payment Confirmed | ZupRides`,
-      //   html: paymentConfirmationEmail,
-      // })
+        // Here you can:
+        // 1. Update booking status in database
+        // 2. Send confirmation email
+        // 3. Trigger any post-payment workflows
 
-      return Response.json({
-        success: true,
-        message: "Payment verified successfully",
-        transactionId: responseData.data.transactionId,
-      })
-    } else {
-      return Response.json(
-        {
-          success: false,
-          message: "Payment failed",
-          code: responseData.code,
-        },
-        { status: 400 },
-      )
+        return Response.json({
+          success: true,
+          message: "Payment verified successfully",
+          transactionId: statusResponse.data.transactionId,
+          amount: statusResponse.data.amount,
+        })
+      }
     }
+
+    // Payment failed or pending
+    return Response.json({
+      success: false,
+      message: responseData.message || "Payment verification failed",
+      code: responseData.code,
+    }, { status: 400 })
+
   } catch (error) {
-    console.error("[v0] PhonePay callback error:", error)
-    return Response.json({ success: false, error: error.message }, { status: 500 })
+    console.error("[PhonePe Callback] Error:", error)
+    return Response.json({
+      success: false,
+      error: error.message
+    }, { status: 500 })
+  }
+}
+
+// Helper function to check payment status
+async function checkPaymentStatus(merchantTransactionId) {
+  try {
+    const string = `/pg/v1/status/${MERCHANT_ID}/${merchantTransactionId}` + CLIENT_SECRET
+    const sha256 = crypto.createHash("sha256").update(string).digest("hex")
+    const xVerify = sha256 + "###" + CLIENT_VERSION
+
+    const response = await fetch(
+      `${PHONEPE_HOST_URL}/pg/v1/status/${MERCHANT_ID}/${merchantTransactionId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-VERIFY": xVerify,
+          "X-MERCHANT-ID": MERCHANT_ID,
+        },
+      }
+    )
+
+    const data = await response.json()
+    console.log("[PhonePe Status Check]:", data)
+
+    return data
+  } catch (error) {
+    console.error("[PhonePe Status Check] Error:", error)
+    return { success: false, error: error.message }
   }
 }

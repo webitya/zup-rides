@@ -1,12 +1,10 @@
 import crypto from "crypto"
 
 const PHONEPE_HOST_URL = "https://api.phonepe.com/apis/heroku"
-const MERCHANT_ID = process.env.PHONEPE_MERCHANT_ID
-const SALT_KEY = process.env.PHONEPE_SALT_KEY
-const SALT_INDEX = process.env.PHONEPE_SALT_INDEX || "1"
-const CLIENT_ID = process.env.PHONEPE_CLIENT_ID
-const CLIENT_SECRET = process.env.PHONEPE_CLIENT_SECRET
-const CLIENT_VERSION = process.env.PHONEPE_CLIENT_VERSION
+const MERCHANT_ID = process.env.PHONEPE_MERCHANT_ID || "SU2512041550424925141295"
+const CLIENT_ID = process.env.PHONEPE_CLIENT_ID || "SU2512041550424925141295"
+const CLIENT_SECRET = process.env.PHONEPE_CLIENT_SECRET || "dbc4255f-e057-4886-ace8-790ecbd3de5f"
+const CLIENT_VERSION = process.env.PHONEPE_CLIENT_VERSION || "1"
 
 export async function POST(request) {
   try {
@@ -18,15 +16,15 @@ export async function POST(request) {
     }
 
     // Generate unique merchant transaction ID
-    const merchantTransactionId = `${bookingId}-${Date.now()}`
+    const merchantTransactionId = `TXN-${bookingId}-${Date.now()}`
 
-    // Prepare payload
+    // Prepare payload for PhonePe PG API v3
     const payload = {
       merchantId: MERCHANT_ID,
       merchantTransactionId: merchantTransactionId,
-      merchantUserId: phone,
-      amount: amount, // amount in paise
-      redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/payment-callback?bookingId=${bookingId}`,
+      merchantUserId: `USER-${phone}`,
+      amount: amount, // amount in paise (e.g., 39900 for ₹399)
+      redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/payment-callback?bookingId=${bookingId}&txnId=${merchantTransactionId}`,
       redirectMode: "REDIRECT",
       callbackUrl: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/phonepe-callback`,
       mobileNumber: phone,
@@ -38,26 +36,25 @@ export async function POST(request) {
     // Encode payload to base64
     const payloadBase64 = Buffer.from(JSON.stringify(payload)).toString("base64")
 
-    // Generate checksum
-    const string = payloadBase64 + "/pg/v1/pay" + SALT_KEY
+    // Generate X-VERIFY header using SHA256
+    const string = payloadBase64 + "/pg/v1/pay" + CLIENT_SECRET
     const sha256 = crypto.createHash("sha256").update(string).digest("hex")
-    const checksum = sha256 + "###" + SALT_INDEX
+    const xVerify = sha256 + "###" + CLIENT_VERSION
 
-    console.log("[v0] PhonePay payload prepared:", {
+    console.log("[PhonePe] Payment initiation:", {
       merchantTransactionId,
-      amount,
+      amount: amount / 100,
       bookingId,
+      phone,
     })
 
-    // Make request to PhonePay
+    // Make request to PhonePe PG API
     const response = await fetch(`${PHONEPE_HOST_URL}/pg/v1/pay`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-VERIFY": checksum,
-        "X-CLIENT-ID": CLIENT_ID,
-        "X-CLIENT-SECRET": CLIENT_SECRET,
-        "X-CLIENT-VERSION": CLIENT_VERSION,
+        "X-VERIFY": xVerify,
+        "X-MERCHANT-ID": MERCHANT_ID,
       },
       body: JSON.stringify({
         request: payloadBase64,
@@ -66,21 +63,31 @@ export async function POST(request) {
 
     const data = await response.json()
 
-    console.log("[v0] PhonePay response:", data)
+    console.log("[PhonePe] API Response:", {
+      success: data.success,
+      code: data.code,
+      message: data.message,
+    })
 
-    if (data.success) {
+    if (data.success && data.data?.instrumentResponse?.redirectInfo?.url) {
       return Response.json({
         success: true,
-        redirectUrl: data.data.instrumentResponse.redirectUrl,
+        redirectUrl: data.data.instrumentResponse.redirectInfo.url,
+        merchantTransactionId,
       })
     } else {
+      console.error("[PhonePe] Payment initiation failed:", data)
       return Response.json({
         success: false,
         error: data.message || "Payment initiation failed",
-      })
+        code: data.code,
+      }, { status: 400 })
     }
   } catch (error) {
-    console.error("[v0] PhonePay error:", error)
-    return Response.json({ success: false, error: error.message }, { status: 500 })
+    console.error("[PhonePe] Error:", error)
+    return Response.json({
+      success: false,
+      error: error.message || "Internal server error"
+    }, { status: 500 })
   }
 }
