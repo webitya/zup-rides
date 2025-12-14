@@ -52,6 +52,8 @@ export async function checkPhonePeStatus(orderId) {
 
         return {
             success: true,
+            code: response.code, // Pass through API code i.e. PAYMENT_SUCCESS
+            message: response.message,
             state: response.state,
             amount: response.amount,
             metaInfo: response.metaInfo,

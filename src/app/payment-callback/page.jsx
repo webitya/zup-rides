@@ -26,12 +26,13 @@ export default function PaymentCallback() {
         const response = await fetch(`/api/phonepe-status?txnId=${txnId}`)
         const data = await response.json()
 
-        if (data.success && data.code === "PAYMENT_SUCCESS") {
+        if (data.success && (data.code === "PAYMENT_SUCCESS" || data.state === "COMPLETED")) {
           setStatus("success")
-          setPaymentDetails(data.data)
-        } else if (data.code === "PAYMENT_PENDING") {
+          setPaymentDetails(data.data || data) // handle both data structures
+        } else if (data.code === "PAYMENT_PENDING" || data.state === "PENDING") {
           setStatus("pending")
         } else {
+          console.warn("Payment failed or invalid state:", data)
           setStatus("failed")
         }
       } catch (error) {
