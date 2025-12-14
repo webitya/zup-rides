@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import Header from "@/components/common/Header"
-import Footer from "@/components/common/Footer"
+import Header from "../../components/common/Header"
+import Footer from "../../components/common/Footer"
 import PaymentIcon from "@mui/icons-material/Payment"
 import PersonIcon from "@mui/icons-material/Person"
 import EmailIcon from "@mui/icons-material/Email"
