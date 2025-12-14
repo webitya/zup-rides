@@ -195,6 +195,16 @@ export default function Header() {
               <DirectionsBikeIcon className="text-xl group-hover:rotate-12 transition-transform duration-300" />
               Book Your Ride
             </Link>
+
+            {/* Pay Now CTA in Mobile */}
+            <Link
+              href="/pay-now"
+              onClick={() => setMobileOpen(false)}
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white py-3.5 px-5 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-green-200/50 group"
+            >
+              <PaymentIcon className="text-xl group-hover:scale-110 transition-transform duration-300" />
+              Pay Now
+            </Link>
           </div>
 
           {/* Drawer Footer */}
@@ -225,20 +235,6 @@ export default function Header() {
                   <div className="font-semibold text-sm">zuprides.in@gmail.com</div>
                 </div>
               </a>
-
-              <Link
-                href="/pay-now"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 text-white bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 transition-all duration-300 p-3 rounded-xl shadow-lg hover:shadow-xl group"
-              >
-                <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <PaymentIcon fontSize="small" />
-                </div>
-                <div>
-                  <div className="text-xs text-orange-100 font-medium">Quick Payment</div>
-                  <div className="font-bold text-sm">Pay Now</div>
-                </div>
-              </Link>
             </div>
           </div>
         </div>

@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Header from "@/components/common/Header"
+import Footer from "@/components/common/Footer"
 import PaymentIcon from "@mui/icons-material/Payment"
 import PersonIcon from "@mui/icons-material/Person"
 import EmailIcon from "@mui/icons-material/Email"
@@ -88,152 +90,158 @@ export default function PayNowPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
-            <div className="max-w-2xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mb-4">
-                        <PaymentIcon className="text-white" sx={{ fontSize: 40 }} />
+        <>
+            <Header />
+            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-12 px-4">
+                <div className="max-w-xl mx-auto">
+                    {/* Header */}
+                    <div className="text-center mb-6">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-3">
+                            <PaymentIcon className="text-white" sx={{ fontSize: 32 }} />
+                        </div>
+                        <h1 className="text-3xl font-bold text-gray-900 mb-1">Pay Now</h1>
+                        <p className="text-gray-600 text-sm">Complete your payment securely with PhonePe</p>
                     </div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">Pay Now</h1>
-                    <p className="text-gray-600">Complete your payment securely with PhonePe</p>
-                </div>
 
-                {/* Payment Form */}
-                <div className="bg-white rounded-2xl shadow-xl p-8">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        {/* Name */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <PersonIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Full Name *
-                            </label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                                placeholder="Enter your full name"
-                            />
+                    {/* Payment Form */}
+                    <div className="bg-white rounded-xl shadow-lg p-6">
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            {/* Name & Email Row */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                        <PersonIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                        Full Name *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                                        placeholder="Your name"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                        <EmailIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                        Email *
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                                        placeholder="your@email.com"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Phone & Vehicle Row */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                        <PhoneIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                        Phone Number *
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        pattern="[0-9]{10}"
+                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                                        placeholder="10-digit number"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                        <DirectionsBikeIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                        Vehicle Name *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="vehicleName"
+                                        value={formData.vehicleName}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                                        placeholder="e.g., NTORQ 125"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Amount */}
+                            <div>
+                                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                    <CurrencyRupeeIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                    Amount (₹) *
+                                </label>
+                                <input
+                                    type="number"
+                                    name="amount"
+                                    value={formData.amount}
+                                    onChange={handleChange}
+                                    required
+                                    min="1"
+                                    step="0.01"
+                                    className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                                    placeholder="Enter amount"
+                                />
+                            </div>
+
+                            {/* Message */}
+                            <div>
+                                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                                    <MessageIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
+                                    Message (Optional)
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows="3"
+                                    className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none"
+                                    placeholder="Additional notes..."
+                                />
+                            </div>
+
+                            {/* Submit Button */}
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-3 rounded-lg font-bold hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            >
+                                {loading ? (
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        Processing...
+                                    </>
+                                ) : (
+                                    <>
+                                        <PaymentIcon />
+                                        Pay with PhonePe
+                                    </>
+                                )}
+                            </button>
+                        </form>
+
+                        {/* Security Note */}
+                        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <p className="text-xs text-green-800 text-center">
+                                🔒 Secure payment powered by PhonePe. Your information is encrypted and safe.
+                            </p>
                         </div>
-
-                        {/* Email */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <EmailIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Email Address *
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                                placeholder="your.email@example.com"
-                            />
-                        </div>
-
-                        {/* Phone */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <PhoneIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Phone Number *
-                            </label>
-                            <input
-                                type="tel"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                required
-                                pattern="[0-9]{10}"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                                placeholder="10-digit mobile number"
-                            />
-                        </div>
-
-                        {/* Vehicle Name */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <DirectionsBikeIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Vehicle Name *
-                            </label>
-                            <input
-                                type="text"
-                                name="vehicleName"
-                                value={formData.vehicleName}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                                placeholder="e.g., NTORQ 125, R15, Activa"
-                            />
-                        </div>
-
-                        {/* Amount */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <CurrencyRupeeIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Amount (₹) *
-                            </label>
-                            <input
-                                type="number"
-                                name="amount"
-                                value={formData.amount}
-                                onChange={handleChange}
-                                required
-                                min="1"
-                                step="0.01"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                                placeholder="Enter amount in rupees"
-                            />
-                        </div>
-
-                        {/* Message */}
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                                <MessageIcon className="inline mr-2 text-orange-500" fontSize="small" />
-                                Message (Optional)
-                            </label>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows="4"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
-                                placeholder="Add any additional notes or requirements..."
-                            />
-                        </div>
-
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-gradient-to-r from-orange-600 to-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:from-orange-700 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                        >
-                            {loading ? (
-                                <>
-                                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                    Processing...
-                                </>
-                            ) : (
-                                <>
-                                    <PaymentIcon />
-                                    Pay Now with PhonePe
-                                </>
-                            )}
-                        </button>
-                    </form>
-
-                    {/* Security Note */}
-                    <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-                        <p className="text-sm text-green-800 text-center">
-                            🔒 Secure payment powered by PhonePe. Your payment information is encrypted and secure.
-                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     )
 }

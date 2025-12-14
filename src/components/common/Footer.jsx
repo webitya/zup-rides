@@ -8,6 +8,7 @@ import TwitterIcon from "@mui/icons-material/Twitter"
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike"
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"
+import PaymentIcon from "@mui/icons-material/Payment"
 
 export default function Footer() {
   return (
@@ -162,6 +163,15 @@ export default function Footer() {
                 Subscribe Now
               </button>
             </form>
+
+            {/* Pay Now Button */}
+            <Link
+              href="/pay-now"
+              className="mt-4 w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-3.5 rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 text-sm font-semibold shadow-lg shadow-green-900/30 hover:shadow-green-500/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group"
+            >
+              <PaymentIcon className="text-lg group-hover:scale-110 transition-transform duration-300" />
+              Pay Now
+            </Link>
           </div>
         </div>
 
