@@ -32,10 +32,15 @@ export function getPhonePeClient() {
     }
 
     // Runtime actual PhonePe client
-    return StandardCheckoutClient.getInstance(
-        process.env.CLIENT_ID || "SU2509101240319707979509",
-        process.env.CLIENT_SECRET || "1e7df590-7ae7-45a5-ad27-7a661ae902dc",
-        parseInt(process.env.CLIENT_VERSION || "1"),
-        process.env.NODE_ENV === "production" ? Env.PRODUCTION : Env.SANDBOX
-    )
+    const clientId = process.env.PHONEPE_CLIENT_ID || process.env.CLIENT_ID || "SU2509101240319707979509"
+    const clientSecret = process.env.PHONEPE_CLIENT_SECRET || process.env.CLIENT_SECRET || "1e7df590-7ae7-45a5-ad27-7a661ae902dc"
+    const clientVersion = parseInt(process.env.PHONEPE_CLIENT_VERSION || process.env.CLIENT_VERSION || "1")
+
+    // Automatic Environment Detection
+    // "SU" prefix -> Production | "PGTEST" -> Sandbox
+    const isProduction = process.env.NODE_ENV === "production" || clientId.startsWith("SU")
+    const environment = isProduction ? Env.PRODUCTION : Env.SANDBOX
+
+    return StandardCheckoutClient.getInstance(clientId, clientSecret, clientVersion, environment)
+
 }
