@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Header from "../../components/common/Header"
 import Footer from "../../components/common/Footer"
 import PaymentIcon from "@mui/icons-material/Payment"
@@ -13,7 +12,6 @@ import MessageIcon from "@mui/icons-material/Message"
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike"
 
 export default function PayNowPage() {
-    const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
@@ -39,34 +37,16 @@ export default function PayNowPage() {
             // Convert amount to paise
             const amountInPaise = Math.round(parseFloat(formData.amount) * 100)
 
-            // Create booking first
-            const bookingRes = await fetch("/api/bookings", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    ...formData,
-                    vehicleType: formData.vehicleName,
-                    startDate: new Date().toISOString(),
-                    endDate: new Date().toISOString(),
-                    totalAmount: formData.amount,
-                }),
-            })
+            // Generate a unique booking ID
+            const bookingId = `BOOK-${Date.now()}`
 
-            const bookingData = await bookingRes.json()
-
-            if (!bookingData.success) {
-                alert("Failed to create booking. Please try again.")
-                setLoading(false)
-                return
-            }
-
-            // Initiate PhonePe payment
+            // Directly initiate PhonePe payment
             const paymentRes = await fetch("/api/phonepe-payment", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     amount: amountInPaise,
-                    bookingId: bookingData.bookingId,
+                    bookingId: bookingId,
                     phone: formData.phone,
                     email: formData.email,
                     name: formData.name,
@@ -79,7 +59,7 @@ export default function PayNowPage() {
                 // Redirect to PhonePe payment page
                 window.location.href = paymentData.redirectUrl
             } else {
-                alert("Payment initiation failed. Please try again.")
+                alert(`Payment initiation failed: ${paymentData.error || "Unknown error"}`)
                 setLoading(false)
             }
         } catch (error) {
@@ -221,12 +201,12 @@ export default function PayNowPage() {
                                 {loading ? (
                                     <>
                                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                        Processing...
+                                        Securing Your Ride...
                                     </>
                                 ) : (
                                     <>
                                         <PaymentIcon />
-                                        Pay with PhonePe
+                                        Complete Booking
                                     </>
                                 )}
                             </button>
