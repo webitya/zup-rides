@@ -21,7 +21,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -29,8 +35,17 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/theme-provider.jsx", "src/lib/utils.js", "src/components/ui/accordion.jsx", "src/components/ui/alert-dialog.jsx", "src/components/ui/alert.jsx", "src/components/ui/use-toast.js", "src/components/ui/use-mobile.jsx", "src/hooks/use-toast.js", "src/hooks/use-mobile.js"  ],
+    "**/*.tsx",
+    "src/components/theme-provider.jsx",
+    "src/lib/utils.js",
+    "src/components/ui/accordion.jsx",
+    "src/components/ui/alert-dialog.jsx",
+    "src/components/ui/alert.jsx",
+    "src/components/ui/use-toast.js",
+    "src/components/ui/use-mobile.jsx",
+    "src/hooks/use-toast.js",
+    "src/hooks/use-mobile.js"
+  ],
   "exclude": [
     "node_modules"
   ]
