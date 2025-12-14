@@ -8,6 +8,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import PhoneIcon from "@mui/icons-material/Phone"
 import EmailIcon from "@mui/icons-material/Email"
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike"
+import PaymentIcon from "@mui/icons-material/Payment"
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -54,8 +55,8 @@ export default function Header() {
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg  border-b border-orange-100/50"
-            : "bg-white/95 backdrop-blur-sm  border-b border-gray-100/50"
+          ? "bg-white/80 backdrop-blur-xl shadow-lg  border-b border-orange-100/50"
+          : "bg-white/95 backdrop-blur-sm  border-b border-gray-100/50"
           }`}
       >
         <div className="mx-auto px-5 flex justify-between items-center">
@@ -82,8 +83,8 @@ export default function Header() {
                   key={link.name}
                   href={link.path}
                   className={`relative px-5 py-2 rounded-full font-medium transition-all duration-300 ${isActive(link.path)
-                      ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-md shadow-orange-200"
-                      : "text-gray-700 hover:text-orange-600 hover:bg-white/80"
+                    ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-md shadow-orange-200"
+                    : "text-gray-700 hover:text-orange-600 hover:bg-white/80"
                     }`}
                 >
                   {link.name}
@@ -92,10 +93,17 @@ export default function Header() {
                   )}
                 </Link>
               ))}
-              <div className="ml-2 pl-2 border-l border-gray-200">
+              <div className="ml-2 pl-2 border-l border-gray-200 flex gap-2">
+                <Link
+                  href="/pay-now"
+                  className="bg-gradient-to-r from-green-500 to-green-600 text-white px-5 py-2.5 rounded-full font-medium hover:from-green-600 hover:to-green-700 transform hover:scale-105 hover:shadow-lg hover:shadow-green-200/50 transition-all duration-300 flex items-center gap-2 group"
+                >
+                  <PaymentIcon className="text-lg group-hover:scale-110 transition-transform duration-300" />
+                  Pay Now
+                </Link>
                 <Link
                   href="/vehicles"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2.5 rounded-full font-medium hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-200/50 transition-all duration-300 flex items-center gap-2 group"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-5 py-2.5 rounded-full font-medium hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-200/50 transition-all duration-300 flex items-center gap-2 group"
                 >
                   <DirectionsBikeIcon className="text-lg group-hover:rotate-12 transition-transform duration-300" />
                   Book Now
@@ -133,7 +141,7 @@ export default function Header() {
           {/* Drawer Header */}
           <div className="p-6 flex justify-between items-center border-b border-gray-100 bg-gradient-to-r from-orange-50 to-white">
             <div className="flex items-center gap-2">
-            
+
               <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Menu
               </span>
@@ -155,8 +163,8 @@ export default function Header() {
                 href={link.path}
                 onClick={() => setMobileOpen(false)}
                 className={`text-lg font-medium py-3.5 px-5 rounded-xl transition-all duration-300 flex items-center justify-between group ${isActive(link.path)
-                    ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md shadow-orange-200"
-                    : "text-gray-800 hover:bg-orange-50 hover:text-orange-600"
+                  ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md shadow-orange-200"
+                  : "text-gray-800 hover:bg-orange-50 hover:text-orange-600"
                   }`}
                 style={{
                   animationDelay: `${index * 50}ms`,
@@ -169,8 +177,8 @@ export default function Header() {
                 </span>
                 <span
                   className={`transform transition-transform duration-300 ${isActive(link.path)
-                      ? "text-white translate-x-0"
-                      : "text-gray-300 group-hover:text-orange-400 group-hover:translate-x-1"
+                    ? "text-white translate-x-0"
+                    : "text-gray-300 group-hover:text-orange-400 group-hover:translate-x-1"
                     }`}
                 >
                   →
@@ -206,7 +214,7 @@ export default function Header() {
               </a>
 
               <a
-                href="mailto:support@zuprides.in"
+                href="mailto:zuprides.in@gmail.com"
                 className="flex items-center gap-3 text-gray-600 hover:text-orange-600 transition-all duration-300 p-3 bg-white rounded-xl shadow-sm hover:shadow-md group"
               >
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform duration-300">
@@ -214,9 +222,23 @@ export default function Header() {
                 </div>
                 <div>
                   <div className="text-xs text-gray-400 font-medium">Email Us</div>
-                  <div className="font-semibold text-sm">support@zuprides.in</div>
+                  <div className="font-semibold text-sm">zuprides.in@gmail.com</div>
                 </div>
               </a>
+
+              <Link
+                href="/pay-now"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3 text-white bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 transition-all duration-300 p-3 rounded-xl shadow-lg hover:shadow-xl group"
+              >
+                <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <PaymentIcon fontSize="small" />
+                </div>
+                <div>
+                  <div className="text-xs text-orange-100 font-medium">Quick Payment</div>
+                  <div className="font-bold text-sm">Pay Now</div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>

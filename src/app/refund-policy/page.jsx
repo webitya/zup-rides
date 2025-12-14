@@ -151,7 +151,7 @@ export default function RefundPolicy() {
               <strong>Phone:</strong> +91 97981 46740
             </div>
             <div style={contactItemStyle}>
-              <strong>Email:</strong> support@zuprides.in
+              <strong>Email:</strong> zuprides.in@gmail.com
             </div>
           </div>
         </div>

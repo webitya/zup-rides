@@ -90,6 +90,7 @@ export default function Footer() {
                 { name: "Vehicles", path: "/vehicles" },
                 { name: "About Us", path: "/about" },
                 { name: "Contact", path: "/contact" },
+                { name: "Pay Now", path: "/pay-now" },
                 { name: "Privacy Policy", path: "/privacy-policy" },
                 { name: "Terms & Conditions", path: "/terms-conditions" },
                 { name: "Refund Policy", path: "/refund-policy" },
@@ -133,7 +134,7 @@ export default function Footer() {
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center shrink-0 group-hover:from-orange-500/30 group-hover:to-orange-600/30 transition-all">
                   <EmailIcon className="text-orange-500 group-hover:scale-110 transition-transform" fontSize="small" />
                 </div>
-                <a href="mailto:support@zuprides.in" className="hover:text-orange-500 transition-colors">support@zuprides.in</a>
+                <a href="mailto:zuprides.in@gmail.com" className="hover:text-orange-500 transition-colors">zuprides.in@gmail.com</a>
               </li>
             </ul>
           </div>

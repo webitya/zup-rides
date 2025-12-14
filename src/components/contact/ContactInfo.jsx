@@ -20,10 +20,10 @@ export default function ContactInfo() {
       title: "Email",
       content: (
         <div className="space-y-1">
-          <a href="mailto:support@zuprides.in" className="text-orange-600 hover:text-orange-700 font-medium block">
-            support@zuprides.in
+          <a href="mailto:zuprides.in@gmail.com" className="text-orange-600 hover:text-orange-700 font-medium block">
+            zuprides.in@gmail.com
           </a>
-          <div className="text-gray-600 text-sm">zuprides@gmail.com</div>
+          <div className="text-gray-600 text-sm">zuprides.in@gmail.com</div>
         </div>
       ),
       color: "from-purple-500 to-pink-500"
@@ -56,7 +56,7 @@ export default function ContactInfo() {
     <div className="space-y-6">
       <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-        
+
         <div className="space-y-6">
           {contactItems.map((item, idx) => {
             const IconComponent = item.icon
