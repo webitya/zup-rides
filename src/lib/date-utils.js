@@ -35,6 +35,34 @@ export function formatReceiptDateTime(dateInput) {
 }
 
 /**
+ * Format date for Transaction Date (Top of Receipt)
+ * Format: "DD/MM/YYYY hh:mm:ss A"
+ * Example: "16/12/2025 1:52:04 PM"
+ */
+export function formatTransactionDate(dateInput) {
+    if (!dateInput) return ""
+    const d = new Date(dateInput)
+    if (isNaN(d.getTime())) return ""
+
+    // en-GB puts day first: 16/12/2025
+    const datePart = d.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    })
+
+    // en-US for 12-hour time with AM/PM: 1:52:04 PM
+    const timePart = d.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    })
+
+    return `${datePart} ${timePart}`
+}
+
+/**
  * Combine Date and Time strings into ISO string
  * @param {string} dateStr YYYY-MM-DD
  * @param {string} timeStr HH:MM

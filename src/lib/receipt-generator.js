@@ -1,4 +1,4 @@
-import { formatReceiptDate, formatReceiptDateTime } from "./date-utils"
+import { formatReceiptDate, formatReceiptDateTime, formatTransactionDate } from "./date-utils"
 
 /**
  * Format currency
@@ -84,7 +84,7 @@ export const generateReceiptHtml = ({
             </div>
             <div class="detail-row">
                 <span class="detail-label">Date</span>
-                <span class="detail-value">${formatReceiptDateTime(date)}</span>
+                <span class="detail-value">${formatTransactionDate(date)}</span>
             </div>
             <div class="detail-row">
                 <span class="detail-label">Pickup</span>
