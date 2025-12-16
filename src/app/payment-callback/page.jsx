@@ -9,7 +9,7 @@ import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty"
 
 import { jsPDF } from "jspdf"
 import DownloadIcon from "@mui/icons-material/Download"
-import { formatReceiptDate, formatReceiptDateTime, formatTransactionDate } from "../../lib/date-utils"
+import { formatReceiptDate, formatReceiptDateTime, formatTransactionDate, formatReceiptLongDate } from "../../lib/date-utils"
 // Note: We are not importing the image because jsPDF needs it as base64 or loaded image object.
 
 export default function PaymentCallback() {
@@ -173,7 +173,7 @@ export default function PaymentCallback() {
     const amount = (paymentDetails.amount / 100).toFixed(2)
     // The 'date' variable below is no longer used for the top date string,
     // but can be kept if needed for a row in the table.
-    const date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+    const date = formatReceiptLongDate(new Date())
 
     addRow("Date:", date)
     addRow("Booking ID:", bookingId || "N/A")

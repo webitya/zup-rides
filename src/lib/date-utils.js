@@ -69,3 +69,18 @@ export function combineDateTime(dateStr, timeStr) {
     if (!dateStr || !timeStr) return ""
     return new Date(`${dateStr}T${timeStr}`).toISOString()
 }
+
+/**
+ * Format date to "DD MMMM YYYY h:mm:ss A"
+ * Example: "16 December 2025 2:43:31 PM"
+ */
+export function formatReceiptLongDate(dateInput) {
+    if (!dateInput) return ""
+    const d = new Date(dateInput)
+    if (isNaN(d.getTime())) return ""
+
+    const datePart = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    const timePart = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true })
+
+    return `${datePart} ${timePart}`
+}
