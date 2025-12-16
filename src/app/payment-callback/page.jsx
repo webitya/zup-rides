@@ -63,10 +63,24 @@ export default function PaymentCallback() {
     if (!paymentDetails) return
 
     // --- Helper to parse UDFs ---
+    // UDF1: Name
+    // UDF2: Email
+    // UDF3: Phone
     // UDF4: `VN:${vehicleName}|NO:${vehicleNumber}`
     // UDF5: `SD:${startDate}|ED:${endDate}|MSG:${message}`
-    const udf4 = paymentDetails.paymentDetails?.instrumentResponse?.redirectInfo?.metaInfo?.udf4 || paymentDetails.metaInfo?.udf4 || ""
-    const udf5 = paymentDetails.paymentDetails?.instrumentResponse?.redirectInfo?.metaInfo?.udf5 || paymentDetails.metaInfo?.udf5 || ""
+
+    // Helper to safely get UDF value checking multiple possible locations
+    const getUdf = (key) => {
+      return paymentDetails.paymentDetails?.instrumentResponse?.redirectInfo?.metaInfo?.[key] ||
+        paymentDetails.metaInfo?.[key] ||
+        ""
+    }
+
+    const name = getUdf("udf1")
+    const email = getUdf("udf2")
+    const phone = getUdf("udf3")
+    const udf4 = getUdf("udf4")
+    const udf5 = getUdf("udf5")
 
     const parseUdf = (str) => {
       const res = {}
@@ -164,6 +178,11 @@ export default function PaymentCallback() {
     addRow("Date:", date)
     addRow("Booking ID:", bookingId || "N/A")
     addRow("Transaction ID:", finalTxnId)
+
+    // Customer Details
+    if (name) addRow("Name:", name)
+    if (email) addRow("Email:", email)
+    if (phone) addRow("Phone:", phone)
 
     // Separator
     yPos += 5
