@@ -149,7 +149,7 @@ export function generateAdminAlertHtml(details) {
 <body>
     <div class="card">
         <h2>🔥 New Booking Alert!</h2>
-        <div class="row"><div class="label">Amount:</div><div class="val"><strong>${formatCurrency(amount)}</strong></div></div>
+        <div class="row"><div class="label">Amount:</div><div class="val"><strong>${formatCurrency(amount / 100)}</strong></div></div>
         <div class="row"><div class="label">Vehicle:</div><div class="val">${vehicleName}</div></div>
         <div class="row"><div class="label">Customer:</div><div class="val">${name}</div></div>
         <div class="row"><div class="label">Phone:</div><div class="val"><a href="tel:${phone}">${phone}</a></div></div>
