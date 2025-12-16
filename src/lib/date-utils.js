@@ -14,9 +14,24 @@ export function formatReceiptDate(dateInput) {
     const month = d.toLocaleDateString('en-US', { month: 'long' })
     const year = d.getFullYear()
 
-    // Time part for reference if needed, but requested format is specific
-    // "17 Tuesday -December -2025"
     return `${day} ${dayName} -${month} -${year}`
+}
+
+/**
+ * Format date AND time to "DD dddd -MMMM -YYYY, hh:mm A"
+ * Example: "17 Tuesday -December -2025, 02:30 PM"
+ * @param {string|Date} dateInput 
+ * @returns {string}
+ */
+export function formatReceiptDateTime(dateInput) {
+    if (!dateInput) return ""
+    const d = new Date(dateInput)
+    if (isNaN(d.getTime())) return ""
+
+    const datePart = formatReceiptDate(d)
+    const timePart = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })
+
+    return `${datePart}, ${timePart}`
 }
 
 /**

@@ -8,9 +8,8 @@ import ErrorIcon from "@mui/icons-material/Error"
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty"
 
 import { jsPDF } from "jspdf"
-
 import DownloadIcon from "@mui/icons-material/Download"
-import { formatReceiptDate } from "../../lib/date-utils"
+import { formatReceiptDate, formatReceiptDateTime } from "../../lib/date-utils"
 // Note: We are not importing the image because jsPDF needs it as base64 or loaded image object.
 
 export default function PaymentCallback() {
@@ -172,8 +171,8 @@ export default function PaymentCallback() {
 
     if (vehicleName) addRow("Vehicle:", vehicleName)
     if (vehicleNumber) addRow("Vehicle Number:", vehicleNumber)
-    if (startDate) addRow("Start Date:", formatReceiptDate(startDate))
-    if (endDate) addRow("End Date:", formatReceiptDate(endDate))
+    if (startDate) addRow("Start Date:", formatReceiptDateTime(startDate))
+    if (endDate) addRow("End Date:", formatReceiptDateTime(endDate))
 
     addRow("Payment Status:", "Successful")
 
