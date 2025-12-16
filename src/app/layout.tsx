@@ -8,25 +8,11 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Zup Rides',
-  description: 'Zup Rides - Your Trusted Ride Booking Service',
+  title: 'Zup Rides - Premium Two Wheeler Rentals | Starts @ ₹399/Day',
+  description: 'Explore the city with Zup Rides, your trusted two-wheeler rental agency. Rent premium bikes and scooters starting from just ₹399/day. Affordable, reliable, and hassle-free booking.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/logo.webp',
   },
 }
 

@@ -14,7 +14,7 @@ export async function POST(request) {
       })
     }
 
-    const { amount, bookingId, phone, email, name, vehicleName, message } = await request.json()
+    const { amount, bookingId, phone, email, name, vehicleName, vehicleNumber, startDate, endDate, message } = await request.json()
 
     // Validate required fields
     if (!amount || !bookingId || !phone) {
@@ -43,6 +43,9 @@ export async function POST(request) {
         email,
         phone,
         vehicleName,
+        vehicleNumber,
+        startDate,
+        endDate,
         message,
         merchantOrderId,
       },

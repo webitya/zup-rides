@@ -8,12 +8,11 @@ export async function createPhonePeOrder({ orderId, amount, redirectUrl, meta = 
     try {
         const phonepeClient = getPhonePeClient() // SAFE INIT (No build errors)
 
-        const metaInfo = MetaInfo.builder()
             .udf1(meta.name || "")
             .udf2(meta.email || "")
             .udf3(meta.phone || "")
-            .udf4(meta.vehicleName || "")
-            .udf5(meta.message || "")
+            .udf4(`VN:${meta.vehicleName || "NA"}|NO:${meta.vehicleNumber || "NA"}`)
+            .udf5(`SD:${meta.startDate || "NA"}|ED:${meta.endDate || "NA"}|MSG:${meta.message || ""}`)
             .build()
 
         const request = StandardCheckoutPayRequest.builder()
