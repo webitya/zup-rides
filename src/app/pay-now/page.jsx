@@ -50,7 +50,7 @@ export default function PayNowPage() {
                 return
             }
 
-            if (end <= start) {
+            if (formData.endDate && end <= start) {
                 alert("End date must be after start date.")
                 setLoading(false)
                 return
@@ -223,14 +223,13 @@ export default function PayNowPage() {
                                 <div>
                                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">
                                         <CalendarTodayIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
-                                        End Date & Time *
+                                        End Date & Time (Optional)
                                     </label>
                                     <input
                                         type="datetime-local"
                                         name="endDate"
                                         value={formData.endDate}
                                         onChange={handleChange}
-                                        required
                                         min={formData.startDate || new Date().toISOString().slice(0, 16)}
                                         className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                                     />

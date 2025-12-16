@@ -8,7 +8,7 @@ import ErrorIcon from "@mui/icons-material/Error"
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty"
 
 import { jsPDF } from "jspdf"
-import { jsPDF } from "jspdf"
+
 import DownloadIcon from "@mui/icons-material/Download"
 // Note: We are not importing the image because jsPDF needs it as base64 or loaded image object.
 
