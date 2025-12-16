@@ -83,8 +83,8 @@ export default function PaymentCallback() {
 
     const vehicleName = vData.VN && vData.VN !== "NA" ? vData.VN : ""
     const vehicleNumber = vData.NO && vData.NO !== "NA" ? vData.NO : ""
-    const startDate = mData.SD && mData.SD !== "NA" ? new Date(mData.SD).toLocaleString() : ""
-    const endDate = mData.ED && mData.ED !== "NA" ? new Date(mData.ED).toLocaleString() : ""
+    const startDate = mData.SD && mData.SD !== "NA" ? mData.SD : ""
+    const endDate = mData.ED && mData.ED !== "NA" ? mData.ED : ""
 
     // Fix Transaction ID: Check top level, paymentDetails, or use orderId as last resort
     const finalTxnId = paymentDetails.transactionId ||
