@@ -99,8 +99,8 @@ export default function PaymentCallback() {
     const pageHeight = doc.internal.pageSize.getHeight()
     const margin = 20
 
-    // Header Color Strip
-    doc.setFillColor(22, 163, 74) // Green-600
+    // Header Color Strip (Dark/Black Theme)
+    doc.setFillColor(30, 41, 59) // Slate-900 (Dark)
     doc.rect(0, 0, pageWidth, 40, 'F')
 
     // --- LOGO Handling ---
@@ -128,7 +128,7 @@ export default function PaymentCallback() {
     doc.text("Zup Rides", margin + 25, 20) // Offset for logo
 
     doc.setFontSize(12)
-    doc.setTextColor(220, 255, 220)
+    doc.setTextColor(203, 213, 225) // Light gray for subtitle
     doc.text("Premium Two Wheeler Rentals", margin + 25, 28)
 
     doc.setFontSize(16)
@@ -178,13 +178,16 @@ export default function PaymentCallback() {
 
     // Total Amount Box
     yPos += 20
-    doc.setFillColor(240, 253, 244) // Light green bg
-    doc.roundedRect(margin, yPos, pageWidth - (margin * 2), 25, 3, 3, 'F')
+    // Total Amount Box (Neutral Gray/White)
+    yPos += 20
+    doc.setFillColor(248, 250, 252) // Very light gray bg
+    doc.setDrawColor(226, 232, 240) // border
+    doc.roundedRect(margin, yPos, pageWidth - (margin * 2), 25, 3, 3, 'FD')
 
     yPos += 17
     doc.setFontSize(14)
     doc.setFont("helvetica", "bold")
-    doc.setTextColor(22, 101, 52) // Dark green
+    doc.setTextColor(15, 23, 42) // Dark Slate
     doc.text("Total Paid", margin + 10, yPos)
 
     const amountText = `Rs. ${amount}`

@@ -31,7 +31,7 @@ export function generateReceiptHtml(details) {
 <style>
     body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f5; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
     .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-top: 20px; margin-bottom: 20px; }
-    .header { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); padding: 40px 20px; text-align: center; color: white; }
+    .header { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 40px 20px; text-align: center; color: white; }
     .header h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
     .header p { margin: 10px 0 0; opacity: 0.9; font-size: 16px; }
     .status-badge { display: inline-block; background-color: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; margin-top: 15px; font-size: 14px; font-weight: 600; }
@@ -43,13 +43,13 @@ export function generateReceiptHtml(details) {
     .detail-value { color: #1e293b; font-size: 14px; font-weight: 600; text-align: right; }
     
     .vehicle-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
-    .vehicle-icon { background-color: #dcfce7; color: #166534; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .vehicle-icon { background-color: #f1f5f9; color: #1e293b; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .vehicle-info h3 { margin: 0; font-size: 16px; color: #0f172a; }
     .vehicle-info p { margin: 4px 0 0; font-size: 13px; color: #64748b; }
     
-    .total-section { background-color: #f0fdf4; border: 1px dashed #22c55e; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 30px; }
-    .total-label { color: #15803d; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-    .total-amount { color: #166534; font-size: 32px; font-weight: 800; margin: 5px 0 0; }
+    .total-section { background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 30px; }
+    .total-label { color: #475569; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .total-amount { color: #0f172a; font-size: 32px; font-weight: 800; margin: 5px 0 0; }
     
     .footer { background-color: #1e293b; padding: 30px; text-align: center; color: #94a3b8; font-size: 12px; }
     .footer p { margin: 5px 0; }

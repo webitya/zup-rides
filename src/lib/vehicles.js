@@ -85,7 +85,7 @@ export const allVehicles = [
         weekly: "₹5999",
         monthly: "₹20399",
         description: "Off-road capability",
-        image: "/images/vehicles/cruiser_bike_black.png",
+        image: "/images/vehicles/adventure_bike_orange.png",
     },
     {
         id: 9,
@@ -129,6 +129,6 @@ export const allVehicles = [
         weekly: "₹2999",
         monthly: "₹11999",
         description: "Budget friendly",
-        image: "/images/vehicles/scooter_red.png",
+        image: "/images/vehicles/apache_160.png",
     },
 ]
