@@ -1,3 +1,5 @@
+import { formatReceiptDate } from "./date-utils"
+
 /**
  * Format currency
  */
@@ -98,15 +100,15 @@ export function generateReceiptHtml(details) {
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Date</span>
-                    <span class="detail-value">${date}</span>
+                    <span class="detail-value">${formatReceiptDate(date)}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Pickup</span>
-                    <span class="detail-value">${startDate}</span>
+                    <span class="detail-value">${formatReceiptDate(startDate)}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Dropoff</span>
-                    <span class="detail-value">${endDate}</span>
+                    <span class="detail-value">${formatReceiptDate(endDate)}</span>
                 </div>
             </div>
 
@@ -169,8 +171,8 @@ export function generateAdminAlertHtml(details) {
         <div class="row"><div class="label">Customer:</div><div class="val">${name}</div></div>
         <div class="row"><div class="label">Phone:</div><div class="val"><a href="tel:${phone}">${phone}</a></div></div>
         <div class="row"><div class="label">Email:</div><div class="val">${email}</div></div>
-        <div class="row"><div class="label">Start:</div><div class="val">${startDate}</div></div>
-        <div class="row"><div class="label">End:</div><div class="val">${endDate}</div></div>
+        <div class="row"><div class="label">Start:</div><div class="val">${formatReceiptDate(startDate)}</div></div>
+        <div class="row"><div class="label">End:</div><div class="val">${formatReceiptDate(endDate)}</div></div>
         <div class="row"><div class="label">Booking ID:</div><div class="val">${bookingId}</div></div>
     </div>
 </body>

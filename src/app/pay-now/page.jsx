@@ -10,8 +10,8 @@ import PhoneIcon from "@mui/icons-material/Phone"
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee"
 import MessageIcon from "@mui/icons-material/Message"
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike"
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
 import PinIcon from "@mui/icons-material/Pin"
+import CustomDateTimePicker from "../../components/common/CustomDateTimePicker"
 
 export default function PayNowPage() {
     const [loading, setLoading] = useState(false)
@@ -21,8 +21,11 @@ export default function PayNowPage() {
         phone: "",
         vehicleName: "",
         vehicleNumber: "",
-        startDate: "",
-        endDate: "",
+        vehicleNumber: "",
+        startDateObj: "",
+        startTimeObj: "",
+        endDateObj: "",
+        endTimeObj: "",
         amount: "",
         message: "",
     })
@@ -40,21 +43,27 @@ export default function PayNowPage() {
 
         try {
             // Validate dates
-            const start = new Date(formData.startDate)
-            const end = new Date(formData.endDate)
+            const start = new Date(`${formData.startDateObj}T${formData.startTimeObj}`)
             const now = new Date()
 
             if (start < now) {
-                alert("Start date cannot be in the past.")
+                alert("Pickup time cannot be in the past.")
                 setLoading(false)
                 return
             }
 
-            if (formData.endDate && end <= start) {
-                alert("End date must be after start date.")
-                setLoading(false)
-                return
+            if (formData.endDateObj && formData.endTimeObj) {
+                const endTimestamp = new Date(`${formData.endDateObj}T${formData.endTimeObj}`)
+                if (endTimestamp <= start) {
+                    alert("Dropoff must be after pickup time.")
+                    setLoading(false)
+                    return
+                }
             }
+
+            // Construct full date strings for logic
+            const startDateStr = `${formData.startDateObj}T${formData.startTimeObj}`
+            const endDateStr = (formData.endDateObj && formData.endTimeObj) ? `${formData.endDateObj}T${formData.endTimeObj}` : ""
 
             // Convert amount to paise
             const amountInPaise = Math.round(parseFloat(formData.amount) * 100)
@@ -74,8 +83,9 @@ export default function PayNowPage() {
                     name: formData.name,
                     vehicleName: formData.vehicleName,
                     vehicleNumber: formData.vehicleNumber,
-                    startDate: formData.startDate,
-                    endDate: formData.endDate,
+                    vehicleNumber: formData.vehicleNumber,
+                    startDate: `${formData.startDateObj}T${formData.startTimeObj}`,
+                    endDate: (formData.endDateObj && formData.endTimeObj) ? `${formData.endDateObj}T${formData.endTimeObj}` : "",
                     message: formData.message,
                 }),
             })
@@ -203,37 +213,27 @@ export default function PayNowPage() {
                                 <div className="hidden md:block"></div> {/* Spacer for alignment if needed, or just let it reflow */}
                             </div>
 
-                            {/* Date Range */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                                        <CalendarTodayIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
-                                        Start Date & Time *
-                                    </label>
-                                    <input
-                                        type="datetime-local"
-                                        name="startDate"
-                                        value={formData.startDate}
-                                        onChange={handleChange}
-                                        required
-                                        min={new Date().toISOString().slice(0, 16)}
-                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                                        <CalendarTodayIcon className="inline mr-1 text-green-500" sx={{ fontSize: 16 }} />
-                                        End Date & Time (Optional)
-                                    </label>
-                                    <input
-                                        type="datetime-local"
-                                        name="endDate"
-                                        value={formData.endDate}
-                                        onChange={handleChange}
-                                        min={formData.startDate || new Date().toISOString().slice(0, 16)}
-                                        className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                                    />
-                                </div>
+                            {/* Custom Date & Time Selection */}
+                            <div className="space-y-6 pt-2">
+                                <CustomDateTimePicker
+                                    label="Pickup Schedule"
+                                    dateValue={formData.startDateObj}
+                                    timeValue={formData.startTimeObj}
+                                    onDateChange={(val) => setFormData(prev => ({ ...prev, startDateObj: val }))}
+                                    onTimeChange={(val) => setFormData(prev => ({ ...prev, startTimeObj: val }))}
+                                    minDate={new Date().toISOString().split('T')[0]}
+                                    color="green"
+                                />
+
+                                <CustomDateTimePicker
+                                    label="Dropoff Schedule (Optional)"
+                                    dateValue={formData.endDateObj}
+                                    timeValue={formData.endTimeObj}
+                                    onDateChange={(val) => setFormData(prev => ({ ...prev, endDateObj: val }))}
+                                    onTimeChange={(val) => setFormData(prev => ({ ...prev, endTimeObj: val }))}
+                                    minDate={formData.startDateObj || new Date().toISOString().split('T')[0]}
+                                    color="orange"
+                                />
                             </div>
 
                             {/* Amount */}
