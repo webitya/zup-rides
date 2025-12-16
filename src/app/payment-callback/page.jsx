@@ -59,13 +59,8 @@ export default function PaymentCallback() {
     verifyPayment()
   }, [orderId])
 
-  const downloadReceipt = () => {
+  const downloadReceipt = async () => {
     if (!paymentDetails) return
-
-    const doc = new jsPDF()
-    const pageWidth = doc.internal.pageSize.getWidth()
-    const pageHeight = doc.internal.pageSize.getHeight()
-    const margin = 20
 
     // --- Helper to parse UDFs ---
     // UDF4: `VN:${vehicleName}|NO:${vehicleNumber}`
@@ -86,64 +81,74 @@ export default function PaymentCallback() {
     const vData = parseUdf(udf4)
     const mData = parseUdf(udf5)
 
-    const vehicleName = vData.VN !== "NA" ? vData.VN : ""
-    const vehicleNumber = vData.NO !== "NA" ? vData.NO : ""
-    const startDate = mData.SD !== "NA" ? new Date(mData.SD).toLocaleString() : ""
-    const endDate = mData.ED !== "NA" ? new Date(mData.ED).toLocaleString() : ""
+    const vehicleName = vData.VN && vData.VN !== "NA" ? vData.VN : ""
+    const vehicleNumber = vData.NO && vData.NO !== "NA" ? vData.NO : ""
+    const startDate = mData.SD && mData.SD !== "NA" ? new Date(mData.SD).toLocaleString() : ""
+    const endDate = mData.ED && mData.ED !== "NA" ? new Date(mData.ED).toLocaleString() : ""
 
-    // --- LOGO ---
-    // Add logo if available. Note: jsPDF requires base64 or image data.
-    // Since we can't easily fetch and convert to base64 synchronously here without potential CORS or async issues in this simple function,
-    // we'll try to add it if the user wants it. ideally we should load it before.
-    // For now, let's assume valid URL or skip if complex.
-    // NOTE: jsPDFaddImage requires the image to be loaded.
-    // We will just put the text "Zup Rides" prominently for now as fallback or try to put an image if we had one preloaded.
-    // The user requested "/logo.webp". We'll try to add it.
+    // Fix Transaction ID: Check top level, paymentDetails, or use orderId as last resort
+    const finalTxnId = paymentDetails.transactionId ||
+      paymentDetails.paymentDetails?.transactionId ||
+      paymentDetails.providerReferenceId ||
+      txnId ||
+      bookingId ||
+      "N/A"
+
+    const doc = new jsPDF()
+    const pageWidth = doc.internal.pageSize.getWidth()
+    const pageHeight = doc.internal.pageSize.getHeight()
+    const margin = 20
+
+    // Header Color Strip
+    doc.setFillColor(22, 163, 74) // Green-600
+    doc.rect(0, 0, pageWidth, 40, 'F')
+
+    // --- LOGO Handling ---
     try {
-      const logoImg = new Image()
-      logoImg.src = "/logo.webp"
-      // This is async, so it won't show up immediately in the PDF if we just save.
-      // We really should treat this as a Promise, but for this quick edit, let's just stick to text or standard approach.
-      // Actually, let's just use the text header to be safe and avoid broken images in the PDF.
-      // If the user insists on the image, we'd need to fetch it as blob -> base64.
-    } catch (e) { }
+      // Load image proactively
+      const logoUrl = "/logo.webp"
+      const response = await fetch(logoUrl)
+      if (response.ok) {
+        const blob = await response.blob()
+        const reader = new FileReader()
+        const base64data = await new Promise((resolve) => {
+          reader.onloadend = () => resolve(reader.result)
+          reader.readAsDataURL(blob)
+        })
+        // Add image
+        doc.addImage(base64data, 'WEBP', margin, 10, 20, 20) // x, y, w, h
+      }
+    } catch (e) {
+      console.error("Failed to load logo for receipt", e)
+    }
 
-
-    // Header
+    // Header Text
     doc.setFontSize(22)
-    doc.setTextColor(40, 40, 40)
-    doc.text("Zup Rides", margin, 20)
+    doc.setTextColor(255, 255, 255)
+    doc.text("Zup Rides", margin + 25, 20) // Offset for logo
 
-    doc.setFontSize(10)
-    doc.setTextColor(100, 100, 100)
-    doc.text("Two Wheeler Rental Agency", margin, 26)
+    doc.setFontSize(12)
+    doc.setTextColor(220, 255, 220)
+    doc.text("Premium Two Wheeler Rentals", margin + 25, 28)
 
-    doc.setFontSize(14)
-    doc.setTextColor(100, 100, 100)
-    doc.text("Payment Receipt", pageWidth - margin - 40, 20)
-
-    // Divider
-    doc.setLineWidth(0.5)
-    doc.setDrawColor(200, 200, 200)
-    doc.line(margin, 35, pageWidth - margin, 35)
+    doc.setFontSize(16)
+    doc.setTextColor(255, 255, 255)
+    doc.text("RECEIPT", pageWidth - margin - 30, 25)
 
     // Content
-    let yPos = 50
+    let yPos = 60
     const lineHeight = 10
 
     const addRow = (label, value) => {
       if (!value) return
-      doc.setFontSize(12)
+      doc.setFontSize(11)
       doc.setFont("helvetica", "bold")
-      doc.setTextColor(0, 0, 0)
+      doc.setTextColor(60, 60, 60)
       doc.text(label, margin, yPos)
 
       doc.setFont("helvetica", "normal")
-      doc.setTextColor(60, 60, 60)
-      // Wrap text if too long
-      const textWidth = doc.getStringUnitWidth(value) * 12 / doc.internal.scaleFactor
+      doc.setTextColor(0, 0, 0)
 
-      // Simple right alignment logic
       const valWidth = doc.getTextWidth(value)
       doc.text(value, pageWidth - margin - valWidth, yPos)
 
@@ -156,9 +161,13 @@ export default function PaymentCallback() {
 
     addRow("Date:", date)
     addRow("Booking ID:", bookingId || "N/A")
-    addRow("Transaction ID:", paymentDetails.transactionId || txnId || "N/A")
-    // Use OrderID as requested if different, but usually Transaction ID is what they want.
-    // User said: "add this transacton id or Orderid" -> We have both usually.
+    addRow("Transaction ID:", finalTxnId)
+
+    // Separator
+    yPos += 5
+    doc.setDrawColor(230, 230, 230)
+    doc.line(margin, yPos, pageWidth - margin, yPos)
+    yPos += 15
 
     if (vehicleName) addRow("Vehicle:", vehicleName)
     if (vehicleNumber) addRow("Vehicle Number:", vehicleNumber)
@@ -167,30 +176,28 @@ export default function PaymentCallback() {
 
     addRow("Payment Status:", "Successful")
 
-    // Detailed Line
-    yPos += 5
-    doc.line(margin, yPos, pageWidth - margin, yPos)
-    yPos += 15
+    // Total Amount Box
+    yPos += 20
+    doc.setFillColor(240, 253, 244) // Light green bg
+    doc.roundedRect(margin, yPos, pageWidth - (margin * 2), 25, 3, 3, 'F')
 
-    // Total Amount
-    doc.setFontSize(16)
+    yPos += 17
+    doc.setFontSize(14)
     doc.setFont("helvetica", "bold")
-    doc.setTextColor(0, 50, 0)
-    doc.text("Total Paid", margin, yPos)
+    doc.setTextColor(22, 101, 52) // Dark green
+    doc.text("Total Paid", margin + 10, yPos)
 
     const amountText = `Rs. ${amount}`
     const amountWidth = doc.getTextWidth(amountText)
-    doc.text(amountText, pageWidth - margin - amountWidth, yPos)
+    doc.text(amountText, pageWidth - margin - 10 - amountWidth, yPos)
 
-    // Footer at the bottom
+    // Footer
     const footerY = pageHeight - 30
     doc.setFontSize(10)
-    doc.setTextColor(80, 80, 80)
-    doc.text("ZupRides", pageWidth / 2, footerY, { align: "center" })
-    doc.text("Two Wheeler Rental Agency", pageWidth / 2, footerY + 5, { align: "center" })
-
-    // Attempting to add logo image to PDF if possible (this is tricky synchronously in client-side jsPDF without preloading)
-    // We'll skip the actual image embedding to avoid blank PDFs and rely on the text header which is professional.
+    doc.setFont("helvetica", "normal")
+    doc.setTextColor(150, 150, 150)
+    doc.text("Thank you for choosing Zup Rides!", pageWidth / 2, footerY, { align: "center" })
+    doc.text("www.zuprides.in", pageWidth / 2, footerY + 6, { align: "center" })
 
     doc.save(`Receipt_${bookingId || txnId}.pdf`)
   }
@@ -227,7 +234,7 @@ export default function PaymentCallback() {
                 {paymentDetails && (
                   <>
                     <p className="text-sm text-green-800 mb-2">
-                      <strong>Transaction ID:</strong> {paymentDetails.transactionId || txnId}
+                      <strong>Transaction ID:</strong> {paymentDetails.transactionId || paymentDetails.paymentDetails?.transactionId || txnId || bookingId}
                     </p>
                     <p className="text-sm text-green-800">
                       <strong>Amount Paid:</strong> Rs. {(paymentDetails.amount / 100).toFixed(2)}
