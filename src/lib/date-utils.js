@@ -44,14 +44,11 @@ export function formatTransactionDate(dateInput) {
     const d = new Date(dateInput)
     if (isNaN(d.getTime())) return ""
 
-    // en-GB puts day first: 16/12/2025
-    const datePart = d.toLocaleDateString('en-GB', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    })
+    const day = d.getDate().toString().padStart(2, '0')
+    const month = (d.getMonth() + 1).toString().padStart(2, '0') // 0-indexed
+    const year = d.getFullYear()
 
-    // en-US for 12-hour time with AM/PM: 1:52:04 PM
+    // Time with AM/PM
     const timePart = d.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: '2-digit',
@@ -59,7 +56,7 @@ export function formatTransactionDate(dateInput) {
         hour12: true
     })
 
-    return `${datePart} ${timePart}`
+    return `${day}/${month}/${year} ${timePart}`
 }
 
 /**
