@@ -129,6 +129,6 @@ export const allVehicles = [
         weekly: "₹2999",
         monthly: "₹11999",
         description: "Budget friendly",
-        image: "/images/vehicles/apache_160.png",
+        image: "/images/vehicles/sp_shine_125.png",
     },
 ]
